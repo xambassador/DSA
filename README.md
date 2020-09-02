@@ -1,8 +1,8 @@
 ### Data structures and Algorithms Solution in c++
 
 #### Todo List
-- [] Arrays
-- [] Character Array and 2D Arrays
+- [+] Arrays
+- [+] Character Array and 2D Arrays
 - [] Searching
 - [] Sorting
 - [] Recursion-1
