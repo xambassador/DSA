@@ -4,14 +4,14 @@ Substring of a String S is a part of S (of any length from 1 to n), which contai
 ### Input Format :
 String S
 ### Output Format :
-All Substrings of S, one in each line.
+All Substrings of S, one in each line. <br>
 Note : The order in which you print substrings doesn't matter.
 ### Sample Input 1 :
 xyz
 ### Sample Output 1 :
-x
-xy
-xyz
-y
-yz
-z
+x  <br>
+xy <br>
+xyz <br>
+y <br>
+yz <br>
+z <br>

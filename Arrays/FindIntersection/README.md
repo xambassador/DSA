@@ -13,20 +13,20 @@ Print intersection elements in different lines
 ### Constraints
 1 <= m, n <= 103
 ### Sample Input 1:
-6
-2 6 8 5 4 3
-4
-2 3 4 7 
+6 <br>
+2 6 8 5 4 3 <br>
+4 <br>
+2 3 4 7  <br>
 ### Sample Output 1:
-2 
-4 
-3
+2 <br>
+4 <br>
+3 <br>
 ### Sample Input 2 :
-4
-2 6 1 2
-5
-1 2 3 4 2
+4 <br>
+2 6 1 2 <br>
+5 <br>
+1 2 3 4 2 <br>
 ### Sample Output 2 :
-2 
-2
-1
+2 <br>
+2 <br>
+1 <br>
