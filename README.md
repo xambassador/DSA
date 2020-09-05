@@ -3,9 +3,9 @@
 #### Todo List
 - [x] Arrays
 - [x] Character Array and 2D Arrays
-- [] Searching
-- [] Sorting
-- [] Recursion-1
+- [x] Searching
+- [x] Sorting
+- [x] Recursion-1
 - [] Recursion-2
 - [] Bit manipulation
 - [] Linked Lists
