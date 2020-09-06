@@ -30,4 +30,5 @@ int main(){
     cin >> arr;
     unique(arr);
     cout << arr << endl;
+    delete arr;
 }

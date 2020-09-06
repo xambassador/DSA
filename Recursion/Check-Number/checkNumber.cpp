@@ -24,4 +24,5 @@ int main(){
     int x;
     cin >> x;
     cout << boolalpha << checkNumber(arr,n,x) << endl;
+    delete arr;
 }

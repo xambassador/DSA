@@ -38,6 +38,8 @@ int main(){
     for(int i{};i<ans;i++){
         cout << output[i] << " ";
     }cout << endl;
+    delete arr;
+    delete output;
 }
 
 // int allIndices(int* arr, int n, int x, int* output){

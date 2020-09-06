@@ -23,4 +23,5 @@ int main(){
     char* arr{new char[1000]};
     cin >> arr;
     cout << boolalpha << checkPalindrome(arr) << endl;
+    delete arr;
 }

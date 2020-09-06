@@ -30,4 +30,5 @@ int main(){
     int x;
     cin >> x;
     cout << firstIndex(arr,n,x) << endl;
+    delete arr;
 }

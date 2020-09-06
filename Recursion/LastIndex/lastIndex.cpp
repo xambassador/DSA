@@ -38,4 +38,5 @@ int main(){
     int x;
     cin >> x;
     cout << lastIndex(arr,n,x) << endl;
+    delete arr;
 }
