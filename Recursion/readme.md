@@ -1,0 +1,34 @@
+## Problem lists
+
+- [x] All Indices Of Number
+- [x] Check Number
+- [x] Check AB
+- [x] Check Palindrome
+- [x] Count Digits
+- [x] Count Zeros
+- [x] First Index
+- [x] Geometric Sum
+- [x] Last Index
+- [x] Multiplication
+- [x] Pair Star
+- [x] Power
+- [x] Print N Numbers
+- [x] Print All Codes
+- [x] Print Keypad Combinations
+- [x] Print Subsequance
+- [x] Print Subset of Array
+- [x] Print Subset Sum
+- [x] Remove Consecutive Duplicates
+- [x] Remove X
+- [x] Replace character
+- [x] Replace PI
+- [x] Return all Codes
+- [x] Return Keypad
+- [x] Return Subsequance Of string
+- [x] Return subset of Array
+- [x] Return Subset Sum
+- [x] Stair case
+- [x] String to integer
+- [x] Sum of Array Elements
+- [x] Sum of Digits
+- [x] Tower of Hannoi

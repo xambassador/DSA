@@ -6,7 +6,7 @@
 - [x] Searching
 - [x] Sorting
 - [x] Recursion-1
-- [] Recursion-2
+- [x] Recursion-2
 - [] Bit manipulation
 - [] Linked Lists
 - [] Stacks and Queues
