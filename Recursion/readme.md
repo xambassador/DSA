@@ -6,6 +6,7 @@
 - [x] Check Palindrome
 - [x] Count Digits
 - [x] Count Zeros
+- [x] Does contain T 
 - [x] First Index
 - [x] Geometric Sum
 - [x] Last Index
@@ -27,6 +28,7 @@
 - [x] Return Subsequance Of string
 - [x] Return subset of Array
 - [x] Return Subset Sum
+- [x] Split Array
 - [x] Stair case
 - [x] String to integer
 - [x] Sum of Array Elements
