@@ -408,6 +408,8 @@ namespace classNode {
         }
 
         public:
+        
+        //Reverse list method 1
         void preverse(){
             preverse(this->head);
             return;
@@ -430,11 +432,88 @@ namespace classNode {
             return head;
         }
 
+        Node<V>* reverse_rec1(Node<V>* head){
+            if(head == NULL || head->next == NULL){
+                return head;
+            }
+            Node<V>* ans {reverse_rec1(head->next)};
+            Node<V>* tmp{ans};
+            this->tail = head;
+            while(tmp->next != NULL){
+                tmp = tmp->next;
+            } 
+            tmp->next = head;
+            head->next = NULL;
+            return ans;
+        }
+
+        class pair{
+            public:
+            Node<V>* _head;
+            Node<V>* _tail;
+        };
+
+        pair reverse_rec2(Node<V>* head){
+            if(head == NULL || head->next == NULL){
+                pair p;
+                p._head = head;
+                p._tail = head;
+                return p;
+            }
+            pair smallAns{reverse_rec2(head->next)};
+            smallAns._tail->next = head;
+            smallAns._tail = head;
+            head->next = NULL;
+            pair ans;
+            ans._head = smallAns._head;
+            ans._tail = smallAns._tail;
+            return ans;
+        }
+
+        Node<V>* reverse_rec2H(){
+            this->tail = head;
+            return reverse_rec2(this->head)._head;
+        }
+
+        Node<V>* reverse_rec3(Node<V>* head){
+            if(head == NULL || head->next == NULL){
+                return head;
+            }
+            Node<V>* ans{reverse_rec3(head->next)};
+            Node<V>* tail{head->next};
+            tail->next = head;
+            head->next = NULL;
+            return ans;
+        }
+
         public:
+
+        //Reverse list method 2
         void reverse_i(){
             this->head = reverse_i(this->head);
             return;
         }
+        
+        // Reverse list method 3
+        void reverse_rec1(){
+            this->head = reverse_rec1(this->head);
+            return;
+        }
+
+        //Reverse list method 4
+        void revrerse_rec2(){
+            this->head = reverse_rec2H();
+            return;
+        }
+
+        // Reverse list method 5
+        void reverse_rec3(){
+            this->tail = this->head;
+            this->head = reverse_rec3(this->head);
+            return;
+        }
+
+        
 
         void details(){
             cout << "Head node addres : " << this->head << endl;

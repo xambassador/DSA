@@ -19,10 +19,10 @@
 - [] Midpoint of Linked List
 - [] Merge two sorted list
 - [] Merge sort on list
-- [] Reverse list iterative
+- [x] Reverse list iterative
 - [] Reverse list Double Node
-- [] Reverse list Recursive
-- [] Find Node in list recursive
+- [x] Reverse list Recursive
+- [x] Find Node in list recursive
 - [] Even after odd list
 - [] Delete every N nodes
 - [] Swap two nodes of list

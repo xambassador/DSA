@@ -106,19 +106,39 @@ int main(){
     // cout << "Front : " << ll.front() << endl;
     // cout << "Back : " << ll.back() << endl;
 
-    cout << "Befor reverse : ";
-    ll.print();
-    cout << "Front : " << ll.front() << endl;
-    cout << "Back : " << ll.back() << endl;
-    cout << endl;
-    ll.details();
-    cout << endl;
-    ll.reverse_i();
+    // cout << "Befor reverse : ";
+    // ll.print();
+    // cout << "Front : " << ll.front() << endl;
+    // cout << "Back : " << ll.back() << endl;
+    // cout << endl;
+    // ll.details();
+    // cout << endl;
+    // ll.reverse_i();
 
-    cout << "After reverse : ";
+    // cout << "After reverse : ";
+    // ll.print();
+    // cout << "Front : " << ll.front() << endl;
+    // cout << "Back : " << ll.back() << endl;
+
+
+    // cout << "Befor reverse : ";
+    // ll.print();
+    // cout << "Front : " << ll.front() << endl;
+    // cout << "Back : " << ll.back() << endl;
+    // cout << endl;
+    // ll.details();
+    // cout << endl;
+    // ll.reverse_rec1();
+
+    // cout << "After reverse : ";
+    // ll.print();
+    // cout << "Front : " << ll.front() << endl;
+    // cout << "Back : " << ll.back() << endl;
+
     ll.print();
-    cout << "Front : " << ll.front() << endl;
-    cout << "Back : " << ll.back() << endl;
+    // ll.revrerse_rec2();
+    ll.reverse_rec3();
+    ll.print();
 
 
     ll.details();
