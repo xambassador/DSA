@@ -135,11 +135,9 @@ int main(){
     // cout << "Front : " << ll.front() << endl;
     // cout << "Back : " << ll.back() << endl;
 
-    ll.print();
-    // ll.revrerse_rec2();
-    ll.reverse_rec3();
-    ll.print();
-
-
-    ll.details();
+    // ll.print();
+    // // ll.revrerse_rec2();
+    // ll.reverse_rec3();
+    // ll.print();
+    // ll.details();
 }

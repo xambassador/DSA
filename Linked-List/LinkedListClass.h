@@ -66,17 +66,7 @@ namespace classNode {
             }
         }
 
-        // ~LinkedList(){
-        //     cout << "Destroctor is called !!" << endl;
-        //     if(head != NULL){
-        //         while(head != NULL){
-        //             Node<V>* tmp{head};
-        //             head = head->next;
-        //             delete tmp;
-        //         }
-        //     }
-        // }
-
+        //Take linked list input
         void takeInput(){
             int data;
             cin >> data;
@@ -95,6 +85,7 @@ namespace classNode {
             }
         }
 
+        // Print List
         void print() const {
             Node<V>* tmp{this->head};
             while(tmp != NULL){
@@ -103,6 +94,8 @@ namespace classNode {
             }cout << endl;
         }
 
+        //Append new node to last position
+        //or add new node to tail of list
         void push(V data){
             Node<V>* node{new Node<V>(data)};
             if(head == NULL){
@@ -116,19 +109,23 @@ namespace classNode {
             len += 1;
         }
 
+        //Return length
         int length() const {
             return this->len;
         }
 
+        //Return size
         int size() const{
             return this->_size;
         }
-
+        
+        //Check if list is empty or not
         bool empty() const{
             return _size == 0;
         }
 
         private:
+        //Remove node from last positon
         Node<V>* pop(Node<V>* tmp){
             // Base case if list is empty
             if(tmp == NULL){
@@ -159,12 +156,13 @@ namespace classNode {
         }
 
         private:
+        //Remove node from specific position
         Node<V>* remove(Node<V>* head, int position){
             //If list is empty
             if(head == NULL){
                 return head;
             }
-            // Id head reach to second last node and position is 1 means node that goes to delete is last node
+            // If head reach to second last node and position is 1 means node that goes to delete is last node
             // So now change position of tail pointer to second last node
             if(head->next == this->tail){
                 if(position == 1){
@@ -190,6 +188,7 @@ namespace classNode {
         }
 
         private:
+        // Remove specific data node
         Node<V>* removeElement(Node<V>* head, V data){
             if(head == NULL){
                 return head;
@@ -218,6 +217,7 @@ namespace classNode {
         }
 
         private:
+        // Insert new node at specific positions
         Node<V>* insert(Node<V>* head, V data, int positon){
             if(head == NULL){
                 if(positon == 0){
@@ -262,6 +262,7 @@ namespace classNode {
         }
 
         private:
+        // insert a new list at specific position
         Node<V>* insertList(Node<V>* head, int position, initializer_list<V> l){
             if(head == NULL){
                 if(position == 0){
@@ -326,6 +327,7 @@ namespace classNode {
             this->len += l.size();
         }
 
+        //Return front node data
         V front() const {
             if(head == NULL){
                 return -1;
@@ -333,6 +335,7 @@ namespace classNode {
             return head->data;
         }
 
+        //Return tail node data
         V back() const {
             if(tail == NULL){
                 return -1;
@@ -341,6 +344,7 @@ namespace classNode {
         }
 
         private:
+        //Find whether node is present in list or not
         bool find(Node<V>* head, V data){
             if(head == NULL){
                 return false;
@@ -357,6 +361,7 @@ namespace classNode {
         }
 
         private:
+        //Append last n node to first
         Node<V>* appendNnodeToFirst(Node<V>* head, int n){
             int i{-n};
             Node<V>* tmp{head};
@@ -380,6 +385,7 @@ namespace classNode {
             return;
         }
 
+        //Remove consecutive duplicates
         void removeDuplicates(){
             Node<V>* tmp{head};
             while(tmp->next != NULL){
@@ -398,6 +404,7 @@ namespace classNode {
         }
 
         private:
+        //Print reverse list
         void preverse(Node<V>* head){
             if(head == NULL){
                 cout << endl;
@@ -416,6 +423,7 @@ namespace classNode {
         }
 
         private:
+        // Reverse list iterativly, O(n^2)
         Node<V>* reverse_i(Node<V>* head){
             Node<V>* curr{head};
             Node<V>* prev{NULL};
@@ -432,6 +440,7 @@ namespace classNode {
             return head;
         }
 
+        // Reverse list recursive, O(n^2)
         Node<V>* reverse_rec1(Node<V>* head){
             if(head == NULL || head->next == NULL){
                 return head;
@@ -447,6 +456,7 @@ namespace classNode {
             return ans;
         }
 
+        // Reverse list recursive. O(n)
         class pair{
             public:
             Node<V>* _head;
@@ -475,6 +485,7 @@ namespace classNode {
             return reverse_rec2(this->head)._head;
         }
 
+        //Reverse list recursive, O(n)
         Node<V>* reverse_rec3(Node<V>* head){
             if(head == NULL || head->next == NULL){
                 return head;
@@ -518,7 +529,7 @@ namespace classNode {
         void details(){
             cout << "Head node addres : " << this->head << endl;
             cout << "Tail node addres : " << this->tail << endl;
-            cout << "Head node data : " << head->data << "\n" << "Tail node address : " << tail->data << endl;
+            cout << "Head node data : " << head->data << "\n" << "Tail node data : " << tail->data << endl;
         }
     };    
 }
