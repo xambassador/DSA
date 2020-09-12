@@ -8,7 +8,7 @@
 - [x] Recursion-1
 - [x] Recursion-2
 - [] Bit manipulation
-- [] Linked Lists
+- [x] Linked Lists
 - [] Stacks and Queues
 - [] Trees(Generic Trees)
 - [] Binary Trees

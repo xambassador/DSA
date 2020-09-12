@@ -66,6 +66,145 @@ namespace classNode {
             }
         }
 
+        //Copy constructor
+        LinkedList(LinkedList<V>& l2){
+            //Deep copy
+            this->_size = l2._size;
+            this->len = l2.len;
+            this->head = NULL;
+            this->tail = NULL;
+            Node<V>* tmp{l2.head};
+            while(tmp!=NULL){
+                Node<V>* node{new Node<V>(tmp->data)};
+                if(this->head == NULL){
+                    this->head = node;
+                    this->tail = node;
+                }else{
+                    this->tail->next = node;
+                    tail = node;
+                }
+                tmp = tmp->next;
+            }
+        }
+
+        LinkedList<V>* operator=(LinkedList<V>& l2){
+            //Deep copy
+            
+            //1.If left side list is empty
+            if(this->head == NULL){
+                Node<V>* tmp{l2.head};
+                while(tmp!=NULL){
+                    Node<V>* node{new Node<V>(tmp->data)};
+                    if(this->head == NULL){
+                        this->head = node;
+                        this->tail = node;
+                    }else{
+                        this->tail->next = node;
+                        this->tail = node;
+                    }
+                    tmp = tmp->next;
+                }
+                this->_size = l2._size;
+                this->len = l2.len;
+            }
+
+            //2. If left side list is not empty
+            else {
+                //1.If both list len is equal
+                if(this->len == l2.len){
+                    Node<V>* tmp{l2.head};
+                    Node<V>* ltmp{this->head};
+                    while(tmp!=NULL){
+                        ltmp->data = tmp->data;
+                        tmp = tmp->next;
+                        ltmp = ltmp->next;
+                    }
+                }
+
+                //2.If left list is smaller then right then we need to add extra nodes
+                else if(this->len < l2.len){
+                    Node<V>* tmp{l2.head};
+                    Node<V>* ltmp{this->head};
+                    
+                    //go till last node of left list
+                    while(ltmp->next!=NULL){
+                        ltmp->data = tmp->data;
+                        ltmp = ltmp->next;
+                        tmp = tmp->next;
+                    }
+                    //update last node of left list
+                    ltmp->data = tmp->data;
+                    tmp = tmp->next;
+
+                    //Now traverse rest of right list and insert new node to left list
+                    while(tmp!=NULL){
+                        Node<V>* node{new Node<V>(tmp->data)};
+                        this->tail->next = node;
+                        this->tail = node;
+                        tmp = tmp->next;
+                    }
+
+                    this->_size = l2._size;
+                    this->len = l2.len;
+                }
+
+                //3.If left list is bigger then right
+                else{
+                    // 1. Traverse on left list and reach to last node, and update all nodes
+                    Node<V>* tmp{l2.head};
+                    Node<V>* ltmp{this->head};
+                    while(ltmp->next != NULL){
+                        ltmp->data = tmp->data;
+                        ltmp = ltmp->next;
+                        tmp = tmp->next;
+                    }
+                    ltmp->data = tmp->data;
+
+                    //2.Now delete extra nodes
+                    Node<V>* t{ltmp->next};
+                    ltmp->next = NULL;
+                    while(t != NULL){
+                        Node<V>* tmp{t};
+                        t = t->next;
+                        delete tmp;
+                    }
+
+                    this->tail = ltmp;
+                    this->_size = l2._size;
+                    this->len = l2.len;
+                }
+            }
+            return this;
+        }
+
+        bool operator==(LinkedList<V>& l2){
+            if(this->_size != l2._size){
+                return false;
+            }
+            Node<V>* tmp1{this->head};
+            Node<V>* tmp2{l2.head};
+            while(tmp1 != NULL && tmp2 != NULL){
+                if(tmp1->data != tmp2->data){
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        bool operator!=(LinkedList<V>& l2){
+            if(this->_size == l2._size){
+                return false;
+            }
+            Node<V>* tmp1{this->head};
+            Node<V>* tmp2{l2.head};
+            while(tmp1 != NULL && tmp2 != NULL){
+                if(tmp1->data == tmp2->data){
+                    return false;
+                }
+            }
+            return true;
+        }
+
         //Take linked list input
         void takeInput(){
             int data;
@@ -480,11 +619,13 @@ namespace classNode {
             return ans;
         }
 
+        private:
         Node<V>* reverse_rec2H(){
             this->tail = head;
             return reverse_rec2(this->head)._head;
         }
 
+        public:
         //Reverse list recursive, O(n)
         Node<V>* reverse_rec3(Node<V>* head){
             if(head == NULL || head->next == NULL){
@@ -524,7 +665,73 @@ namespace classNode {
             return;
         }
 
+        private:
         
+        Node<V>* midpoint(Node<V>* head){
+            Node<V>* slow{head};
+            Node<V>* fast{head};
+            while(fast != NULL && fast->next != NULL){
+                fast = fast->next->next;
+                slow = slow->next;
+            }
+            return slow;
+        }
+
+        bool palindrome(V* arr){
+            int i{},j{this->len-1};
+            while(i < j){
+                if(arr[i] != arr[j]){
+                    return false;
+                }
+                i++;
+                j--;
+            }
+            return true;
+        }
+
+        public:
+        bool palindrome(){
+            if(this->empty()){
+                return true;
+            }
+            int i{};
+            V* arr{new V[this->len]};
+            Node<V>* tmp{this->head};
+            for(int i{};i<this->len;i++){
+                arr[i] = tmp->data;
+                tmp = tmp->next;
+            }
+            bool ans = this->palindrome(arr);
+            delete arr;
+            return ans;
+        }
+        
+        private:
+        Node<V>* merge(Node<V>* head1, Node<V>* head2){
+            if(head1 == NULL){
+                return head2;
+            }else if(head2 == NULL){
+                return head1;
+            }
+            Node<V>* ans{NULL};
+            if(head1->data <= head2->data){
+                ans = head1;
+                ans->next = merge(head1->next,head2);
+            }else{
+                ans = head2;
+                ans->next = merge(head1,head2->next);
+            }
+            return ans;
+        }
+
+        public:
+        void merge(LinkedList<V>& l2){
+            LinkedList<V> l{l2};    
+            this->head = merge(this->head,l.head);
+            return;
+        }
+
+
 
         void details(){
             cout << "Head node addres : " << this->head << endl;

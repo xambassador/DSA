@@ -15,8 +15,8 @@
 - [x] Append Last N nodes to first
 - [x] Eliminate duplicates from list
 - [x] Print Reverse Linked list
-- [] Palindrome Linked List
-- [] Midpoint of Linked List
+- [x] Palindrome Linked List
+- [x] Midpoint of Linked List
 - [] Merge two sorted list
 - [] Merge sort on list
 - [x] Reverse list iterative
