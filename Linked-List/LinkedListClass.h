@@ -668,11 +668,12 @@ namespace classNode {
         private:
         
         Node<V>* midpoint(Node<V>* head){
+            if(head == NULL) return head;
             Node<V>* slow{head};
             Node<V>* fast{head};
-            while(fast != NULL && fast->next != NULL){
-                fast = fast->next->next;
+            while(fast->next != NULL && fast->next->next != NULL){
                 slow = slow->next;
+                fast = fast->next;
             }
             return slow;
         }
@@ -724,6 +725,94 @@ namespace classNode {
             return ans;
         }
 
+        Node<V>* evenAfterOdd(Node<V>* head){
+            if(head == NULL || head->next == NULL){
+                return head;
+            }
+            Node<V>* tmp{head};
+            Node<V>* evenhead{NULL},*eventail{NULL};
+            Node<V>* oddhead{NULL},*oddtail{NULL};
+            while(tmp != NULL){
+                if(tmp->data % 2 != 0){
+                    if(oddhead == NULL){
+                        oddhead = tmp;
+                        oddtail = tmp;
+                    }else{
+                        oddtail->next = tmp;
+                        oddtail = tmp;
+                    }
+                    tmp = tmp->next;
+                    oddtail->next = NULL;
+                }else{
+                    if(evenhead == NULL){
+                        evenhead = tmp;
+                        eventail = tmp;
+                    }else{
+                        eventail->next = tmp;
+                        eventail = tmp;
+                    }
+                    tmp = tmp->next;
+                    eventail->next = NULL;
+                }
+            }
+            this->tail = eventail;
+            head = oddhead;
+            oddtail->next = evenhead;
+            return head;
+        }
+
+        Node<V>* sort(Node<V>* head){
+            if(head == NULL || head->next == NULL){
+                return head;
+            }
+            Node<V>* mid{midpoint(head)};
+            Node<V>* left{head};
+            Node<V>* right{mid->next};
+            mid->next = NULL;
+            return merge(sort(left),sort(right));
+        }
+
+        Node<V> *swap(Node<V> *head, int i, int j){
+            Node<V> *curr1{head};
+            Node<V> *curr2{head};
+            Node<V> *prev1{NULL};
+            Node<V> *prev2{NULL};
+            int cnt = 0;
+            if (i == 0 && j == 0){
+                return NULL;
+            }
+            while (cnt < i){
+                prev1 = curr1;
+                curr1 = curr1->next;
+                cnt++;
+            }
+            cnt = 0;
+            while (cnt < j){
+                prev2 = curr2;
+                curr2 = curr2->next;
+                cnt++;
+            }
+            if (curr1 == NULL || curr2 == NULL){
+                return head;
+            }
+            if (prev1 != NULL){
+                prev1->next = curr2;
+            }
+            else{
+                head = curr2;
+            }
+            if (prev2 != NULL){
+                prev2->next = curr1;
+            }
+            else{
+                head = curr1;
+            }
+            Node<V> *tmp = curr2->next;
+            curr2->next = curr1->next;
+            curr1->next = tmp;
+            return head;
+        }
+
         public:
         void merge(LinkedList<V>& l2){
             LinkedList<V> l{l2};    
@@ -731,7 +820,22 @@ namespace classNode {
             return;
         }
 
+        void sort(){
+            this->head = sort(this->head);
+            Node<V>* tmp{this->head};
+            while(tmp != NULL){
+                tmp = tmp->next;
+            }
+            this->tail = tmp;
+        }
 
+        void evenAfterOdd(){
+            this->head = evenAfterOdd(this->head);
+        }
+
+        void swap(int position1, int position2){
+            this->head = swap(this->head,position1,position2);
+        }
 
         void details(){
             cout << "Head node addres : " << this->head << endl;

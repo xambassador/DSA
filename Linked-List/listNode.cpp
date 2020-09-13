@@ -174,12 +174,18 @@ int main(){
     // ll.print();
     // cout << ll.back() << endl;
 
-    classNode::LinkedList<int> l1({1,3,5,7,9});
-    classNode::LinkedList<int> l2({2,4,6,8});
+    classNode::LinkedList<int> l1({1,3,2,5,4,7,6,8,9});
+    // classNode::LinkedList<int> l2({2,4,6,8});
+    // l1.print();
+    // l2.print();
+    // l1.merge(l2);
+    // l1.print();
+    // l2.print();
     l1.print();
-    l2.print();
-    l1.merge(l2);
+    l1.sort();
     l1.print();
-    l2.print();
-
+    l1.evenAfterOdd();
+    l1.print();
+    l1.swap(3,4);
+    l1.print();
 }

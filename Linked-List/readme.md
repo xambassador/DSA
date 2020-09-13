@@ -17,14 +17,14 @@
 - [x] Print Reverse Linked list
 - [x] Palindrome Linked List
 - [x] Midpoint of Linked List
-- [] Merge two sorted list
-- [] Merge sort on list
+- [x] Merge two sorted list
+- [x] Merge sort on list
 - [x] Reverse list iterative
-- [] Reverse list Double Node
+- [x] Reverse list Double Node
 - [x] Reverse list Recursive
 - [x] Find Node in list recursive
-- [] Even after odd list
+- [x] Even after odd list
 - [] Delete every N nodes
-- [] Swap two nodes of list
+- [x] Swap two nodes of list
 - [] kreverse
 - [] Bubble sort
