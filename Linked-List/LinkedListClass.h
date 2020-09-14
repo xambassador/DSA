@@ -667,6 +667,7 @@ namespace classNode {
 
         private:
         
+        // Find mid node of list
         Node<V>* midpoint(Node<V>* head){
             if(head == NULL) return head;
             Node<V>* slow{head};
@@ -678,6 +679,7 @@ namespace classNode {
             return slow;
         }
 
+        // Check list is palindrome or not
         bool palindrome(V* arr){
             int i{},j{this->len-1};
             while(i < j){
@@ -708,6 +710,7 @@ namespace classNode {
         }
         
         private:
+        // Merge to sorted lists
         Node<V>* merge(Node<V>* head1, Node<V>* head2){
             if(head1 == NULL){
                 return head2;
@@ -725,6 +728,7 @@ namespace classNode {
             return ans;
         }
 
+        // Arrenge node so odd node come first and even after
         Node<V>* evenAfterOdd(Node<V>* head){
             if(head == NULL || head->next == NULL){
                 return head;
@@ -761,6 +765,7 @@ namespace classNode {
             return head;
         }
 
+        // Merge sort on list
         Node<V>* sort(Node<V>* head){
             if(head == NULL || head->next == NULL){
                 return head;
@@ -772,6 +777,7 @@ namespace classNode {
             return merge(sort(left),sort(right));
         }
 
+        // Swap two nodes from their given position
         Node<V> *swap(Node<V> *head, int i, int j){
             Node<V> *curr1{head};
             Node<V> *curr2{head};
@@ -813,6 +819,7 @@ namespace classNode {
             return head;
         }
 
+        // Reverse k nodes
         Node<V>* kreverse(Node<V>* head, int k){
             if(head == NULL || head->next == NULL){ 
                 return head;
@@ -830,6 +837,7 @@ namespace classNode {
             return rhead;
         }
 
+        // Skip m nodes and then delete n  nodes
         Node<V>* skipMremoveN(Node<V>* head, int m, int n){
             if(head == NULL){
                 return head;
