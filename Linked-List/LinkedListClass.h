@@ -813,6 +813,64 @@ namespace classNode {
             return head;
         }
 
+        Node<V>* kreverse(Node<V>* head, int k){
+            if(head == NULL || head->next == NULL){ 
+                return head;
+            }
+            int i{};
+            Node<V>* tmp{head};
+            Node<V>* thead{NULL};
+            while(i < k-1 && tmp != NULL){
+                tmp = tmp->next;
+            }
+            thead = tmp->next;
+            tmp->next = NULL;
+            Node<V>* rhead{this->reverse_rec3(head)};
+            head->next = kreverse(thead,k);
+            return rhead;
+        }
+
+        Node<V>* skipMremoveN(Node<V>* head, int m, int n){
+            if(head == NULL){
+                return head;
+            }
+            Node<V>* curr{head};
+            if(m == 0 && n == 0){
+                delete curr;
+                return NULL;
+            }
+            if(m == 0){
+                while(curr != NULL){
+                    Node<V>* t{curr};
+                    for(int i{1}; i<=n && t!=NULL; i++){
+                        Node<V>* tmp{t};
+                        t = t->next;
+                        delete tmp;
+                    }
+                    curr->next = t; 
+                    curr = curr->next;
+                }
+                return curr;
+            }
+            while(curr != NULL){
+                for(int i{1}; i<m && curr!= NULL; i++){
+                    curr = curr->next;
+                }
+                if(curr == NULL){
+                    return head;
+                }
+                Node<V>* t{curr->next};
+                for(int i{1}; i<=n && t!=NULL; i++){
+                    Node<V>* tmp{t};
+                    t = t->next;
+                    delete tmp;
+                }
+                curr->next = t;
+                curr = curr->next;
+            }
+            return head;
+        }
+
         public:
         void merge(LinkedList<V>& l2){
             LinkedList<V> l{l2};    
@@ -836,6 +894,15 @@ namespace classNode {
         void swap(int position1, int position2){
             this->head = swap(this->head,position1,position2);
         }
+        
+        void kreverse(int k){
+            this->head = kreverse(this->head,k);
+            // Todo = manage tail node
+        }
+
+        void deleteEveryN(int numOfSkipNode, int numOfDelteNode){
+            this->head = skipMremoveN(this->head,numOfSkipNode, numOfDelteNode);
+        }
 
         void details(){
             cout << "Head node addres : " << this->head << endl;
@@ -843,7 +910,7 @@ namespace classNode {
             cout << "Head node data : " << head->data << "\n" << "Tail node data : " << tail->data << endl;
         }
     };    
-}
+};
 
 namespace structNode {
     template <typename T>

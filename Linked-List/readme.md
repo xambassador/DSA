@@ -24,7 +24,7 @@
 - [x] Reverse list Recursive
 - [x] Find Node in list recursive
 - [x] Even after odd list
-- [] Delete every N nodes
+- [x] Delete every N nodes
 - [x] Swap two nodes of list
-- [] kreverse
+- [x] kreverse
 - [] Bubble sort
