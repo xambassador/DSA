@@ -1,9 +1,4 @@
-#include<bits/stdc++.h>
-using namespace std;
-
-namespace classNode {
-
-    template<typename V>
+namespace classNode { template<typename V>
     class LinkedList {
         template<typename T>
         class Node {
@@ -242,6 +237,7 @@ namespace classNode {
 
         //Take linked list input
         void takeInput(){
+            cout << "Enter data or -1 for exit" << endl;
             int data;
             cin >> data;
             while(data != -1){
@@ -493,7 +489,7 @@ namespace classNode {
 
         //Return front node data
         V front() const {
-            if(head == NULL){
+            if(this->head == NULL){
                 return -1;
             }
             return head->data;
@@ -501,7 +497,7 @@ namespace classNode {
 
         //Return tail node data
         V back() const {
-            if(tail == NULL){
+            if(this->tail == NULL){
                 return -1;
             }
             return tail->data;
@@ -801,7 +797,6 @@ namespace classNode {
             return merge(sort(left),sort(right));
         }
 
-
         // Swap two nodes from their given position
         Node<V> *swap(Node<V> *head, int i, int j){
             Node<V> *curr1{head};
@@ -1002,6 +997,19 @@ namespace classNode {
         public:
         void BubbleSort(){
             this->head = BubbleSort(this->head);
+        }
+
+        void clean(){
+            if(this->head == NULL) return;
+            while(this->head != NULL){
+                Node<V>* tmp{this->head};
+                this->head = this->head->next;
+                tmp->next = NULL;
+                delete tmp;
+                this->_size -= 1;
+            }
+            this->head = NULL;
+            this->tail = NULL;
         }
 
     };

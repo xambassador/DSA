@@ -34,24 +34,25 @@ int main(){
 
     // Taking input from users
     LinkedList<int> list8; // O(n)
-    list8.takeInput();
+    // list8.takeInput();
 
     // Print list
-    list8.print(); // O(n)
+    // list8.print(); // O(n)
 
     // Element Access
     /* front() => return first node data
      * back() => return last node data
     */
-    list8.front(); // O(1)
-    list8.back(); // O(1)
+    //list8.front(); // O(1)
+    //list8.back(); // O(1)
 
     // Capacity
     /* empty() => check if list is empty or not
      * size() => return how many elements are there in list
     */
-    cout << list8.empty() << endl; // O(1)
-    cout << list8.size() << endl; // O(1)
+
+    //cout << list8.empty() << endl; // O(1)
+    //cout << list8.size() << endl; // O(1)
 
     // Modifiers
     /* push(data) => insert node to last
@@ -66,14 +67,16 @@ int main(){
 
     list9.push(100); // O(1), 10->20->30->40->100
     list9.pop();     // O(1), 10->20->30->40
-
     list9.insert(100); // O(1), 10->20->30->40->100
     list9.insert(2,200); // To reach 2nd node O(n) + insert node O(1) = O(n) for wrost case, 10->20->200->30->40
-
     list9.insertList(1,{-1,-2,-3,-4}); // Wrost case : Traverse for reach given position O(n) + insert list O(list-size) = O(n)+O(size) => O(n+size)
     list9.remove(1); // O(n) for traversing + O(1) for removing = O(n)
     list9.removeElement(10); // O(n) for searching data + O(1) for deleting
 
+    list9.clean();
+    list9.print();
+    cout << "Front and Back : " << list9.front() << " " << list9.back() << endl;
+    cout << "Size : " << list9.size() << endl;
 
     // Operations
     /* find(data) => search given data node in list and return true or false
