@@ -1,194 +1,95 @@
 #include<bits/stdc++.h>
 using namespace std;
 #include "LinkedListClass.h"
+using namespace classNode;
+
 
 int main(){
-    // int arr[5]{1,2,3,4,5};
-    // classNode::LinkedList<int> ll(5,arr);
-    // ll.takeInput();
-    // ll.print();
-    // ll.push(100);
-    // ll.print();
+    // Create list
+    // Member functions
+    /*
+     * Constructor
+     * Operator=
+     * assign
+    */ 
 
-    // classNode::LinkedList<int> ll1({1,2,3,4,5});
-    // ll1.print();
-    // ll1.details();
-    // classNode::LinkedList<int> ll2(ll1);
-    // ll2.print();
-    // ll2.details();
+    // Using Deafult constructor
+    LinkedList<int> list1;
 
-    // classNode::LinkedList<int> l1({10,20,30,40,50,60,70,80,90,100});
-    // l1.print();
-    // classNode::LinkedList<int> l2 = l1;
-    // l2.print();
+    // Using parameterized constructor
+    LinkedList<int> list2({1,2,3,4,5}); // Take initializer_list, O(n)
+    int arr[10]{1,2,3,4,5};
+    LinkedList<int> list3(sizeof(arr)/sizeof(arr[0]), arr); // Take array as input, O(size)
 
-    // classNode::LinkedList<int> l3({100,200,300,400,500,600,700,800,900,1000});
-    // classNode::LinkedList<int> l4({2,4,6,8});
-    // l3.print();
-    // l4.print();
+    // Using copy constructor
+    LinkedList<int> list4(list2); // O(list2.size)
 
-    // l4 = l3;
-    // l3.print();
-    // l4.print();
+    // Using copy assignment operator
+    LinkedList<int> list5 = list3; // O(l.size)
 
-    // classNode::LinkedList<int> l5({100,200,300});
-    // classNode::LinkedList<int> l6({2,4,6,8,9,10});
-    // l5.print();
-    // l6.print();
+    // Using assign function
+    LinkedList<int> list6, list7;
+    list6.assign({1,2,3,4}); // O(size)
+    list7.assign(5,10); // O(size)
 
-    // l5 = l6;
-    // l5.print();
-    // l6.print();
-    // classNode::LinkedList<int> ll;
-    // ll.takeInput();
-    // cout << "List is : ";
-    // ll.print();
-    // cout << "size of list : " << ll.size() << endl;
-    // cout << "length of list : " << ll.length() << endl;
-    // cout << "is Empty : " << ll.empty() << endl;
-    // ll.push(500);
-    // cout << "list is : ";
-    // ll.print();
-    // cout << "length of list : " << ll.length() << endl;
+    // Taking input from users
+    LinkedList<int> list8; // O(n)
+    list8.takeInput();
 
-    // classNode::LinkedList<int> ll({1,2,3,4,5});
-    // ll.print();
+    // Print list
+    list8.print(); // O(n)
 
-    // classNode::LinkedList<int> ll;
-    // ll.takeInput();
-    // ll.print();
-    // cout << ll.size() << endl;
-    // ll.pop();
-    // ll.print();
-    // cout << ll.size() << endl;
-    // ll.pop();
-    // ll.print();
-    // cout << ll.size() << endl;
-    // ll.pop();
-    // ll.print();
-    // cout << ll.size() << endl;
-    // ll.pop();
-    // ll.print();
-    // cout << ll.size() << endl;
-    // ll.print();
-    // ll.remove(3);
-    // ll.print();
-    // cout << ll.size() << endl;
-    // ll.push(10);
-    // ll.print();
-    // cout << ll.size() << endl;
-    // ll.print();
-    // cout << ll.size() << endl;
-    // cout << "Remove 3 " << endl;
-    // ll.removeElement(3);
-    // ll.print();
-    // cout << ll.size() << endl;
-    // cout << "Remove 5 " << endl;
-    // ll.removeElement(5);
-    // ll.print();
-    // ll.push(100);
-    // ll.print();
-    // cout << ll.size();
-    // ll.print();
-    // ll.insert(10);
-    // ll.print();
-    // ll.insert(1,100);
-    // ll.print();
-    // ll.insert(0,500);
-    // ll.print();
-    // ll.remove(0);
-    // ll.print();
-    // cout << "Front and back : " <<  ll.front() << " " << ll.back() << endl;
-    // ll.removeElement(10);
-    // ll.print();
-    // cout << "Front and back : " <<  ll.front() << " " << ll.back() << endl;
-    // ll.print();
-    // cout << boolalpha << ll.find(5) << endl;
+    // Element Access
+    /* front() => return first node data
+     * back() => return last node data
+    */
+    list8.front(); // O(1)
+    list8.back(); // O(1)
 
-    // ll.print();
-    // ll.insertList(2,{100,200,300,400});
-    // ll.print();
-    // cout << "Size : " << ll.size() << endl;
-    // cout << "Back : " << ll.back() << endl;
-    // ll.push(5858);
-    // cout << "Size : " << ll.size() << endl;
-    // cout << "Back : " << ll.back() << endl;
-    // cout << ll.front();
-    // ll.print();
-    // ll.appendNnodeToFirst(3);
-    // ll.print();
+    // Capacity
+    /* empty() => check if list is empty or not
+     * size() => return how many elements are there in list
+    */
+    cout << list8.empty() << endl; // O(1)
+    cout << list8.size() << endl; // O(1)
 
-    // ll.print();
-    // cout << "Size : " << ll.size() << endl;
-    // ll.removeDuplicates();
-    // ll.print();
-    // cout << "Size : " << ll.size() << endl;
-    // cout << "Back : " << ll.back() << endl;
-    
-    // ll.print();
-    // cout << "Befor reverse : " << endl;
-    // cout << "Front : " << ll.front() << endl;
-    // cout << "Back : " << ll.back() << endl;
-    // ll.preverse();
-    // cout << "After reverse : " << endl;
-    // cout << "Front : " << ll.front() << endl;
-    // cout << "Back : " << ll.back() << endl;
+    // Modifiers
+    /* push(data) => insert node to last
+     * pop() => delete last node
+     * insert(data) => insert node at last position
+     * insert(position, data) => insert node at specified position
+     * insertList(position, initializer_list) => insert more then one node after specified position
+     * remove(position) => delete node at give position
+     * removeElement(data) => delete specific data node
+    */
+    LinkedList<int> list9({10,20,30,40});
 
-    // cout << "Befor reverse : ";
-    // ll.print();
-    // cout << "Front : " << ll.front() << endl;
-    // cout << "Back : " << ll.back() << endl;
-    // cout << endl;
-    // ll.details();
-    // cout << endl;
-    // ll.reverse_i();
+    list9.push(100); // O(1), 10->20->30->40->100
+    list9.pop();     // O(1), 10->20->30->40
 
-    // cout << "After reverse : ";
-    // ll.print();
-    // cout << "Front : " << ll.front() << endl;
-    // cout << "Back : " << ll.back() << endl;
+    list9.insert(100); // O(1), 10->20->30->40->100
+    list9.insert(2,200); // To reach 2nd node O(n) + insert node O(1) = O(n) for wrost case, 10->20->200->30->40
+
+    list9.insertList(1,{-1,-2,-3,-4}); // Wrost case : Traverse for reach given position O(n) + insert list O(list-size) = O(n)+O(size) => O(n+size)
+    list9.remove(1); // O(n) for traversing + O(1) for removing = O(n)
+    list9.removeElement(10); // O(n) for searching data + O(1) for deleting
 
 
-    // cout << "Befor reverse : ";
-    // ll.print();
-    // cout << "Front : " << ll.front() << endl;
-    // cout << "Back : " << ll.back() << endl;
-    // cout << endl;
-    // ll.details();
-    // cout << endl;
-    // ll.reverse_rec1();
-
-    // cout << "After reverse : ";
-    // ll.print();
-    // cout << "Front : " << ll.front() << endl;
-    // cout << "Back : " << ll.back() << endl;
-
-    // ll.print();
-    // // ll.revrerse_rec2();
-    // ll.reverse_rec3();
-    // ll.print();
-    // ll.details();
-
-    // ll.print();
-    // cout << boolalpha << ll.palindrome() << endl;
-    // ll.print();
-    // cout << ll.back() << endl;
-
-    classNode::LinkedList<int> l1({1,3,2,5,4,7,6,8,9,10});
-    // classNode::LinkedList<int> l2({2,4,6,8});
-    // l1.print();
-    // l2.print();
-    // l1.merge(l2);
-    // l1.print();
-    // l2.print();
-    l1.print();
-    // l1.sort();
-    // l1.print();
-    //l1.evenAfterOdd();
-    //l1.print();
-    //l1.swap(3,4);
-    //l1.print();
-    // l1.kreverse(4);
-    l1.deleteEveryN(2,2);
-    l1.print();
+    // Operations
+    /* find(data) => search given data node in list and return true or false
+     * appendNnodesToFirst(n) => It append last n nodes to first
+     * removeDuplicates() => Remove all consecutive duplicates
+     * preverse() => It just print reverse List
+     * reverse_i() => Reverse list iteratively
+     * reverse_rec1(), reverse_rec2(), reverse_rec3() => All are reverse list, implement using recursion
+     * palindrome() => Check whether linked list is palindrome or not
+     * merge() => Merge two sorted list
+     * evenAfterOdd() => Move all odd data node to first
+     * sort() => Sort list, Merge sort
+     * BubbleSort() => Sort list, BubbleSort
+     * swap(position1, position2) => swap given positional nodes
+     * kreverse() => reverse k nodes
+     * skipMremoveN() => skip M nodes and then delete n nodes
+     * deleteEveryNnodes() => delete every n nodes
+    */
 }

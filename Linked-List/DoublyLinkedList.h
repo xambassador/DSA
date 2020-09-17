@@ -73,7 +73,7 @@ class List {
     void print(){
         if(this->head == NULL) return;
         Node* tmp {this->head};
-        while(tmp != NULL) {
+        while(tmp != this->tail) {
             cout << tmp->data << " ";
             tmp = tmp->next;
         }

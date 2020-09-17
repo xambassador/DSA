@@ -1,3 +1,6 @@
+#include<bits/stdc++.h>
+using namespace std;
+
 namespace classNode {
 
     template<typename V>
@@ -14,7 +17,7 @@ namespace classNode {
         };
 
         Node<V>* head,*tail;
-        int len,_size;
+        int _size;
 
         public:
 
@@ -22,7 +25,6 @@ namespace classNode {
         LinkedList(){
             head = NULL;
             tail = NULL;
-            len = 0;
             _size = 0;
         }
 
@@ -30,6 +32,7 @@ namespace classNode {
         LinkedList(int size, V* arr){
             head = NULL;
             tail = NULL;
+            this->_size = 0;
             int i{};
             while(i < size){
                 Node<V>* node{new Node<V>(arr[i])};
@@ -42,7 +45,6 @@ namespace classNode {
                 }
                 i++;
             }
-            len = size;
             this->_size = size;
         }
 
@@ -51,6 +53,7 @@ namespace classNode {
             auto it{l.begin()};
             head = NULL;
             tail = NULL;
+            this->_size = 0;
             while(it != l.end()){
                 Node<V>* node{new Node<V>(*it)};
                 if(head == NULL){
@@ -60,17 +63,16 @@ namespace classNode {
                     tail->next = node;
                     tail = node;
                 }
-                this->_size += 1;
-                len += 1;
                 it++;
             }
+            this->_size += l.size();
         }
 
         //Copy constructor
         LinkedList(LinkedList<V>& l2){
             //Deep copy
+            this->_size = 0;
             this->_size = l2._size;
-            this->len = l2.len;
             this->head = NULL;
             this->tail = NULL;
             Node<V>* tmp{l2.head};
@@ -86,10 +88,11 @@ namespace classNode {
                 tmp = tmp->next;
             }
         }
-
+        
+        // Copy assignment operator
         LinkedList<V>* operator=(LinkedList<V>& l2){
             //Deep copy
-            
+            this->_size = 0;
             //1.If left side list is empty
             if(this->head == NULL){
                 Node<V>* tmp{l2.head};
@@ -105,7 +108,6 @@ namespace classNode {
                     tmp = tmp->next;
                 }
                 this->_size = l2._size;
-                this->len = l2.len;
             }
 
             //2. If left side list is not empty
@@ -145,7 +147,6 @@ namespace classNode {
                     }
 
                     this->_size = l2._size;
-                    this->len = l2.len;
                 }
 
                 //3.If left list is bigger then right
@@ -171,10 +172,44 @@ namespace classNode {
 
                     this->tail = ltmp;
                     this->_size = l2._size;
-                    this->len = l2.len;
                 }
             }
             return this;
+        }
+        
+        // assign function
+        // assign(initializer_list)
+        void assign(initializer_list<V> l) {
+            auto it{l.begin()};
+            while(it != l.end()){
+                Node<V>* node{new Node<V>(*it)};
+                if(this->head == NULL){
+                    this->head = node;
+                    this->tail = node;
+                }else{
+                    this->tail->next = node;
+                    this->tail = node;
+                }
+                it++;
+            }
+            this->_size += l.size();
+        }
+
+        //assign(int size, V value)
+        void assign(int size, V value) {
+            int i{};
+            while(i < size){
+                Node<V>* node{new Node<V>(value)};
+                if(this->head == NULL){
+                    this->head = node;
+                    this->tail = node;
+                }else{
+                    this->tail->next = node;
+                    this->tail = node;
+                }
+                i++;
+            }
+            this->_size = size;
         }
 
         bool operator==(LinkedList<V>& l2){
@@ -219,7 +254,6 @@ namespace classNode {
                     tail = node;
                 }
                 this->_size += 1;
-                len += 1;
                 cin >> data;
             }
         }
@@ -245,14 +279,9 @@ namespace classNode {
                 tail = node;
             }
             this->_size += 1;
-            len += 1;
         }
 
-        //Return length
-        int length() const {
-            return this->len;
-        }
-
+        
         //Return size
         int size() const{
             return this->_size;
@@ -291,7 +320,6 @@ namespace classNode {
             Node<V>* ans{pop(this->head)};
             this->head = ans;
             this->_size -= 1;
-            len -= 1;
         }
 
         private:
@@ -322,7 +350,6 @@ namespace classNode {
         void remove(int position){
             this->head = remove(this->head,position);
             this->_size -= 1;
-            len -= 1;
             return;
         }
 
@@ -351,7 +378,6 @@ namespace classNode {
         void removeElement(V data){
             this->head = removeElement(this->head,data);
             this->_size -= 1;
-            len -= 1;
             return;
         }
 
@@ -390,13 +416,13 @@ namespace classNode {
                 tail->next = node;
                 tail = node;
             }
+            this->_size += 1;
             return;
         }
 
         void insert(V position, int data){
             this->head = insert(this->head,data,position);
             this->_size += 1;
-            this->len += 1;
             return;
         }
 
@@ -463,7 +489,6 @@ namespace classNode {
         void insertList(int position, initializer_list<V> l){
             this->head = insertList(this->head,position,l);
             this->_size += l.size();
-            this->len += l.size();
         }
 
         //Return front node data
@@ -533,7 +558,6 @@ namespace classNode {
                     delete tmp->next;
                     tmp->next = t;
                     this->_size -= 1;
-                    this->len -= 1;
 
                 }else{
                     tmp = tmp->next;
@@ -777,6 +801,7 @@ namespace classNode {
             return merge(sort(left),sort(right));
         }
 
+
         // Swap two nodes from their given position
         Node<V> *swap(Node<V> *head, int i, int j){
             Node<V> *curr1{head};
@@ -819,6 +844,7 @@ namespace classNode {
             return head;
         }
 
+
         // Reverse k nodes
         Node<V>* kreverse(Node<V>* head, int k){
             if(head == NULL || head->next == NULL){ 
@@ -837,6 +863,7 @@ namespace classNode {
             return rhead;
         }
 
+
         // Skip m nodes and then delete n  nodes
         Node<V>* skipMremoveN(Node<V>* head, int m, int n){
             if(head == NULL){
@@ -845,6 +872,7 @@ namespace classNode {
             Node<V>* curr{head};
             if(m == 0 && n == 0){
                 delete curr;
+                this->_size -= 1;
                 return NULL;
             }
             if(m == 0){
@@ -854,6 +882,7 @@ namespace classNode {
                         Node<V>* tmp{t};
                         t = t->next;
                         delete tmp;
+                        this->_size -= 1;
                     }
                     curr->next = t; 
                     curr = curr->next;
@@ -872,6 +901,7 @@ namespace classNode {
                     Node<V>* tmp{t};
                     t = t->next;
                     delete tmp;
+                    this->_size -= 1;
                 }
                 curr->next = t;
                 curr = curr->next;
@@ -879,12 +909,15 @@ namespace classNode {
             return head;
         }
 
+
         public:
         void merge(LinkedList<V>& l2){
             LinkedList<V> l{l2};    
             this->head = merge(this->head,l.head);
+            this->_size += l._size;
             return;
         }
+
 
         void sort(){
             this->head = sort(this->head);
@@ -895,30 +928,84 @@ namespace classNode {
             this->tail = tmp;
         }
 
+
         void evenAfterOdd(){
             this->head = evenAfterOdd(this->head);
         }
 
+
         void swap(int position1, int position2){
             this->head = swap(this->head,position1,position2);
+            if(position1 == (this->_size-1) || position2 == (this->_size-1)) {
+                Node<V>* tmp{this->tail};
+                while(tmp->next != NULL){
+                    tmp = tmp->next;
+                }
+                this->tail = tmp;
+            }
         }
-        
+
+
         void kreverse(int k){
             this->head = kreverse(this->head,k);
-            // Todo = manage tail node
+            Node<V>* tmp{this->tail};
+            while(tmp->next != NULL){
+                tmp = tmp->next;
+            }
+            this->tail = tmp;
         }
+
 
         void deleteEveryN(int numOfSkipNode, int numOfDelteNode){
             this->head = skipMremoveN(this->head,numOfSkipNode, numOfDelteNode);
         }
 
-        void details(){
-            cout << "Head node addres : " << this->head << endl;
-            cout << "Tail node addres : " << this->tail << endl;
-            cout << "Head node data : " << head->data << "\n" << "Tail node data : " << tail->data << endl;
+
+        private:
+        Node<V>* BubbleSort(Node<V>* head){
+            Node<V>* curr = head;
+            Node<V>* prev = NULL;
+            Node<V>* next = NULL;
+            int l{this->_size}, i{};
+            while(i < l-1){
+                while(curr -> next != NULL){
+                    if(curr -> data > curr -> next -> data){
+                        if(prev == NULL){
+                            next = curr->next;
+                            curr->next = next->next;
+                            next->next = curr;
+                            prev = next;
+                            head = prev;
+                        }else{
+                            next = curr->next;
+                            if(curr->next == this->tail){
+                                this->tail = curr;
+                            }
+                            prev->next = curr->next;
+                            curr->next = next->next;
+                            next->next = curr;
+                            prev = prev->next;
+                        }
+                    }else{
+                        prev = curr;
+                        curr = curr->next;
+                    }
+                }
+                curr = head;
+                prev = NULL;
+                next = NULL;
+                i++;
+            }
+            return head;
         }
-    };    
-};
+
+        public:
+        void BubbleSort(){
+            this->head = BubbleSort(this->head);
+        }
+
+    };
+}
 
 namespace structNode {
     template <typename T>

@@ -27,4 +27,4 @@
 - [x] Delete every N nodes
 - [x] Swap two nodes of list
 - [x] kreverse
-- [] Bubble sort
+- [x] Bubble sort
