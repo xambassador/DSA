@@ -31,15 +31,15 @@
 
 ## Doubly Linked List class
 
--[x] List class
--[x] Take Input
--[x] Print
--[x] push_back : Insert node at last
--[x] pop_back : Delete node at last
--[x] push_front : Insert node at front
--[x] pop_front : Delete node at front
--[x] Insert : insert node at specific position
--[x] Remove : remove node at specific position
--[x] RemoveElements : remove specific elements
--[x] Reverse
--[x] Clean : Delete every node
+- [x] List class
+- [x] Take Input
+- [x] Print
+- [x] push_back : Insert node at last
+- [x] pop_back : Delete node at last
+- [x] push_front : Insert node at front
+- [x] pop_front : Delete node at front
+- [x] Insert : insert node at specific position
+- [x] Remove : remove node at specific position
+- [x] RemoveElements : remove specific elements
+- [x] Reverse
+- [x] Clean : Delete every node
