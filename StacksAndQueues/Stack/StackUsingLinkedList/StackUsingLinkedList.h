@@ -23,10 +23,16 @@ class Stack {
     // Copy constructor
     Stack(Stack<T> const &s) : size(s.size), head(NULL){
         Node<T>* tmp{s.head};
+        Node<T>* tail{head};
         while(tmp != NULL){
             Node<T>* node{new Node<T>(tmp->data)};
-            node->next = head;
-            head = node;
+            if(head == NULL) {
+                head = node;
+                tail = node;
+            }else{
+                tail->next = node;
+                tail = node;
+            }
             tmp = tmp->next;
         }
     }

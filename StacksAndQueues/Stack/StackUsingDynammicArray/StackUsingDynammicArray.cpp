@@ -4,38 +4,22 @@ using namespace std;
 
 
 int main(){
-    // Creating stack
-    Stack<char> s1;
-    s1.push('a');
-    s1.push('b');
-    s1.push('c');
-    s1.push('d');
-    s1.push('e');
-    s1.push('f');
-    s1.push('g');
-    s1.push('h');
-    s1.push('i');
-    s1.push('j');
+    // Create stack
+    /* Member functions
+     * Constructor
+     * Copy constructor
+     * operator=
+    */
 
-    cout << "Top elements : " << s1.top() << endl;
-    cout << "Max size : " << s1.max_size() << " " << "Total elements : " << s1.getSize() << endl;
+    /* Access data */
+    /* top() : Return top element. O(1) */
 
-    s1.push('k');
-    s1.push('l');
-    s1.push('m');
+    /* Modification */
+    /* push() : Insert data. O(1)
+     * pop()  : Remove data. O(1) 
+    */
 
-    cout << "Top elements : " << s1.top() << endl;
-    cout << "Max size : " << s1.max_size() << " " << "Total elements : " << s1.getSize() << endl;
-
-    Stack<char> s2(s1);
-
-    cout << "Top elements : " << s2.top() << endl;
-    cout << "Max size : " << s2.max_size() << " " << "Total elements : " << s2.getSize() << endl;
-    
-    Stack<char> s3;
-    s3 = s2;
-
-    cout << "Top elements : " << s3.top() << endl;
-    cout << "Max size : " << s3.max_size() << " " << "Total elements : " << s3.getSize() << endl;
-
+    /* Size */
+    /* getSize() : Return size that represent how many elements are inserted in stack */
+    /* max_size() : Return size that represent how many elements can stack hold */
 }

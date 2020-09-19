@@ -85,17 +85,6 @@ class Stack {
         nextIndex = 0;
     }
 
-    void print(){
-        if(nextIndex == 0) return;
-        for(int i{nextIndex-1}; i>=0; i--){
-            if(i == nextIndex-1){
-                cout << "\t" << arr[i] << "\t" << "<--- top" << endl;
-                continue;;
-            }
-            cout << "\t" << arr[i] << endl;
-        }
-    }
-
     ~Stack(){
         delete arr;
     }

@@ -86,4 +86,8 @@ class Stack{
         nextIndex--;
         size -= 1;
     }
+
+    ~Stack(){
+        delete arr;
+    }
 };
