@@ -7,7 +7,6 @@
 - [x] Sorting
 - [x] Recursion-1
 - [x] Recursion-2
-- [] Bit manipulation
 - [x] Linked Lists
 - [] Stacks and Queues
 - [] Trees(Generic Trees)

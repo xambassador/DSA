@@ -1,10 +1,5 @@
-#include<iostream>
-using namespace std;
-
 /* Implement Queue using array */
 /* Circular array based method */
-
-
 
 template<typename T>
 class Queue{
@@ -24,6 +19,7 @@ class Queue{
     // Parameterized constructor
     Queue(int size) : size(0), capacity(size), frontIndex(-1), rearIndex(-1), nextIndex(0), arr(new T[capacity]) {}
     
+    // Destructor
     ~Queue(){
         delete arr;
     }
@@ -49,7 +45,6 @@ class Queue{
         if(rearIndex == -1) return -1;
         return arr[rearIndex];
     }
-
 
     void push(T data){
         if(size == capacity){

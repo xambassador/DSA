@@ -1,6 +1,3 @@
-#include<iostream>
-using namespace std;
-
 template<typename T>
 class Stack{
     T data; // Data that is store in stack

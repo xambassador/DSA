@@ -1,19 +1,18 @@
-#include<iostream>
-using namespace std;
-
 template<typename T>
 class Queue{
-    T data;
-    int size;
-    int capacity;
-    int frontIndex;
-    int rearIndex;
-    int nextIndex;
-    T* arr;
+    T data; // Data that store in queue
+    int size; // Number of element that are inserted in queue
+    int capacity; // maximum element that queue can hold
+    int frontIndex; // front
+    int rearIndex; // rear
+    int nextIndex; // where new element is inserted
+    T* arr; // array as container
     public:
 
+    // Default constructor
     Queue() : size(0), capacity(10), frontIndex(-1), rearIndex(-1), nextIndex(0), arr(new T[capacity]) {}
     
+    // Parameterized constructor
     Queue(int size) : size(0), capacity(size), frontIndex(-1), rearIndex(-1), nextIndex(0), arr(new T[capacity]) {}
 
     int getSize(){
@@ -39,12 +38,14 @@ class Queue{
     }
 
     void push(T data){
+        // Size reach to capacity means array is now full, so we need to create new array first,
+        // then remove all garbage values from it and then copy and paste from old array to new array
         if(size == capacity){
-            T* narr{new T[capacity * 2]};
-            for(int i{}; i<capacity*2; i++){
+            T* narr{new T[capacity * 2]}; // create new array
+            for(int i{}; i<capacity*2; i++){ // remove garbage values
                 narr[i] = 0;
             }
-            for(int i{frontIndex}, j=0; i<nextIndex; i++, j++){
+            for(int i{frontIndex}, j=0; i<nextIndex; i++, j++){ // copy
                 if(j == 0){
                     frontIndex = 0;
                     rearIndex = 0;

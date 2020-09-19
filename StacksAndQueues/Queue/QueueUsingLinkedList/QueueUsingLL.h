@@ -1,9 +1,7 @@
-#include<iostream>
-using namespace std;
-
-
 template<typename T>
 class Queue{
+
+    int size; // How many elements are inserted in queue
     
     template<typename V>
         class Node{
@@ -12,10 +10,10 @@ class Queue{
             Node<V>* next;
             Node(V data) : data(data), next(NULL) {}
         };
-    int size; // How many elements are inserted in queue
-    Node<T>* _front;
-    Node<T>* _rear;
     
+    Node<T>* _front; // Actual head of linked list
+    Node<T>* _rear; // tail of linked list
+
     public:
 
     // Default constructor
@@ -58,7 +56,6 @@ class Queue{
             tmp = tmp->next;
         }
     }
-
 
     int getSize(){
         return size;
