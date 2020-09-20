@@ -5,7 +5,6 @@ using namespace std;
 int main(){
     // Creating Queue
     /* Member functions 
-     *
      * Constructor
      * copy constructor
      * operator=

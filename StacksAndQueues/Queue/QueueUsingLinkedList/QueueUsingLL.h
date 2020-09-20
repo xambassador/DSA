@@ -40,9 +40,19 @@ class Queue{
 
     // Copy assignment operator
     void operator=(Queue<T> const &q){
-        size = q.size;
+        // Deep copy
+
+        // Clean old content
+        while(_front != NULL){
+            Node<T>* tmp{_front};
+            _front = _front->next;
+            delete tmp;
+        }
+
+        // Reset both pointers
         _front = NULL;
         _rear = NULL;
+
         Node<T>* tmp{q._front};
         while(tmp != NULL){
             Node<T>* node{new Node<T>(tmp->data)};
@@ -55,6 +65,8 @@ class Queue{
             }
             tmp = tmp->next;
         }
+
+        this->size = q.size;
     }
 
     int getSize(){
