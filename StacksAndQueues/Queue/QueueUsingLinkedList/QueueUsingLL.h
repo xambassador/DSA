@@ -69,25 +69,26 @@ class Queue{
         this->size = q.size;
     }
 
-    int getSize(){
+    int getSize() const {
         return size;
     }
 
-    bool empty(){
+    bool empty() const {
         return size == 0;
     }
 
-    T front(){
+    T front() const {
         if(_front == NULL) return -1;
         return _front->data;
     }
 
-    T rear(){
+    T rear() const {
         if(_rear == NULL) return -1;
         return _rear->data;
     }
 
     void push(T data){
+        // Data inserted from rear end.
         Node<T>* node{new Node<T>(data)};
         if(_front == NULL){
             _front = node;
@@ -100,6 +101,7 @@ class Queue{
     }
 
     void pop(){
+        // Data deleted from front end.
         if(_front == NULL){
             cout << "Queue is empty !!!" << endl;
             return;
@@ -117,5 +119,14 @@ class Queue{
         tmp->next = NULL;
         delete tmp;
         size -= 1;
+    }
+
+    ~Queue(){
+        while(_front != NULL){
+            Node<T>* tmp{_front};
+            _front = _front->next;
+            tmp->next = NULL;
+            delete tmp;
+        }
     }
 };

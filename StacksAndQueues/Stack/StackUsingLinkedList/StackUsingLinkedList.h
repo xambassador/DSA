@@ -89,4 +89,13 @@ class Stack {
             size -= 1;
         }
     }
+
+    ~Stack(){
+        while(head != NULL){
+            Node<T>* tmp{head};
+            head = head->next;
+            tmp->next = NULL;
+            delete tmp;
+        }
+    }
 };

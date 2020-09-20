@@ -5,15 +5,14 @@ class Queue{
     int capacity; // maximum element that queue can hold
     int frontIndex; // front
     int rearIndex; // rear
-    int nextIndex; // where new element is inserted
     T* arr; // array as container
     public:
 
     // Default constructor
-    Queue() : size(0), capacity(10), frontIndex(-1), rearIndex(-1), nextIndex(0), arr(new T[capacity]) {}
+    Queue() : size(0), capacity(10), frontIndex(-1), rearIndex(-1), arr(new T[capacity]) {}
     
     // Parameterized constructor
-    Queue(int size) : size(0), capacity(size), frontIndex(-1), rearIndex(-1), nextIndex(0), arr(new T[capacity]) {}
+    Queue(int size) : size(0), capacity(size), frontIndex(-1), rearIndex(-1), arr(new T[capacity]) {}
 
     int getSize(){
         return size;
@@ -38,35 +37,53 @@ class Queue{
     }
 
     void push(T data){
-        // Size reach to capacity means array is now full, so we need to create new array first,
-        // then remove all garbage values from it and then copy and paste from old array to new array
+        // Queue is full
         if(size == capacity){
-            T* narr{new T[capacity * 2]}; // create new array
-            for(int i{}; i<capacity*2; i++){ // remove garbage values
+            // reallocating
+            T* narr{new T[capacity*2]};
+            for(int i{}; i<capacity*2; i++){
                 narr[i] = 0;
             }
-            for(int i{frontIndex}, j=0; i<nextIndex; i++, j++){ // copy
-                if(j == 0){
-                    frontIndex = 0;
-                    rearIndex = 0;
-                    narr[j] = arr[i];
-                }else{
-                    narr[j] = arr[i];
-                    rearIndex = j;
+
+            int j{};
+            // If frontIndex < rearIndex
+            if(frontIndex < rearIndex) {
+                for(int i{frontIndex}; i<=rearIndex; i++){
+                    narr[j++] = arr[i];
                 }
+                frontIndex = 0;
+                rearIndex = capacity-1;
+            }
+
+            // if frontIndex > rearIndex
+            else if(frontIndex > rearIndex) {
+                int j{};
+                for(int i{frontIndex}; i<capacity; i++){
+                    narr[j++] = arr[i];
+                }
+                for(int i{}; i<=rearIndex; i++){
+                    narr[j++] = arr[i];
+                }
+                frontIndex = 0;
+                rearIndex = capacity - 1;
             }
             T* tmp{arr};
             arr = narr;
             delete tmp;
-            nextIndex = rearIndex + 1;
             capacity *= 2;
         }
+
+        // If queue is initially empty
         if(frontIndex == -1){
             frontIndex = 0;
+            rearIndex = 0;
         }
-        arr[nextIndex] = data;
-        rearIndex = nextIndex;
-        nextIndex += 1;
+
+        else if(rearIndex == capacity - 1) rearIndex = 0;
+
+        else rearIndex += 1;
+
+        arr[rearIndex] = data;
         size += 1;
     }
 
@@ -75,11 +92,24 @@ class Queue{
             cout << "Queue is empty !!! " << endl;
             return;
         }
-        frontIndex += 1;
-        size -= 1;
-        if(frontIndex > rearIndex){
+        
+        arr[frontIndex] = -1;
+
+        // If queue has only one element
+        if(frontIndex == rearIndex) {
             frontIndex = -1;
             rearIndex = -1;
+            size -= 1;
         }
+
+        else if(frontIndex == capacity - 1) frontIndex = 0;
+
+        else frontIndex += 1;
+
+        size -= 1;
+    }
+
+    ~Queue(){
+        delete arr;
     }
 };

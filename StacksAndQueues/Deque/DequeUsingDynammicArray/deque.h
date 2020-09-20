@@ -272,4 +272,8 @@ class Deque{
 
         size -= 1;
     }
+
+    ~Deque(){
+        delete arr;
+    }
 };

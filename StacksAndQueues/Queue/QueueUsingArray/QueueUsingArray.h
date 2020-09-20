@@ -74,4 +74,8 @@ class Queue{
             rearIndex = -1;
         }
     }
+
+    ~Queue(){
+        delete arr;
+    }
 };
