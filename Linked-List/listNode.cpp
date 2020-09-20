@@ -18,14 +18,16 @@ int main(){
 
     // Using parameterized constructor
     LinkedList<int> list2({1,2,3,4,5}); // Take initializer_list, O(n)
-    int arr[10]{1,2,3,4,5};
+    int arr[5]{1,2,3,4,5};
     LinkedList<int> list3(sizeof(arr)/sizeof(arr[0]), arr); // Take array as input, O(size)
 
     // Using copy constructor
     LinkedList<int> list4(list2); // O(list2.size)
 
     // Using copy assignment operator
-    LinkedList<int> list5 = list3; // O(l.size)
+    LinkedList<int> list5 = list3; // copy constructor is called. O(l.size)
+    LinkedList<int> l1({100,200,300,400,500,600,700});
+    l1 = list2;
 
     // Using assign function
     LinkedList<int> list6, list7;

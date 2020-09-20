@@ -1,3 +1,4 @@
+#include<initializer_list> 
 namespace classNode { template<typename V>
     class LinkedList {
         template<typename T>
@@ -44,7 +45,7 @@ namespace classNode { template<typename V>
         }
 
         // Perameterized constructor, list from initalizer list
-        LinkedList(initializer_list<V> l){
+        LinkedList(std::initializer_list<V> l){
             auto it{l.begin()};
             head = NULL;
             tail = NULL;
@@ -85,91 +86,33 @@ namespace classNode { template<typename V>
         }
         
         // Copy assignment operator
-        LinkedList<V>* operator=(LinkedList<V>& l2){
+        void operator=(LinkedList<V> const &l2){
             //Deep copy
-            this->_size = 0;
-            //1.If left side list is empty
-            if(this->head == NULL){
-                Node<V>* tmp{l2.head};
-                while(tmp!=NULL){
-                    Node<V>* node{new Node<V>(tmp->data)};
-                    if(this->head == NULL){
-                        this->head = node;
-                        this->tail = node;
-                    }else{
-                        this->tail->next = node;
-                        this->tail = node;
-                    }
-                    tmp = tmp->next;
-                }
-                this->_size = l2._size;
+
+            // Clean old content
+            while(this->head != NULL){
+                Node<T>* tmp{this->head};
+                this->head = this->head->next;
+                delete tmp;
             }
 
-            //2. If left side list is not empty
-            else {
-                //1.If both list len is equal
-                if(this->len == l2.len){
-                    Node<V>* tmp{l2.head};
-                    Node<V>* ltmp{this->head};
-                    while(tmp!=NULL){
-                        ltmp->data = tmp->data;
-                        tmp = tmp->next;
-                        ltmp = ltmp->next;
-                    }
-                }
+            // Reset both pointers
+            this->head = NULL;
+            this->tail = NULL;
 
-                //2.If left list is smaller then right then we need to add extra nodes
-                else if(this->len < l2.len){
-                    Node<V>* tmp{l2.head};
-                    Node<V>* ltmp{this->head};
-                    
-                    //go till last node of left list
-                    while(ltmp->next!=NULL){
-                        ltmp->data = tmp->data;
-                        ltmp = ltmp->next;
-                        tmp = tmp->next;
-                    }
-                    //update last node of left list
-                    ltmp->data = tmp->data;
-                    tmp = tmp->next;
-
-                    //Now traverse rest of right list and insert new node to left list
-                    while(tmp!=NULL){
-                        Node<V>* node{new Node<V>(tmp->data)};
-                        this->tail->next = node;
-                        this->tail = node;
-                        tmp = tmp->next;
-                    }
-
-                    this->_size = l2._size;
-                }
-
-                //3.If left list is bigger then right
-                else{
-                    // 1. Traverse on left list and reach to last node, and update all nodes
-                    Node<V>* tmp{l2.head};
-                    Node<V>* ltmp{this->head};
-                    while(ltmp->next != NULL){
-                        ltmp->data = tmp->data;
-                        ltmp = ltmp->next;
-                        tmp = tmp->next;
-                    }
-                    ltmp->data = tmp->data;
-
-                    //2.Now delete extra nodes
-                    Node<V>* t{ltmp->next};
-                    ltmp->next = NULL;
-                    while(t != NULL){
-                        Node<V>* tmp{t};
-                        t = t->next;
-                        delete tmp;
-                    }
-
-                    this->tail = ltmp;
-                    this->_size = l2._size;
+            Node<T>* tmp{l2.head};
+            while(tmp != NULL){
+                // create new node with l2's data
+                Node<T>* node{new Node<T>(tmp->data)};
+                if(this->head == NULL) {
+                    this->head = this->tail = node;
+                }else{
+                    this->tail->next = node;
+                    this->tail = node;
                 }
             }
-            return this;
+
+            this->_size = l2._size;
         }
         
         // assign function
@@ -1011,7 +954,16 @@ namespace classNode { template<typename V>
             this->head = NULL;
             this->tail = NULL;
         }
+        
 
+        // For debug
+        void print(){
+            if(head != NULL){
+                cout << "Head node : " << head << "\t" << "Tail node : " << tail << endl;
+                cout << "Head node data : " << head->data << "\t" << "Tail node data : " << tail->data << endl;
+                cout << "List size : " << this->_size << endl;
+            }
+        }
     };
 }
 
