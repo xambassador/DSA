@@ -8,7 +8,7 @@
 - [x] Recursion-1
 - [x] Recursion-2
 - [x] Linked Lists
-- [] Stacks and Queues
+- [x] Stacks and Queues
 - [] Trees(Generic Trees)
 - [] Binary Trees
 - [] Binary Search Trees
