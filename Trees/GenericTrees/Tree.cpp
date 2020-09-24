@@ -94,11 +94,5 @@ void print(TreeNode<int>* root){
     }
 }
 
-// 1 3 2 3 4 2 5 6 2 7 8 2 9 10 0 0 0 0 0 2 11 12 0 0
 
-int main(){
-    // TreeNode<int>* root{takeInput()};
-    TreeNode<int>* root{takeInputLevelWise()};
-    // print(root);
-    printLevelWise(root);
-}
+// 1 3 2 3 4 2 5 6 2 7 8 2 9 10 0 0 0 0 0 2 11 12 0 0
