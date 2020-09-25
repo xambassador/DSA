@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-#include"../Tree.cpp"
+#include"../Tree.h"
 
 // method 1
 int maxDataNode(TreeNode<int>* root){

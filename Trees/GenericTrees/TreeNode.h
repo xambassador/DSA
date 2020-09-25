@@ -9,4 +9,10 @@ class TreeNode{
     TreeNode(T data){
         this->data = data;
     }
+
+    ~TreeNode(){
+        for(int i{}; i<childrens.size(); i++){
+            delete childrens[i];
+        }
+    }
 };

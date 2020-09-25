@@ -12,15 +12,17 @@ TreeNode<int>* takeInputLevelWise(){
     queue<TreeNode<int>*> pendingTreeNodes;
     pendingTreeNodes.push(root);
     while(!pendingTreeNodes.empty()){
-        int numChilds{};
         TreeNode<int>* node{pendingTreeNodes.front()};
         cout << "Enter number of childrens of " << node->data << " :";
+        int numChilds{};
         cin >> numChilds;
 
         cout << "Enter childrens of : " << node->data << endl; 
         for(int i{}; i<numChilds; i++){
-            cin >> data;
-            TreeNode<int>* newNode{new TreeNode<int>(data)};
+            int childData;
+            cout << "Enter childs data of " << node->data << endl;
+            cin >> childData;
+            TreeNode<int>* newNode{new TreeNode<int>(childData)};
             pendingTreeNodes.push(newNode);
             node->childrens.push_back(newNode);
         }

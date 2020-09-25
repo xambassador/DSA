@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-#include"../Tree.cpp"
+#include"../Tree.h"
 
 int height(TreeNode<int>* root){
     if(root == NULL) return 1;
