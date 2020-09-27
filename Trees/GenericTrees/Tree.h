@@ -20,7 +20,6 @@ TreeNode<int>* takeInputLevelWise(){
         cout << "Enter childrens of : " << node->data << endl; 
         for(int i{}; i<numChilds; i++){
             int childData;
-            cout << "Enter childs data of " << node->data << endl;
             cin >> childData;
             TreeNode<int>* newNode{new TreeNode<int>(childData)};
             pendingTreeNodes.push(newNode);

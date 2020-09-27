@@ -16,3 +16,5 @@
 * [x] Count nodes that are greater then x
 * [x] Node with maximum child sum
 * [x] isIdentical
+* [x] Next integers
+* [x] Second largest
