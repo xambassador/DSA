@@ -9,7 +9,7 @@
 - [x] Recursion-2
 - [x] Linked Lists
 - [x] Stacks and Queues
-- [] Trees(Generic Trees)
+- [x] Trees(Generic Trees)
 - [] Binary Trees
 - [] Binary Search Trees
 - [] Priority Queues / Heaps / Binary Heaps
