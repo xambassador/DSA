@@ -9,3 +9,5 @@
 * [x] inorder traversal
 * [x] postorder traversal
 * [x] construct tree from preorder and inorder
+* [x] Construct tree from postorder and inorder
+* [x] Mirror of tree
