@@ -10,7 +10,7 @@
 - [x] Linked Lists
 - [x] Stacks and Queues
 - [x] Trees(Generic Trees)
-- [] Binary Trees
+- [x] Binary Trees
 - [] Binary Search Trees
 - [] Priority Queues / Heaps / Binary Heaps
 - [] Hashmaps
