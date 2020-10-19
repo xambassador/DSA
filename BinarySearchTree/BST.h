@@ -6,7 +6,7 @@ BinarySearchTreeNode<int>* takeInput(){
     int rootData;
     cin >> rootData;
     if(rootData == -1) return NULL;
-    BinarySearchTreeNode<int>* root {new BinarySearchTreeNode<T>(rootData)};
+    BinarySearchTreeNode<int>* root {new BinarySearchTreeNode<int>(rootData)};
     queue<BinarySearchTreeNode<int>* > pendingNodes;
     pendingNodes.push(root);
     while(!pendingNodes.empty()) {
