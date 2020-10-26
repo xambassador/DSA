@@ -72,8 +72,8 @@ Pair help(BinarySearchTreeNode<int>* root) {
     // int maximum {max(root->data, max(left.max,right.max))};
     
     bool isBST {root->data >= left.max && root->data <= right.min && left.isBST && right.isBST};
-    int minimum {min(root->data,(left.min,right.min))};
-    int maximum {max(root->data,(left.max,right.max))};
+    int minimum {min(root->data,min(left.min,right.min))};
+    int maximum {max(root->data,max(left.max,right.max))};
 
     Pair ans;
     ans.isBST = isBST;
