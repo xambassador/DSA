@@ -11,7 +11,7 @@
 - [x] Stacks and Queues
 - [x] Trees(Generic Trees)
 - [x] Binary Trees
-- [] Binary Search Trees
+- [x] Binary Search Trees
 - [] Priority Queues / Heaps / Binary Heaps
 - [] Hashmaps
 - [] Tries and Huffman Coding
