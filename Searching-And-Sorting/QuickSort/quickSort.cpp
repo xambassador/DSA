@@ -2,9 +2,10 @@
 using namespace std;
  
 int partition(int* arr, int start, int end){
+    int pivot {arr[start]};
     int cnt{0}; // This count is maintaine how many elements are smaller then arr[start], arr[start] is our pick element 
-    for(int i{start}; i<=end; i++){
-        if(arr[i] < arr[start]){
+    for(int i{start+1}; i<=end; i++){
+        if(arr[i] <= arr[start]){
             cnt++;
         }
     }
@@ -17,19 +18,19 @@ int partition(int* arr, int start, int end){
     //Now rearrange all elements,move all elements that are smaller then pick element on left side of partition index
     //Move all elements that are larger then pick element on right side of partition index
     int i{start},j{end};
-    while(i<partitionIndex && j>partitionIndex){
-        if(arr[i] > arr[partitionIndex]){
-            if(arr[j] < arr[partitionIndex]){
-                int t{arr[j]};
-                arr[j] =  arr[i];
-                arr[i] = t;
-                i++;
-                j--;
-            }else{
-                j--;
-            }
-        }else{
+    while(i<=partitionIndex && j>=partitionIndex){
+        while(arr[i] <= pivot) {
             i++;
+        }
+        while(arr[j] > pivot) {
+            j--;
+        }
+        if(i<partitionIndex && j>partitionIndex) {
+            int t {arr[i]};
+            arr[i] = arr[j];
+            arr[j] = t;
+            i++;
+            j--;
         }
     }
     return partitionIndex;
