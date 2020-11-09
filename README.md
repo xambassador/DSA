@@ -1,13 +1,14 @@
 ### Data structures and Algorithms Solution in c++
 
-#### Todo List
+#### To do List
 - [x] Arrays
 - [x] Character Array and 2D Arrays
 - [x] Searching
 - [x] Sorting
 - [x] Recursion-1
 - [x] Recursion-2
-- [] Bitmanipulation
+- [x] Bitmanipulation
+- [x] Adhoc
 - [x] Linked Lists
 - [x] Stacks and Queues
 - [x] Trees(Generic Trees)
