@@ -1,35 +1,44 @@
 #include<iostream>
+#include<cstring>
 using namespace std;
  
 
-int maxSum(int** grid, int row, int col) {
-    int dp[row][col];
-    dp[0][0] = grid[0][0];
-    for(int i = 1;i<row; i++){
-        dp[i][0] = dp[i-1][0] + grid[i][0];
-    }
 
-    for(int i = 1; i<col; i++) {
-        dp[0][i] = dp[0][i-1] + grid[0][i];
-    }
+int kadane(int* arr, int n) {
+    int current_sum {};
+    int best_sum {INT_MIN};
+    for(int i{};i<n;i++) {
+        current_sum += arr[i];
 
-    for(int i =1; i<row; i++) {
-        for(int j = 1; j<col; j++) {
-            dp[i][j] = dp[i-1][j] + dp[i][j-1] + grid[i][j];
+        if(current_sum > best_sum) {
+            best_sum = current_sum;
+        }
+        if(current_sum < 0) {
+            current_sum = 0;
         }
     }
-
-    cout << endl;
-    for(int i =0;i<row; i++) {
-        for(int j=0; j<col; j++) {
-            cout << dp[i][j] << " ";
-        }cout << endl;
-    }
-    cout << endl;
-
-    return dp[row-1][col-1];
+    return best_sum;
 }
 
+
+int maxSum(int** arr, int row, int col) {
+    int sum{INT_MIN};
+    for(int left{}; left<col; left++) {
+        int* tmp {new int[row]};
+        memset(tmp,0,row*sizeof(int));
+        for(int right{left}; right<col; right++) {
+            for(int i{}; i<row; i++) {
+                tmp[i] += arr[i][right];
+            }
+            int ans {kadane(tmp,row)};
+            if(ans > sum) {
+                sum = ans;
+            }
+        }
+        delete [] tmp;
+    }  
+    return sum; 
+}
 
 int main() {
     int n,m;
