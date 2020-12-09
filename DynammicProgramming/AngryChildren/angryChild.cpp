@@ -1,44 +1,34 @@
-#include<iostream>
-#include<algorithm>
+#include <bits/stdc++.h>
+using namespace std;
 
-
-int main() {
-    long long n, k;
-    std::cin >> n >> k;
-    long long arr[n];
-    for(int i{}; i<n; i++) {
-        std::cin >> arr[i];
-    }
-
-    // sort the array
-    std::sort(arr,arr+n);
+int main()
+{
+    int n,k;
+    cin>>n>>k;
+   
+    long arr[n];
+    for(int i=0;i<n;i++)
+        cin>>arr[i];
+   
+    sort(arr,arr+n);
     
-
-    // maintain sum. for ith element {sum = arr[0]+arr[1]+arr[2]+...+arr[i]}
-    long long sum[n];
-    sum[0] = arr[0];
-    for(int i{1}; i<n; i++) {
-        sum[i] = sum[i-1] + arr[i];
+    long old_cost=0,min_cost,sum=0;
+    
+    for(int i=0;i<k;i++){
+        sum+=arr[i];
+        old_cost=old_cost+(i*arr[i])-(k-1-i)*arr[i];
     }
-
-    // Find unfairness cost for first k packates out on n packets.
-    long long cost{0};
-    for(int i{1}; i<k; i++) {
-        cost += i*arr[i] - sum[i-1];
+    min_cost=old_cost;
+    
+    for(int i=k;i<n;i++){
+        sum=sum-arr[i-k];
+      old_cost=old_cost+(k-1)*(arr[i-k])-(sum)+(k-1)*(arr[i])-sum;  
+        sum+=arr[i];
+        
+        if(old_cost<min_cost)
+            min_cost=old_cost;
     }
-
-    // create sliding window.
-    int start{1};
-    int end{k};
-    long long oldCost {cost};
-
-    while(end < n) {
-        long long newCost {(oldCost - (2*sum[end-1])) + arr[start-1]*(k-1) + arr[end]*(k-1)};
-        cost = std::min(oldCost, newCost);
-        start++;
-        end++;
-    }
-
-
-    std::cout << cost << std::endl;
+    cout<<min_cost;
+    return 0;
 }
+
