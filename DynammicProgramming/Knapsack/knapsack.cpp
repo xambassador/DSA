@@ -21,6 +21,8 @@ int knapsackHelp(int* w, int* v, int W, int start, int end) {
     return ans;
 }
 
+
+// Top Down DP - Memoization
 int kanpsackMemoization(int* w, int* v,int W, int start, int end, int** dp) {
     if(W == 0) {
         return 0;
@@ -48,22 +50,40 @@ int kanpsackMemoization(int* w, int* v,int W, int start, int end, int** dp) {
 
 int knapsack(int* weight, int* value, int n, int maxWeight) {
     // return knapsackHelp(weight,value,maxWeight,0,n-1);
-    int** dp {new int*[maxWeight+1]};
-    for(int i{}; i<=maxWeight; i++) {
-        dp[i] = new int[n+1];
-        for(int j{}; j<=n; j++) {
-            dp[i][j] = -1;
+    // int** dp {new int*[maxWeight+1]};
+    // for(int i{}; i<=maxWeight; i++) {
+    //     dp[i] = new int[n+1];
+    //     for(int j{}; j<=n; j++) {
+    //         dp[i][j] = -1;
+    //     }
+    // }
+    
+    // int ans {kanpsackMemoization(weight,value,maxWeight,0,n,dp)};
+
+    // for(int i{}; i<=maxWeight; i++) {
+    //     delete [] dp[i];
+    // }
+
+    // delete [] dp;
+    // return ans;
+
+    // Bottom Up dp
+
+    int dp[n+1][maxWeight+1];
+    for(int i{}; i<=n; i++) {
+        for(int j{}; j<=maxWeight; j++) {
+            if(i == 0 || j == 0) {
+                dp[i][j] = 0;
+            }
+
+            else if(weight[i-1] <= maxWeight) {
+                dp[i][j] = std::max(value[i-1] + dp[i-1][maxWeight - weight[i-1]], dp[i-1][j]);
+            }else {
+                dp[i][j] = dp[i-1][j];
+            }
         }
     }
-    
-    int ans {kanpsackMemoization(weight,value,maxWeight,0,n,dp)};
-
-    for(int i{}; i<=maxWeight; i++) {
-        delete [] dp[i];
-    }
-
-    delete [] dp;
-    return ans;
+    return dp[n][maxWeight];
 }
 
 
