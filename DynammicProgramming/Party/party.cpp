@@ -1,6 +1,4 @@
 #include<iostream>
-
-
 struct Pair {
     int maxFun;
     int maxFees;
