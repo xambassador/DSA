@@ -23,9 +23,7 @@
 
         let ans = Math.max(option1, option2, option3);
         return ans;
-    }
-
-
+    }    
 
     (function main(){
 
@@ -34,11 +32,6 @@
         let arr = [10,22,5,75,65,80];
         let ans = maxProfit(arr,n,0,k,false);
         console.log(ans);
-
     }());
-
-
-
-
 
 }());
