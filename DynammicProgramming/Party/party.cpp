@@ -34,6 +34,14 @@ Pair maxEnjoyMent(int* fees, int* fun ,int start, int end, int budget) {
         Pair option2 {maxEnjoyMent(fees,fun,start+1,end,budget)};
         ans.maxFees = std::max(option1.maxFees, option2.maxFees);
         ans.maxFun = std::max(option1.maxFun, option2.maxFun);
+
+        if (option1.maxFun == option2.maxFun) {
+            if (option1.maxFun < option2.maxFees) {
+                ans.maxFees = option1.maxFees;
+            }else {
+                ans.maxFees = option2.maxFees;
+            }
+        }
     }else {
         Pair option {maxEnjoyMent(fees,fun,start+1,end,budget)};
         ans.maxFun = option.maxFun;
