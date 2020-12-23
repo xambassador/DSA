@@ -25,6 +25,10 @@ int maxProfit(int* arr, int n, int k, bool isTransactionOngoing) {
 int maxProfit(int* arr, int n, int k, bool isTransactionOngoing, int*** dp) {
     if (n == 0) return 0;
 
+    if (dp[n][k][isTransactionOngoing] != -1) {
+        return dp[n][k][isTransactionOngoing];
+    }
+
     // ignore stock
     int option1 {maxProfit(arr+1, n-1, k, isTransactionOngoing, dp)};
     int option2 {};
@@ -39,6 +43,7 @@ int maxProfit(int* arr, int n, int k, bool isTransactionOngoing, int*** dp) {
         }
     }   
     int ans {std::max(option1, std::max(option2, option3))};
+    dp[n][k][isTransactionOngoing] = ans;
     return ans;
 }
 
