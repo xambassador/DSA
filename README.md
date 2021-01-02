@@ -17,6 +17,6 @@
 - [] Priority Queues / Heaps / Binary Heaps
 - [] Hashmaps
 - [] Tries and Huffman Coding
-- [] Dynammic Programming
+- [x] Dynammic Programming
 - [] Graphs
 - [] NP, NP-Complete and Approximation Algorithms
