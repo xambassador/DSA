@@ -14,9 +14,10 @@
 - [x] Trees(Generic Trees)
 - [x] Binary Trees
 - [x] Binary Search Trees
+- [x] Greedy
+- [x] Dynammic Programming
 - [] Priority Queues / Heaps / Binary Heaps
 - [] Hashmaps
 - [] Tries and Huffman Coding
-- [x] Dynammic Programming
 - [] Graphs
 - [] NP, NP-Complete and Approximation Algorithms
