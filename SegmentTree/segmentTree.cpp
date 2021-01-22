@@ -43,6 +43,20 @@ void updateTree(int* arr, int* segTree, int start, int end, int treeIndex, int i
     segTree[treeIndex] = segTree[2*treeIndex] + segTree[2*treeIndex + 1];
 }
 
+// Query in segment tree
+int query(int* tree, int start, int end, int treeNode, int left , int right) {
+    // case 1 : If range is completely outside
+    if(start > right || end < left) return 0;
+
+    // case 2 : If range is completely inside
+    if(start >= left && end <= right) return tree[treeNode];
+
+    // case 3 : If range is partially inside and partially outside
+    int mid {(start + end) / 2};
+    int ans1 {query(tree,start, mid, 2*treeNode, left, right)};
+    int ans2 {query(tree,mid+1,end, 2*treeNode+1, left,  right)};
+    return ans1 + ans2;
+}
 
 int main(){
     // array size
@@ -61,4 +75,8 @@ int main(){
     updateTree(arr,segTree,0,n-1,1,2,10); // arr[2] = 10
 
     for(int i{1}; i<2*n; i++) std::cout << segTree[i] << std::endl;
+
+    // Query : sum between interval [2,4]
+    int ans {query(segTree,0,n-1,1,2,4)};
+    std::cout << "Sum between range is : " << ans << std::endl;
 }
