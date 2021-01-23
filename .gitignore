@@ -3,3 +3,4 @@
 a
 *.gch
 /.vscode
+/node_modules
