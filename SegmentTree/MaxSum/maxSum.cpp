@@ -34,7 +34,7 @@ void buildTree(int* arr, Node* tree, int start, int end, int treeNode) {
 }
 
 Node query(Node* tree, int start, int end, int treeNode, int left, int right) {
-    if (start > right || end < left) return {INT_MIN, INT_MIN,INT_MIN,INT_MIN};
+    if (start > right || end < left) return {-100000, -100000,-100000,-100000};
 
     if (start >= left && end <= right) return tree[treeNode];
 
@@ -45,7 +45,7 @@ Node query(Node* tree, int start, int end, int treeNode, int left, int right) {
     Node ans;
     ans.sum = ans1.sum + ans2.sum;
     ans.bestPrefixSum = std::max(ans1.bestPrefixSum, ans1.sum + ans2.bestPrefixSum);
-    ans.bestSuffixSum = std::max(ans2.bestSuffixSum, ans2.sum + ans1.bestSuffixSum);
+    ans.bestSuffixSum = std::max(ans1.bestSuffixSum + ans2.sum, ans2.bestSuffixSum);
     ans.maxSum = std::max(ans1.maxSum, std::max(ans2.maxSum, std::max(ans1.sum + ans2.bestPrefixSum, std::max(ans2.sum + ans1.bestSuffixSum, ans1.bestSuffixSum + ans2.bestPrefixSum))));
     return ans; 
 }
