@@ -4,3 +4,9 @@ a
 *.gch
 /.vscode
 /node_modules
+Makefile
+executeTests
+CMakeCache.txt
+cmake_install.cmake
+/CMakeFiles
+CMakeFiles/
