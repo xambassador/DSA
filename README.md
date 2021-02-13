@@ -16,9 +16,9 @@
 - [x] Binary Search Trees
 - [x] Greedy
 - [x] Dynammic Programming
-- [] Segment Trees
+- [x] Segment Trees
+- [] Graphs
 - [] Priority Queues / Heaps / Binary Heaps
 - [] Hashmaps
 - [] Tries and Huffman Coding
-- [] Graphs
 - [] NP, NP-Complete and Approximation Algorithms
