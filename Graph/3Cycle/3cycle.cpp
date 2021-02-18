@@ -4,11 +4,10 @@
 int cycle(bool** edges, int n, int m) {
     int cnt {};
     for (int i{}; i<n; i++) {
-        for (int j{}; j<m; j++) {
-            if (edges[i][j]) {
+        for (int j{}; j<n; j++) {
+            if (edges[i][j] && i != j) {
                 for (int k{}; k<n; k++) {
-                    if (i == k) continue;
-                    if (edges[j][k] && edges[i][k]) {
+                    if (edges[j][k] && j != k && k != i && edges[i][k]) {
                         cnt++;
                     }
                 }
@@ -26,8 +25,8 @@ int main() {
 
     bool** graph {new bool*[n]};
     for (int i{}; i<n; i++) {
-        graph[i] = new bool[m];
-        for (int j{}; j<m; j++) {
+        graph[i] = new bool[n];
+        for (int j{}; j<n; j++) {
             graph[i][j] = false; 
         }
     }
