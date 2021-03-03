@@ -17,7 +17,7 @@
 - [x] Greedy
 - [x] Dynammic Programming
 - [x] Segment Trees
-- [] Graphs
+- [x] Graphs
 - [] Priority Queues / Heaps / Binary Heaps
 - [] Hashmaps
 - [] Tries and Huffman Coding
