@@ -20,5 +20,6 @@
 - [x] Graphs
 - [] Priority Queues / Heaps / Binary Heaps
 - [] Hashmaps
-- [] Tries and Huffman Coding
+- [x] Tries and Huffman Coding
 - [] NP, NP-Complete and Approximation Algorithms
+- [] Fenwick Tree
