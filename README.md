@@ -18,8 +18,9 @@
 - [x] Dynammic Programming
 - [x] Segment Trees
 - [x] Graphs
+- [x] Tries and Huffman Coding
 - [] Priority Queues / Heaps / Binary Heaps
 - [] Hashmaps
-- [x] Tries and Huffman Coding
 - [] NP, NP-Complete and Approximation Algorithms
 - [] Fenwick Tree
+- [] Number Theory
