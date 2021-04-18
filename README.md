@@ -19,8 +19,7 @@
 - [x] Segment Trees
 - [x] Graphs
 - [x] Tries and Huffman Coding
-- [] Priority Queues / Heaps / Binary Heaps
-- [] Hashmaps
-- [] NP, NP-Complete and Approximation Algorithms
-- [] Fenwick Tree
-- [] Number Theory
+- [x] Priority Queues / Heaps / Binary Heaps
+- [x] Hashmaps
+- [x] Fenwick Tree
+- [x] Number Theory
