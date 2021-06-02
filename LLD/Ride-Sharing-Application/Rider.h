@@ -10,15 +10,14 @@
 #include "Ride.h"
 
 class Rider : private Person {
-    std::vector<Ride> completedRides;
-    Ride currentRide;
+    std::vector<Ride> allRides;
 
 public:
     Rider(std::string);
     void createRide(int, int, int, int);
     void updateRide(int, int, int, int);
     void withDrawRide(int);
-    int closeRide();
+    int closeRide(int);
 };
 
 
@@ -32,53 +31,68 @@ void Rider::createRide(int id, int origin, int destination, int seats) {
         return;
     }
 
+    Ride currentRide;
     currentRide.setId(id);
     currentRide.setOrigin(origin);
     currentRide.setSeats(seats);
     currentRide.setDestination(destination);
     currentRide.setRideStatus(RideStatus::CREATED);
+    allRides.push_back(currentRide);
 }
 
 
 void Rider::updateRide(int id, int origin, int destination, int seats) {
-    if (currentRide.getRideStatus() == RideStatus::WITHDRAWN) {
-        std::cout << "Can not update ride. Ride was withdrawn" << std::endl;
+    auto it = allRides.rbegin();
+    for (; it != allRides.rend(); ++it) {
+        if (it->getId() == id) {
+            break;
+        }
+    }
+
+    if (it->getRideStatus() != RideStatus::CREATED) {
+        std::cout << "Ride is not in progress. can not update ride." << std::endl;
         return;
     }
 
-    if (currentRide.getRideStatus() == RideStatus::COMPLETED) {
-        std::cout << "Can not update ride. Ride already completed." << std::endl;
-        return;
-    }
-
-    createRide(id, origin, destination, seats);
+    it->setOrigin(origin);
+    it->setDestination(destination);
+    it->setSeats(seats);
 }
 
 
 void Rider::withDrawRide(int id) {
-    if (currentRide.getId() != id) {
-        std::cout << "Wrong id. Cant withdraw ride." << std::endl;
+    auto it = allRides.rbegin();
+    for (; it != allRides.rend(); ++it) {
+        if (it->getId() == id) {
+            break;
+        }
+    }
+
+    if (it->getRideStatus() != RideStatus::CREATED) {
+        std::cout << "Ride is not in progress. can not withdraw ride." << std::endl;
         return;
     }
 
-    if (currentRide.getRideStatus() != RideStatus::CREATED) {
-        std::cout << "Ride wasn't in progress. Cant withdraw ride." << std::endl;
-        return;
-    }
-
-    currentRide.setRideStatus(RideStatus::WITHDRAWN);
+    it->setRideStatus(RideStatus::WITHDRAWN);
+    allRides.erase((it+1).base());
 }
 
 
-int Rider::closeRide() {
-    if (currentRide.getRideStatus() != RideStatus::CREATED) {
-        std::cout << "Ride wasn't in progress. Cant close ride." << std::endl;
+int Rider::closeRide(int id) {
+    auto it = allRides.rbegin();
+    for (; it != allRides.rend(); ++it) {
+        if (it->getId() == id) {
+            break;
+        }
+    }
+
+    if (it->getRideStatus() != RideStatus::CREATED) {
+        std::cout << "Ride is not in progress. can not close ride." << std::endl;
         return 0;
     }
 
-    currentRide.setRideStatus(RideStatus::COMPLETED);
-    completedRides.push_back(currentRide);
-    return currentRide.calculateFare(completedRides.size() >= 10);
+    it->setRideStatus(RideStatus::COMPLETED);
+    return it->calculateFare(allRides.size() >= 10);
 }
 
 #endif
