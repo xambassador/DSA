@@ -5,34 +5,31 @@
 #include <iostream>
 #include <string>
 
+#include "System.h"
 #include "Ride.h"
 #include "Rider.h"
 #include "Driver.h"
 
+
 int main() {
 
-    Rider rider("Yash");
+    Rider rider(1, "Yash");
     Driver driver("Jeet");
+    Rider rider1(2, "Cow");
+    Rider rider2(3, "Bee");
 
-    rider.createRide(1, 50, 60, 1);
-    std::cout << rider.closeRide(1) << std::endl;
+    std::vector<Rider> riders;
 
-    rider.updateRide(1,50,60,2);
-    std::cout << rider.closeRide(1) << std::endl;
+    riders.push_back(rider);
+    riders.push_back(rider1);
+    riders.push_back(rider2);
 
-    std::cout << "*************************************************" << std::endl;
-
-    rider.createRide(1,50,60,1);
-    rider.withDrawRide(1);
-    rider.updateRide(1,50,60,2);
-    std::cout << rider.closeRide(1) << std::endl;
-
-    std::cout << "*************************************************" << std::endl;
+    System system(3, riders);
 
     rider.createRide(1,50,60,1);
+    std::cout << rider.closeRide(1) << std::endl;
     rider.updateRide(1,50,60,2);
     std::cout << rider.closeRide(1) << std::endl;
-
 
     return 0;
 }

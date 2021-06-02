@@ -10,19 +10,27 @@
 #include "Ride.h"
 
 class Rider : private Person {
+    int id;
     std::vector<Ride> allRides;
 
 public:
-    Rider(std::string);
+    Rider(int, std::string);
     void createRide(int, int, int, int);
     void updateRide(int, int, int, int);
     void withDrawRide(int);
     int closeRide(int);
+
+    int getId() const;
 };
 
 
-Rider::Rider(std::string name) {
+Rider::Rider(int id, std::string name) {
     this->name = name;
+    this->id = id;
+}
+
+int Rider::getId() const {
+    return this->id;
 }
 
 void Rider::createRide(int id, int origin, int destination, int seats) {
