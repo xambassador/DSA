@@ -2,6 +2,7 @@
 
 - [x] Arrange Nuumbers in array
 - [x] Array Sum
+- [x] Linear Search
 - [x] Check Palindrome
 - [x] Column wise sum
 - [x] Compressing String
