@@ -1,29 +1,27 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void arrangeArray(int* arr, int size){
-    int front{},back{size-1},i{1};
-    while(front < back){
-        arr[front] = i;
-        i++;
-        arr[back] = i;
-        i++;
-        front++;
-        back--;
-        if(front == back){
-            arr[front] = i;
-            break;
+void arrangeArray(int arr[], int n) {
+    int start{}, end{n-1}, number{1};
+    while (start <= end) {
+        if (start == end) {
+            arr[start] = number;
+            start++;
+            end--;
+            continue;
         }
-    }   
-} 
+        arr[start++] = number++;
+        arr[end--] = number++;
+    }
+}
 
 
 int main(){
-    int n;
-    cin >> n;
-    int* arr{new int[n]};
-    arrangeArray(arr,n);
-    for(int i{}; i<n; i++){
-        cout << arr[i] << " ";
-    }cout << endl;
+    int testCase{}, n{}, arr[10000]{};
+    cin >> testCase;
+
+    while (testCase--) {
+        cin >> n;
+        arrangeArray(arr,n);
+    }
 }
