@@ -1,6 +1,6 @@
-### Data structures and Algorithms Solution in c++
+### Data structures and Algorithms solutions in c++, JavaScript, Python and Go.
 
-#### To do List
+#### Table of content
 - [x] Arrays
 - [x] Character Array and 2D Arrays
 - [x] Searching
