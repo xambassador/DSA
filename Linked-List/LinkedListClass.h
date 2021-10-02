@@ -1,5 +1,6 @@
 #include<initializer_list> 
-namespace classNode { template<typename V>
+namespace classNode { 
+    template<typename V>
     class LinkedList {
         template<typename T>
         class Node {
