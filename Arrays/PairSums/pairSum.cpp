@@ -1,36 +1,31 @@
-#include<iostream>
-using namespace std;
+#include <iostream>
+#include <climits>
+using std::cin;
+using std::cout;
+using std::endl;
 
-void PairSum(int* arr, int n, int sum){
-    int tmp,j;
-    for (int i = 0; i < n; i++)
-    {
-        tmp = arr[i];
-        j = i + 1;
-        while (j < n){
-            if (sum == tmp + arr[j]){
-                if (tmp < arr[j]){
-                    cout << tmp << " " << arr[j] << endl;
-                }
-                else{
-                    cout << arr[j] << " " << tmp << endl;
-                }
-            }
-            j++;
+int pairSum(int arr[], int n, int x) {
+    int ans {};
+    for (int i{}; i<n; i++) {
+        for (int j{i+1}; j<n; j++) {
+            if (arr[i] + arr[j] == x) ans++;
         }
-    }    
+    }
+    return ans;
 }
 
+int main () {
+    int testCase {}, n {}, arr[1000] {}, x {};
+    cin >> testCase;
 
-int main(){
-    int n;
-    cin >> n;
-    int *arr{new int[n]};
-    for(int i{}; i<n; i++){
-        cin >> arr[i];
+    while (testCase--) {
+        cin >> n;
+        
+        for (int i{}; i<n; i++) cin >> arr[i];
+
+        cin >> x;
+        
+        int numberOfPairs {pairSum(arr, n, x)};
+        cout << numberOfPairs << endl;
     }
-    int sum;
-    cin >> sum;
-    PairSum(arr,n,sum);
-    
 }

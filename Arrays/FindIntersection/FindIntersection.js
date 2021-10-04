@@ -1,7 +1,7 @@
 (function () {
-  arr1 = [6, 9, 8, 5];
-  arr2 = [9, 2, 4, 8, 1];
-  ans = "";
+  let arr1 = [6, 9, 8, 5];
+  let arr2 = [9, 2, 4, 8, 1];
+  let ans = "";
 
   for (let i in arr1) {
     for (let j in arr2) {
