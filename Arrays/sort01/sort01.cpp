@@ -25,6 +25,20 @@ void sort01(int* arr, int n){
     }
 }
 
+// Iterative solution 2
+void sort01_1(int arr[], int n) {
+    int nextZero {};
+
+    for (int i{}; i<n; i++) {
+        if (arr[i] == 0) {
+            int tmp {arr[nextZero]};
+            arr[nextZero] = arr[i];
+            arr[i] = tmp;
+            nextZero++;
+        }
+    }
+}
+
 void merge(int arr[], int start, int mid, int end) {
     int n {(mid - start) + 1}, m {(end - mid)};
     int left[n], right[m];
