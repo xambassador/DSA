@@ -27,8 +27,10 @@ func main() {
 	var N int
 	fmt.Scan(&N)
 
-	var sumEven int
-	var sumOdd int
+	var (
+		sumEven int
+		sumOdd int
+	)
 
 	for N != 0 {
 		currentDigit := N % 10
@@ -41,5 +43,5 @@ func main() {
 		N /= 10
 	}
 
-	fmt.Printf("%d %d", sumEven, sumOdd)
+	fmt.Println(sumEven, sumOdd)
 }
