@@ -2,31 +2,39 @@ package main
 
 import "fmt"
 
-func main () {
-	const size int = 1e9
+func arrangeArray(arr []int, n int) {
+	var start, end, number int = 0, n - 1, 1
 
-	var (
-		arr [size]int
-		n int
-		front, back, value int = 0, n-1, 1
-	)
-	
-	fmt.Scanf("%d", &n)
+	for start <= end {
+		if (start == end) {
+			arr[start] = number
+			start++
+			end--
+			continue
+		}
 
-	for front < back {
-		arr[front] = value
-		value++
-		arr[back] = value
-		value++
-		front++
-		back--
-		if (front == back) {
-			arr[front] = value
-			break
-		} 
+		arr[start] = number
+		number++
+		arr[end] = number
+		number++
+		start++
+		end--
 	}
+}
 
-	for i:=0; i<n; i++ {
-		fmt.Printf("%d ", arr[i])
+func main() {
+	var testCase, n int
+	var arr = make([]int, 10000)
+	fmt.Scanf("%d", &testCase)
+
+	for testCase > 0 {
+		fmt.Scanf("%d", &n)
+		arrangeArray(arr, n)
+
+		for i := 0; i < n; i++ {
+			fmt.Printf("%d ", arr[i])
+		}
+
+		testCase--
 	}
 }

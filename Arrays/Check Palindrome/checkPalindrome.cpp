@@ -1,24 +1,23 @@
-#include<bits/stdc++.h>
-using namespace std;
+#include<iostream>
+#include<cstring>
+using std::strlen;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::boolalpha;
 
-
-bool isPalindrome(char* arr){
-    int i{};
-    // int j{strlen(arr)-1}; Narrowing conversion
-    int j = strlen(arr)-1;
-    while(i < j){
-        if(arr[i] == arr[j]){
-            i++;
-            j--;
-        }else{
-            return false;
-        }
+bool isPalindrome(char* arr) {
+    int i{}, j{int(strlen(arr)) - 1};
+    while(i < j) {
+        if (arr[i] != arr[j]) return false;
+        i++;
+        j--;
     }
     return true;
 }
 
-int main(){
+int main() {
     char arr[1000];
-    cin >> arr; 
+    cin >> arr;
     cout << boolalpha << isPalindrome(arr) << endl;
 }

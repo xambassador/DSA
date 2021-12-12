@@ -3,7 +3,7 @@ from sys import stdin
 def arrange(arr, n) :
     number = 1
     start = 0
-    end = n-1
+    end = n - 1
 
     while start <= end :
         if start == end:
