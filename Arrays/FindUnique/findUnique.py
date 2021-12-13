@@ -3,14 +3,13 @@ import sys
 # O(nlogn)
 def findUnique1(arr, n):
     arr.sort()
-    i = 0
-    j = 1
+    i, j = 0, 1
     while i < n and j < n:
         if arr[i] != arr[j]:
             return arr[i]
         i += 2
         j += 2
-    """ 
+    """
     There is chance where j cross range but i still point
     last index
     """
@@ -30,7 +29,7 @@ def findUnique(arr, n) :
             if currentElement == arr[j]:
                 isCurrentElementFound = True
                 break
-        
+
         if not isCurrentElementFound:
             return currentElement
     return -1
@@ -46,12 +45,11 @@ def takeInput() :
     return arr, n
 
 
-t = int(sys.stdin.readline().rstrip())
+if __name__ == "__main__":
+    t = int(sys.stdin.readline().rstrip())
 
-while t > 0 :
-
-    arr, n = takeInput()
-    print(findUnique(arr, n))
-    print(findUnique1(arr, n))
-
-    t -= 1
+    while t > 0 :
+        arr, n = takeInput()
+        print(findUnique(arr, n))
+        print(findUnique1(arr, n))
+        t -= 1

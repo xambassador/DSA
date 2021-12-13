@@ -5,7 +5,7 @@ using std::cout;
 using std::endl;
 using std::sort;
 
-int maxProfit(int* budgetArray, int n){
+int maxProfit(int budgetArray[], int n) {
     // 1. Sort the budget Array
     sort(budgetArray,budgetArray + n);
 
@@ -26,10 +26,8 @@ int maxProfit(int* budgetArray, int n){
 }
 
 int main() {
-    int n;
+    int n, budgetArray[1000000];
     cin >> n;
-    int* budgetArray{new int[n]};
     for(int i{}; i < n; i++) cin >> budgetArray[i];
     cout << maxProfit(budgetArray,n) << endl;
-    delete [] budgetArray;
 }

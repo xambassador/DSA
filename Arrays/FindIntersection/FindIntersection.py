@@ -8,7 +8,6 @@ def intersections(arr1, n, arr2, m) :
                 print(arr1[i], end=" ")
                 arr2[j] = -(sys.maxsize)
                 break
-
     print()
 
 def takeInput() :
@@ -19,14 +18,14 @@ def takeInput() :
     arr = list(map(int, sys.stdin.readline().strip().split(" ")))
     return arr, n
 
-t = int(sys.stdin.readline().strip())
 
+if __name__ == "__main__":
+    t = int(sys.stdin.readline().strip())
+    while t > 0 :
+        arr1, n = takeInput()
+        arr2, m = takeInput()
 
-while t > 0 :
-    arr1, n = takeInput()
-    arr2, m = takeInput()
+        intersections(arr1, n, arr2, m)
+        print()
 
-    intersections(arr1, n, arr2, m)
-    print()
-
-    t -= 1
+        t -= 1

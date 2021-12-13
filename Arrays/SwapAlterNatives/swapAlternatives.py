@@ -14,7 +14,7 @@ def swapAlternate(arr, n) :
         arr[i], arr[j] = arr[j], arr[i]
         i += 2
         j += 2
-    
+
 
 def takeInput() :
     n = int(stdin.readline().rstrip())
@@ -31,11 +31,12 @@ def printList(arr, n) :
     print()
 
 
-t = int(stdin.readline().rstrip())
+if __name__ == "__main__":
+    t = int(stdin.readline().rstrip())
 
-while t > 0 :
-    arr, n = takeInput()
-    if n != 0 :
-        swapAlternate(arr, n)
-        printList(arr, n)
-    t -= 1
+    while t > 0 :
+        arr, n = takeInput()
+        if n != 0 :
+            swapAlternate(arr, n)
+            printList(arr, n)
+        t -= 1

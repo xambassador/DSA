@@ -12,7 +12,7 @@ def merge(arr, start, mid, end) :
     for i in range(m) :
         right[i] = arr[mid + 1 + i]
 
-    i,j,k = 0,0,start
+    i, j, k = 0, 0, start
 
     while i < n and j < m :
         if left[i] <= right[j] :
@@ -23,17 +23,16 @@ def merge(arr, start, mid, end) :
             arr[k] = right[j]
             j += 1
             k += 1
-    
+
     while i < n :
         arr[k] = left[i]
         k += 1
         i += 1
-    
+
     while j < m :
         arr[k] = right[j]
         j += 1
         k += 1
-
 
 def util(arr, start, end) :
     if start < end :
@@ -45,7 +44,6 @@ def util(arr, start, end) :
 def sort01(arr,n) :
     util(arr, 0, n-1)
 
-
 def sortZeroesAndOne(arr, n) :
     nextZero = 0
     for i in range(n) :
@@ -53,13 +51,12 @@ def sortZeroesAndOne(arr, n) :
             arr[nextZero], arr[i] = arr[i], arr[nextZero]
             nextZero += 1
 
-def takeInput() :
+def takeInput():
     n = int(stdin.readline().strip())
 
     if n == 0 :
         return list(), 0
 
-    
     arr = list(map(int, stdin.readline().strip().split(" ")))
     return arr, n
 
@@ -69,17 +66,13 @@ def printList(arr, n) :
         print(arr[i], end = ' ')
     print()
 
-t = int(stdin.readline().strip())
-
-while t > 0 :
-    
-    arr, n = takeInput()
-    sortZeroesAndOne(arr, n)
-    printList(arr, n)
-
-    sort01(arr,n)
-    printList(arr,n)
-
-    print()
-
-    t -= 1
+if __name__ == "__main__":
+    t = int(stdin.readline().strip())
+    while t > 0 :
+        arr, n = takeInput()
+        sortZeroesAndOne(arr, n)
+        printList(arr, n)
+        sort01(arr,n)
+        printList(arr,n)
+        print()
+        t -= 1

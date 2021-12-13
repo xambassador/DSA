@@ -1,25 +1,28 @@
-#include<bits/stdc++.h>
-using namespace std;
+#include<iostream>
+#include<cstring>
+using std::cin;
+using std::cout;
+using std::endl;
+using std::strlen;
 
-void replaceCharacter(char* arr, char c1, char c2){
-    int i{};
-    int j = strlen(arr)-1;
-    while(i < j){
-        if(arr[i] == c1){
+void replaceCharacter(char* arr, char c1, char c2) {
+    int i{}, j{int(strlen(arr)) - 1};
+    while(i < j) {
+        if(arr[i] == c1) {
             arr[i] = c2;
             i++;
-            if(arr[j] == c1){
+            if(arr[j] == c1) {
                 arr[j] = c2;
                 j--;
             }
-        }else {
+        } else {
             i++;
             j--;
         }
     }
 }
 
-int main(){
+int main() {
     char arr[1000];
     cin >> arr;
     char c1,c2;

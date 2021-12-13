@@ -16,7 +16,7 @@ def duplicateNumber(arr, n) :
             if arr[i] == arr[j]:
                 isCurrentElementFound = True
                 break
-        
+
         if isCurrentElementFound:
             return arr[i]
     return -1
@@ -31,13 +31,11 @@ def takeInput() :
     arr = list(map(int, sys.stdin.readline().strip().split()))
     return arr, n
 
-t = int(sys.stdin.readline().strip())
 
-while t > 0 :
-    
-    arr, n = takeInput()
-    print(duplicateNumber(arr, n))
-    print(duplicateNumber1(arr, n))
-
-    t -= 1
-    
+if __name__ == "__main__":
+    t = int(sys.stdin.readline().strip())
+    while t > 0 :
+        arr, n = takeInput()
+        print(duplicateNumber(arr, n))
+        print(duplicateNumber1(arr, n))
+        t -= 1

@@ -8,7 +8,7 @@ def findTriplet(arr, n, x) :
             for k in range(j+1, n) :
                 if arr[i] + arr[j] + arr[k] == x :
                     count += 1
-    
+
     return count
 
 
@@ -22,11 +22,11 @@ def takeInput() :
     return arr, n
 
 
-t = int(stdin.readline().strip())
+if __name__ == "__main__":
+    t = int(stdin.readline().strip())
 
-while t > 0 :
-
-    arr, n = takeInput()
-    x = int(stdin.readline().strip())
-    print(findTriplet(arr, n, x))
-    t -= 1
+    while t > 0 :
+        arr, n = takeInput()
+        x = int(stdin.readline().strip())
+        print(findTriplet(arr, n, x))
+        t -= 1

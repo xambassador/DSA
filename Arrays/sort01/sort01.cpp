@@ -4,24 +4,20 @@ using std::cout;
 using std::endl;
 
 // Iterative
-void sort01(int* arr, int n){
-    int i{};
-    int j{n-1};
-    while(i < j){
-        if(arr[i] == 0 && arr[j] == 1){
+void sort01(int* arr, int n) {
+    int i{}, j{n - 1};
+    while(i < j) {
+        if(arr[i] == 0 && arr[j] == 1) {
             i++;
             j--;
-        }else if(arr[i] == 0 && arr[j] == 0){
-            i++;
-        }else if(arr[i] == 1 && arr[j] == 0){
+        } else if(arr[i] == 0 && arr[j] == 0) i++;
+        else if(arr[i] == 1 && arr[j] == 0) {
             int tmp{arr[i]};
             arr[i] = arr[j];
             arr[j] = tmp;
             i++;
             j--;
-        }else if(arr[i] == 1 && arr[j] == 1){
-            j--;
-        }
+        } else if(arr[i] == 1 && arr[j] == 1) j--;
     }
 }
 
@@ -29,7 +25,7 @@ void sort01(int* arr, int n){
 void sort01_1(int arr[], int n) {
     int nextZero {};
 
-    for (int i{}; i<n; i++) {
+    for (int i{}; i < n; i++) {
         if (arr[i] == 0) {
             int tmp {arr[nextZero]};
             arr[nextZero] = arr[i];
@@ -49,11 +45,8 @@ void merge(int arr[], int start, int mid, int end) {
     int i{}, j{}, k{start};
 
     while (i < n && j < m) {
-        if (left[i] <= right[j]) {
-            arr[k++] = left[i++];
-        } else if (right[j] < left[i]) {
-            arr[k++] = right[j++];
-        }
+        if (left[i] <= right[j]) arr[k++] = left[i++];
+        else if (right[j] < left[i]) arr[k++] = right[j++];
     }
 
     while (i < n) arr[k++] = left[i++];
@@ -81,9 +74,9 @@ int main () {
 
     while (testCase--) {
         cin >> n;
-        for (int i{}; i<n; i++) cin >> arr[i];
+        for (int i{}; i < n; i++) cin >> arr[i];
         sort012(arr, n);
-        for (int i{}; i<n; i++) cout << arr[i] << " ";
+        for (int i{}; i < n; i++) cout << arr[i] << " ";
         cout << endl;
     }
 }

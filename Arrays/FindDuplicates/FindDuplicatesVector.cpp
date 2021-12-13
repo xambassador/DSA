@@ -2,15 +2,19 @@
 #include <vector>
 #include <algorithm>
 #include <unordered_set>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::end;
+using std::vector;
+using std::unordered_set;
 
 
 /*
     Approach - 1 : Using Sort
 
-	Time complexity: O(N * log(N)) 
+	Time complexity: O(N * log(N))
 	Space complexity: O(1)
-	
+
 	Where N is the length of the array.
 */
 
@@ -19,12 +23,10 @@ int findDuplicate1(vector<int>& arr, int n) {
     sort(arr.begin(), arr.end());
 
     // Traverse through the array and check for two consecutive equal elements
-    for (int i{}; i<n; i++) {
-        
+    for (int i{}; i < n; i++) {
+
         // Duplicate element found
-        if (arr[i] == arr[i+1]) {
-            return arr[i];
-        }
+        if (arr[i] == arr[i+1]) return arr[i];
     }
 
     return -1;
@@ -34,9 +36,9 @@ int findDuplicate1(vector<int>& arr, int n) {
 /*
     Approach - 2 : Using Binary Search
 
-	Time complexity: O(N * log(N)) 
+	Time complexity: O(N * log(N))
 	Space complexity: O(1)
-	
+
 	Where N is the length of the array.
 
 */
@@ -48,7 +50,7 @@ int findDuplicate2(vector<int>& arr, int n) {
     while (start < end) {
         // Initialize mid element index.
         int midElementIndex {start + (end - start) / 2};
-        
+
         // Set count variable to count number of elements less than midElementIndex
         int count {};
 
@@ -59,7 +61,7 @@ int findDuplicate2(vector<int>& arr, int n) {
             }
         }
 
-        // Duplicate element is on left side of mid so 
+        // Duplicate element is on left side of mid so
         if (count > midElementIndex) {
             end = midElementIndex;
         }
@@ -77,9 +79,9 @@ int findDuplicate2(vector<int>& arr, int n) {
 
 /*
     Approach - 3 : Using set
-	Time complexity: O(N) 
+	Time complexity: O(N)
 	Space complexity: O(N)
-	
+
 	Where N is the length of the array.
 
 */
@@ -104,14 +106,14 @@ int findDuplicate3(vector<int>& arr, int n) {
 
 /*
     Approach - 4 : Modifyind array in place
-	Time complexity: O(N) 
+	Time complexity: O(N)
 	Space complexity: O(1)
-	
+
 	Where N is the length of the array.
 
 */
 int findduplicate4(vector<int>& arr, int n) {
-    for (int i{}; i<n; i++) {
+    for (int i{}; i < n; i++) {
         // Use array index to store visited state of each element
         int index {abs(arr[i]) - 1};
 
@@ -119,9 +121,7 @@ int findduplicate4(vector<int>& arr, int n) {
         arr[index] *= -1;
 
         // In case of duplicate, arr[index] will become positive
-        if (arr[index] > 0) {
-            return abs(arr[index]);
-        }
+        if (arr[index] > 0) return abs(arr[index]);
     }
 
     return -1;
@@ -136,7 +136,7 @@ int main () {
         int n;
         cin >> n;
         vector<int> arr;
-        for (int i{}; i<n; i++) {
+        for (int i{}; i < n; i++) {
             int x;
             cin >> x;
             arr.push_back(x);
