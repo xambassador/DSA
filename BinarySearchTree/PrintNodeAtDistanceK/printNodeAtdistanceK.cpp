@@ -1,7 +1,8 @@
 #include<iostream>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 #include"../BST.h"
-
 
 void printNodesAtDepthK(BinarySearchTreeNode<int>* root, int k) {
     if(root == NULL || k < 0) return;
@@ -26,36 +27,28 @@ int printAtDistanceK(BinarySearchTreeNode<int>* root, int k, int element) {
 
     int leftDistance {printAtDistanceK(root->left, k, element)};
     if(leftDistance != -1) {
-        if(leftDistance + 1 == k) {
-            cout << root->data << " ";
-        }else{
-            printNodesAtDepthK(root->right,k-leftDistance-2);
-        }
+        if(leftDistance + 1 == k) cout << root->data << " ";
+        else printNodesAtDepthK(root->right, k - leftDistance - 2);
         return leftDistance+1;
     }
 
     int rightDistance {printAtDistanceK(root->right, k,element)};
     if(rightDistance == -1) {
-        if(rightDistance + 1 == k) {
-            cout << root->data << " ";
-        }else{
-            printNodesAtDepthK(root->left,k-rightDistance-2);
-        }
+        if(rightDistance + 1 == k) cout << root->data << " ";
+        else printNodesAtDepthK(root->left,k-rightDistance-2);
         return rightDistance+1;
     }
     return -1;
 }
 
-void printAtKDistance(BinarySearchTreeNode<int>* root, int k, int element){
-    printAtDistanceK(root,k,element);
+void printAtKDistance(BinarySearchTreeNode<int>* root, int k, int element) {
+    printAtDistanceK(root, k, element);
 }
-
 
 int main() {
     BinarySearchTreeNode<int>* root {takeInput()};
-    int k;
+    int k, element;
     cin >> k;
-    int element;
     cin >> element;
     printAtDistanceK(root, k, element);
-}   
+}

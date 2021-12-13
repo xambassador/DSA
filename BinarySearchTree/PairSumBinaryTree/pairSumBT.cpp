@@ -1,6 +1,11 @@
-#include<iostream>
 #include<algorithm>
-using namespace std;
+#include<iostream>
+#include<vector>
+using std::cin;
+using std::cout;
+using std::endl;
+using std::vector;
+using std::sort;
 #include"../BST.h"
 
 void preorder(BinarySearchTreeNode<int>* root, vector<int>& v) {
@@ -11,14 +16,13 @@ void preorder(BinarySearchTreeNode<int>* root, vector<int>& v) {
 }
 
 void pairSum1(vector<int>& v, int sum) {
-    int i{};    
-    int j{v.size()-1};
+    int i{}, j{v.size() - 1};
     while(i < j) {
         if(v[i] + v[j] == sum) {
-            cout << v[i] << " " << v[j] << endl; 
+            cout << v[i] << " " << v[j] << endl;
             i++;
             j--;
-        }else if(v[i] + v[j] < sum) i++;
+        } else if(v[i] + v[j] < sum) i++;
         else j--;
     }
 }
@@ -28,8 +32,7 @@ void pairSum(BinarySearchTreeNode<int>* root, int sum) {
     preorder(root,v);
     sort(v.begin(), v.end());
     pairSum1(v,sum);
-} 
-
+}
 
 int main() {
     BinarySearchTreeNode<int>* root {takeInput()};

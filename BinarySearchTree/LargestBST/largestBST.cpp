@@ -1,7 +1,12 @@
+#include<algorithm>
 #include<iostream>
-using namespace std;
+#include<climits>
+using std::cin;
+using std::cout;
+using std::endl;
+using std::min;
+using std::max;
 #include"../BST.h"
-
 
 class Pair {
     public:
@@ -10,7 +15,6 @@ class Pair {
     int min;
     bool isBST;
 };
-
 
 Pair help(BinarySearchTreeNode<int>* root) {
     if(root == NULL) {
@@ -33,7 +37,6 @@ Pair help(BinarySearchTreeNode<int>* root) {
 
     Pair left {help(root->left)};
     Pair right {help(root->right)};
-
     Pair ans;
 
     // if root is bst
@@ -43,7 +46,7 @@ Pair help(BinarySearchTreeNode<int>* root) {
         ans.isBST = true;
         ans.max = max(root->data, max(left.max, right.max));
         ans.min = min(root->data, min(left.min, right.min));
-    }else{
+    } else {
         ans.height = max(left.height, right.height);
         ans.isBST = false;
         ans.max = max(root->data, max(left.max, right.max));

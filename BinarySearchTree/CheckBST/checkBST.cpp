@@ -1,20 +1,22 @@
 #include<iostream>
-using namespace std;
+#include<climits>
+#include<algorithm>
+using std::cin;
+using std::cout;
+using std::endl;
+using std::max;
+using std::min;
+using std::boolalpha;
 #include"../BST.h"
 
-bool isBSTHelp(BinarySearchTreeNode<int>* root, int min, int max){
-   if(root == NULL){
-        return true;
-    }
-    if(root->data < min || root->data > max){
-        return false;
-    }
+bool isBSTHelp(BinarySearchTreeNode<int>* root, int min, int max) {
+    if(root == NULL) return true;
+    if(root->data < min || root->data > max) return false;
     return isBSTHelp(root->left,min,root->data-1) && isBSTHelp(root->right,root->data+1,max);
 }
 
-bool isBST_2(BinarySearchTreeNode<int> *root){
+bool isBST_2(BinarySearchTreeNode<int> *root) {
     return isBSTHelp(root,INT_MIN,INT_MAX);
-
 }
 
 /* ************************************************************************  */
@@ -37,9 +39,7 @@ bool isBST_1(BinarySearchTreeNode<int>* root) {
 }
 /* ************************************************************************  */
 
-
 /* ************************************************************************  */
-
 class Pair {
     public:
     int max;
@@ -68,9 +68,6 @@ Pair help(BinarySearchTreeNode<int>* root) {
     Pair left {help(root->left)};
     Pair right {help(root->right)};
 
-    // int minimum {min(root->data,min(left.min,right.min))};
-    // int maximum {max(root->data, max(left.max,right.max))};
-    
     bool isBST {root->data >= left.max && root->data <= right.min && left.isBST && right.isBST};
     int minimum {min(root->data,min(left.min,right.min))};
     int maximum {max(root->data,max(left.max,right.max))};
@@ -82,16 +79,12 @@ Pair help(BinarySearchTreeNode<int>* root) {
     return ans;
 }
 
-
 bool isBST(BinarySearchTreeNode<int>* root) {
     Pair ans {help(root)};
     return ans.isBST;
 }
 
 /* ************************************************************************  */
-
-
-
 
 int main() {
     BinarySearchTreeNode<int>* root {takeInput()};

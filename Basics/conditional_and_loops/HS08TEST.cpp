@@ -1,5 +1,10 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include <iostream>
+#include<iomanip>
+using std::cin;
+using std::cout;
+using std::endl;
+using std::fixed;
+using std::setprecision;
 
 int main() {
     int x;

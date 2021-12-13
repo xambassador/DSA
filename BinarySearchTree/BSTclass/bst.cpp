@@ -1,7 +1,7 @@
 #include<iostream>
-using namespace std;
+using std::cout;
+using std::endl;
 #include"bst.h"
-
 
 int main() {
     BST b;

@@ -1,16 +1,14 @@
 #include<iostream>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 #include"../BST.h"
-
-
 class Node {
     public:
     int data;
     Node* next;
     Node(int data) : data(data), next(NULL) {}
 };
-
-
 class Pair {
     public:
     Node* head;
@@ -38,9 +36,7 @@ Pair help(BinarySearchTreeNode<int>* root) {
     if(left.head == NULL) {
         left.head = node;
         left.tail = node;
-    }else{
-        left.tail->next = node;
-    }
+    } else left.tail->next = node;
     Pair right {help(root->right)};
     node->next = right.head;
 

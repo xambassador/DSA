@@ -1,5 +1,7 @@
 #include<queue>
 #include"BinarySearchTree.h"
+using std::queue;
+
 
 void postOrder(BinarySearchTreeNode<int>* root) {
     if(root == NULL) return;
@@ -52,7 +54,7 @@ void print(BinarySearchTreeNode<int>* root) {
     if(root->right != NULL) cout << "R " << root->right->data << endl;
     else cout << "-1" << endl;
     print(root->left);
-    print(root->right); 
+    print(root->right);
 }
 
 BinarySearchTreeNode<int>* takeInput(){

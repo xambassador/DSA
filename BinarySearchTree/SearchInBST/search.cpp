@@ -1,17 +1,14 @@
 #include<iostream>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 #include"../BST.h"
-
 
 BinarySearchTreeNode<int>* search(BinarySearchTreeNode<int>* root, int x) {
     if(root == NULL) return NULL;
-
-    if(root->data == x) {
-        return root;
-    }
+    if(root->data == x) return root;
     return root->data > x ? search(root->left,x) : search(root->right, x);
 }
-
 
 int main() {
     BinarySearchTreeNode<int>* root {takeInput()};

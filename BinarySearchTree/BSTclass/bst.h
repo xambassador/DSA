@@ -1,6 +1,5 @@
 #include"../BinarySearchTree.h"
 
-
 class BST {
     BinarySearchTreeNode<int>* root;
     public:
@@ -123,7 +122,7 @@ class BST {
         else cout << "R -1" << endl;
 
         print(root->left);
-        print(root->right);  
+        print(root->right);
     }
 
     public:
