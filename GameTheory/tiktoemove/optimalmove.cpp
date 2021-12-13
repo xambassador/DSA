@@ -1,6 +1,10 @@
 #include <iostream>
 #include <algorithm>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::min;
+using std::max;
 
 struct Move {
     int row, col;
@@ -115,5 +119,5 @@ int main() {
         board[row][column] = player;
     }
     Move best_move {findBestMove(board)};
-    cout <<"row: "<<best_move.row<<" "<<"col: "<<best_move.col<<endl;
+    cout << "row: " << best_move.row << " " << "col: " << best_move.col << endl;
 }

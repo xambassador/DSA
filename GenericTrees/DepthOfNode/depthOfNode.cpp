@@ -1,21 +1,18 @@
 #include<iostream>
-using namespace std;
+using std::cout;
+using std::endl;
 #include"../Tree.h"
 
-void printAtDepth(TreeNode<int>* root, int k){
+void printAtDepth(TreeNode<int>* root, int k) {
     if(root == NULL) return;
-
-    if(k == 0){
+    if(k == 0) {
         cout << root->data << endl;
         return;
     }
-
-    for(int i{}; i<root->childrens.size(); i++){
-        printAtDepth(root->childrens[i], k-1);
-    }
+    for(int i{}; i < root->childrens.size(); i++) printAtDepth(root->childrens[i], k - 1);
 }
 
-int main(){
+int main() {
     TreeNode<int>* root{takeInputLevelWise()};
     printAtDepth(root,3);
 }

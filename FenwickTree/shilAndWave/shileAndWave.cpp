@@ -1,15 +1,15 @@
 #include<iostream>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 
 const int MOD {1000000007};
 
 int main() {
-    long long n,x,t,sum1,sum2;
+    long long n, x, t, sum1, sum2;
     cin >> n;
-    long long dpl[100001] {};
-    long long dph[100001] {};
-    long long arr[100001] {};
-    for (long long i {1}; i<n+1; i++) {
+    long long dpl[100001]{}, dph[100001]{}, arr[100001]{};
+    for (long long i{1}; i < n + 1; i++) {
         cin >> x;
         t = 100000;
         sum1 = 0;

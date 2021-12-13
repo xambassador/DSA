@@ -1,6 +1,9 @@
 #include<iostream>
 #include<algorithm>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::sort;
 
 class Coder {
     public:
@@ -8,7 +11,6 @@ class Coder {
     int second;
     int index;
 };
-
 
 bool compare(Coder a, Coder b) {
     return a.second < b.second;
@@ -28,43 +30,27 @@ int main() {
     int n;
     cin >> n;
 
-    int arr[30001];
-    int last[1000001];
-    int bit[30001];
+    int arr[30001], last[1000001], bit[30001], q{};
     Coder query[200000];
-
-    for (int i{1}; i<=n; i++) cin >> arr[i];
-
-    int q;
+    for (int i{1}; i <= n; i++) cin >> arr[i];
     cin >> q;
-
-    for (int i{}; i<q; i++) {
+    for (int i{}; i < q; i++) {
         cin >> query[i].first >> query[i].second;
         query[i].index = i;
     }
-
-    sort(query,query + q, compare);
-
-    for (int i{}; i<1000001; i++) last[i] = -1;
-
-    int k{};
-    int* ans {new int[q]};
-    int total {};
-
-    for (int i{1}; i<=n; i++) {
+    sort(query, query + q, compare);
+    for (int i{}; i < 1000001; i++) last[i] = -1;
+    int k{}, *ans{new int[q]}, total{};
+    for (int i{1}; i <= n; i++) {
         if (last[arr[i]] != -1) update(bit, last[arr[i]], -1, n);
-        else total++; 
-        
-        update(bit, i,1,n);
+        else total++;
+        update(bit, i, 1, n);
         last[arr[i]] = i;
-
         while(k < q && query[k].second == i) {
             ans[query[k].index] = total - value(bit, query[k].first - 1);
             k++;
         }
     }
-
-    for (int i{}; i<q; i++) cout << ans[i] << endl;
-
+    for (int i{}; i < q; i++) cout << ans[i] << endl;
     return 0;
 }

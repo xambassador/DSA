@@ -1,92 +1,64 @@
 #include<iostream>
-using namespace std;
+using std::cout;
+using std::endl;
 #include"../Tree.h"
 
-class Pair{
+class Pair {
     public:
     TreeNode<int>* L;
     TreeNode<int>* S;
 };
 
-Pair help(TreeNode<int>* root){
+Pair help(TreeNode<int>* root) {
     Pair ans;
     ans.L = root;
     ans.S = NULL;
-    for(int i{}; i<root->childrens.size(); i++){
+    for(int i{}; i < root->childrens.size(); i++) {
         Pair recAns{help(root->childrens[i])};
-
-        if(recAns.S == NULL && ans.S == NULL){
+        if(recAns.S == NULL && ans.S == NULL) {
             if(recAns.L->data > ans.L->data) {
                 ans.S = ans.L;
                 ans.L = recAns.L;
-            }else{
-                ans.S = recAns.L;
-            }
+            } else ans.S = recAns.L;
         }
-
-        else if(recAns.S == NULL && ans.S != NULL){
-            if(recAns.L->data > ans.L->data){
+        else if(recAns.S == NULL && ans.S != NULL) {
+            if(recAns.L->data > ans.L->data) {
                 ans.S = ans.L;
                 ans.L = recAns.L;
-            }else{
-                if(recAns.L->data > ans.S->data){
-                    ans.S = recAns.L;
-                }
+            } else {
+                if(recAns.L->data > ans.S->data) ans.S = recAns.L;
             }
         }
-
-        else if(recAns.S != NULL && ans.S == NULL){
-            if(recAns.L->data > ans.L->data){
-                if(ans.L->data > recAns.S->data){
-                    ans.S = ans.L;
-                }else{
-                    ans.S = recAns.S;
-                }
-            }else{
-                ans.S = recAns.L;
-            }
+        else if(recAns.S != NULL && ans.S == NULL) {
+            if(recAns.L->data > ans.L->data) {
+                if(ans.L->data > recAns.S->data) ans.S = ans.L;
+                else ans.S = recAns.S;
+            } else ans.S = recAns.L;
         }
-
-        else if(recAns.S != NULL && ans.S != NULL){
-            if(ans.L->data < recAns.L->data){
-                if(ans.L->data < recAns.S->data){
-                    ans.S = recAns.S;
-                }else{
-                    ans.S = ans.L;
-                }
+        else if(recAns.S != NULL && ans.S != NULL) {
+            if(ans.L->data < recAns.L->data) {
+                if(ans.L->data < recAns.S->data) ans.S = recAns.S;
+                else ans.S = ans.L;
                 ans.L = recAns.L;
-            }else{
-                if(ans.S->data > recAns.L->data){
-                    ans.S = recAns.L;
-                }
+            } else {
+                if(ans.S->data > recAns.L->data) ans.S = recAns.L;
             }
         }
     }
     return ans;
 }
 
-
-void help1(TreeNode<int>* root, TreeNode<int>** L, TreeNode<int>** S){
-    if(*L == NULL){
-        *L = root;
-    }
-
+void help1(TreeNode<int>* root, TreeNode<int>** L, TreeNode<int>** S) {
+    if(*L == NULL) *L = root;
     else if(root->data > (*L)->data) {
         *S = *L;
         *L = root;
     }
-
-    else if(*S == NULL || root->data > (*S)->data){
-        *S = root;
-    }
-
-    for(int i{}; i<root->childrens.size(); i++){
-        help1(root->childrens[i], L, S);
-    }
+    else if(*S == NULL || root->data > (*S)->data) *S = root;
+    for(int i{}; i < root->childrens.size(); i++) help1(root->childrens[i], L, S);
 }
 
-
-TreeNode<int>* secondLargest(TreeNode<int>* root){
+TreeNode<int>* secondLargest(TreeNode<int>* root) {
     // if(root == NULL) return root;
 
     // Pair ans{help(root)};
