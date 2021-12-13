@@ -3,28 +3,30 @@
 #include <algorithm>
 #include <climits>
 #include <vector>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::pair;
+using std::max;
 typedef long long int ll;
 
 int main() {
     int n, w;
     cin >> n >> w;
-    pair<ll, ll> *arr = new pair<ll, ll>[n];
-    for (int i{}; i < n; i++) {
-        // {first== value of the item},{second== weight of the item}
-        cin >> arr[i].first >> arr[i].second;
-    }
+    pair<ll, ll>* arr{new pair<ll, ll>[n]};
+    for (int i{}; i < n; i++) cin >> arr[i].first >> arr[i].second;
 
     sort(arr, arr + n);
-    
-    ll ***dp {new ll **[2]};
+
+    ll*** dp {new ll** [2]};
     for (int i{}; i < 2; i++) {
-        dp[i] = new ll *[n + 1];
+        dp[i] = new ll* [n + 1];
         for (int j{}; j < n + 1; j++) {
             dp[i][j] = new ll[w + 1];
             for (int k{}; k < w + 1; k++) dp[i][j][k] = 0;
         }
     }
+
     int primes[11] {1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
 
     for (int i{1}; i <= n; i++) {

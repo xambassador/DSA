@@ -1,6 +1,9 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include<string>
 #define endl '\n'
-using namespace std;
+using std::cin;
+using std::cout;
+using std::string;
 
 class point {
     public:
@@ -18,10 +21,10 @@ class polygon {
 double area(polygon p, int n) {
     double total_area = 0;
     for (int i{1}; i < n - 1; i++) {
-        double x1 {p.points[i].x - p.points[0].x};
-        double y1 {p.points[i].y - p.points[0].y};
-        double x2 {p.points[i + 1].x - p.points[0].x};
-        double y2 {p.points[i + 1].y - p.points[0].y};
+        double x1{p.points[i].x - p.points[0].x};
+        double y1{p.points[i].y - p.points[0].y};
+        double x2{p.points[i + 1].x - p.points[0].x};
+        double y2{p.points[i + 1].y - p.points[0].y};
         double cross_product {(x1 * y2) - (y1 * x2)};
         total_area += cross_product;
     }
@@ -31,9 +34,9 @@ double area(polygon p, int n) {
 int main() {
     string s;
     cin>>s;
-    int n {s.length()};
-    int* arr {new int[n]};
-    for(int i{}; i<n; i++) cin>>arr[i];
+    int n{s.length()};
+    int* arr{new int[n]};
+    for(int i{}; i < n; i++) cin >> arr[i];
     point p1;
     p1.x = 60000;
     p1.y = 60000;

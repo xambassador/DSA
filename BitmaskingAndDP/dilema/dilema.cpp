@@ -3,7 +3,12 @@
 #include<algorithm>
 #include<string.h>
 #include<climits>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::vector;
+using std::string;
+using std::min;
 
 int findTouches(int pos, int mask, vector<string>& arr, int** dp) {
     if ((mask & (mask - 1)) == 0) return 0;
@@ -12,11 +17,9 @@ int findTouches(int pos, int mask, vector<string>& arr, int** dp) {
 
     if (dp[pos][mask] != INT_MAX) return dp[pos][mask];
 
-    int newMask1 {};
-    int newMask2 {};
-    int touches {};
+    int newMask1 {}, newMask2 {}, touches {};
 
-    for (int i{}; i<arr.size(); i++) {
+    for (int i{}; i < arr.size(); i++) {
         if ((mask & (1 << i))) {
             touches++;
             if (arr[i][pos] == '0') newMask1 |= (1 << i);
@@ -32,12 +35,14 @@ int findTouches(int pos, int mask, vector<string>& arr, int** dp) {
     return dp[pos][mask];
 }
 
-
 int minimumTouchesRequired(int n, vector<string> v) {
     int** dp {new int*[v[0].size()]};
-    for (int i{}; i<v[0].size(); i++) {
-        dp[i] = new int[1<<(n+1)];
-        for (int j{}; j<(1<<(n+1)); j++) dp[i][j] = INT_MAX;
+    for (int i{}; i < v[0].size(); i++) {
+        dp[i] = new int[1 << (n+1)];
+        for (int j{}; j < (1<<(n+1)); j++) dp[i][j] = INT_MAX;
     }
-    return findTouches(v[0].size() - 1,(1 << n) - 1, v, dp);
+    int ans {findTouches(v[0].size() - 1,(1 << n) - 1, v, dp)};
+    for (int i{}; i < n; i++) delete [] dp[i];
+    delete [] dp;
+    return ans;
 }

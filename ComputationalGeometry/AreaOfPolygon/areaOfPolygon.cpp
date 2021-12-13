@@ -1,12 +1,13 @@
 #include<iostream>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 
 class Point {
     public:
     double x;
     double y;
 };
-
 
 class Polygon {
     public:
@@ -18,12 +19,12 @@ class Polygon {
 
 double area(Polygon p, int n) {
     double totalArea {};
-    for (int i{1}; i<n-1; i++) {
+    for (int i{1}; i < n - 1; i++) {
         double x1 {p.points[i].x - p.points[0].x};
         double x2 {p.points[i+1].x - p.points[0].x};
         double y1 {p.points[i].y - p.points[0].y};
         double y2 {p.points[i+1].y - p.points[0].y};
-        double crossProduct {x1*y2 - y1*x2};
+        double crossProduct {(x1 * y2) - (y1 * x2)};
         totalArea += crossProduct;
     }
 
@@ -34,6 +35,6 @@ int main() {
     int n;
     cin >> n;
     Polygon p(n);
-    for (int i{}; i<n; i++) cin >> p.points[i].x >> p.points[i].y;
+    for (int i{}; i < n; i++) cin >> p.points[i].x >> p.points[i].y;
     cout << area(p,n) << endl;
 }

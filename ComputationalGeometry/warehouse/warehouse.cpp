@@ -4,8 +4,14 @@
 #include<map>
 #include<math.h>
 #include<algorithm>
-using namespace std;
-
+using std::cin;
+using std::cout;
+using std::endl;
+using std::vector;
+using std::map;
+using std::string;
+using std::min;
+using std::max;
 
 class mapper {
     public:
@@ -35,16 +41,14 @@ class mapper {
     vector<int> get(const vector<string> &strs) {
         vector<int> ret;
         ret.reserve(strs.size() + 2);
-        for (int i{}; i < strs.size(); i++)
-            ret.push_back(get(strs[i]));
+        for (int i{}; i < strs.size(); i++) ret.push_back(get(strs[i]));
         return ret;
     }
 
     vector<string> get(const vector<int> &is) {
         vector<string> ret;
         ret.reserve(is.size() + 2);
-        for (int i{}; i < is.size(); i++)
-            ret.push_back(get(is[i]));
+        for (int i{}; i < is.size(); i++) ret.push_back(get(is[i]));
         return ret;
     }
 };
@@ -76,15 +80,13 @@ class Warehouse {
 
     int calc(point a, point b) {
         vector<double> ret;
-        for (int i{}; i < n; ++i) {
-            ret.push_back(len(a, b, point(xx[i], yy[i])));
-        }
+        for (int i{}; i < n; ++i) ret.push_back(len(a, b, point(xx[i], yy[i])));
 
         sort(ret.begin(), ret.end());
-        double m1 {len(a, b, point(0, 0))};
-        double m2 {len(a, b, point(200, 0))};
-        double m3 {len(a, b, point(0, 200))};
-        double m4 {len(a, b, point(200, 200))};
+        double m1{len(a, b, point(0, 0))};
+        double m2{len(a, b, point(200, 0))};
+        double m3{len(a, b, point(0, 200))};
+        double m4{len(a, b, point(200, 200))};
         double lower, upper;
         if (max(m1, m2) > max(m3, m4)) {
             upper = min(m1, m2);
@@ -96,7 +98,7 @@ class Warehouse {
 
         int tt {};
         for (int i{}; i < n - 1; ++i) {
-            double from {ret[i]}, to {ret[i + 1]};
+            double from{ret[i]}, to{ret[i + 1]};
             if (from < lower - 1e-8) continue;
             if (to > upper + 1e-8) continue;
             int t {(int)floor(to - from - 1e-8)};
@@ -116,7 +118,7 @@ class Warehouse {
         for (int i{}; i < n; ++i) {
             for (int j {i + 1}; j < n; ++j)
                 if (x[i] != x[j]) {
-                    int t {calc(point(x[i], y[i]), point(x[j], y[j]))};
+                    int t{calc(point(x[i], y[i]), point(x[j], y[j]))};
                     if (t > ret) ret = t;
                 }
         }
@@ -125,10 +127,10 @@ class Warehouse {
                 if (y[i] != y[j]) {
                     point a(x[i], y[i]);
                     point b(x[j], y[j]);
-                    point c {a};
+                    point c{a};
                     c.x += b.y - a.y;
                     c.y += a.x - b.x;
-                    int t {calc(a, c)};
+                    int t{calc(a, c)};
                     if (t > ret) ret = t;
                 }
         }

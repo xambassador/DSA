@@ -1,6 +1,7 @@
 #include<iostream>
-using namespace std;
- 
+using std::cin;
+using std::cout;
+using std::endl;
 
 int clearAllLSB(int n, int i) {
     if(n == 0) return 0;
@@ -8,12 +9,9 @@ int clearAllLSB(int n, int i) {
     return n;
 }
 
-
 int main() {
-    int n;
-    cin >> n;
-    int i;
-    cin >> i;
-    n = clearAllLSB(n,i);
+    int n, i;
+    cin >> n >> i;
+    n = clearAllLSB(n, i);
     cout << n << endl;
 }
