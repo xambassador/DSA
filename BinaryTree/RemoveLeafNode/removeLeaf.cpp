@@ -1,5 +1,3 @@
-#include<iostream>
-using namespace std;
 #include"../BinaryTree.h"
 
 BinaryTreeNode<int>* removeLeaf(BinaryTreeNode<int>* root) {

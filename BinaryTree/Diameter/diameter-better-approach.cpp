@@ -1,5 +1,9 @@
+#include<algorithm>
 #include<iostream>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::max;
 #include"../BinaryTree.h"
 
 class Pair {
@@ -26,14 +30,12 @@ Pair help(BinaryTreeNode<int>* root) {
     Pair leftAns {help(root->left)};
     Pair rightAns {help(root->right)};
 
-    int leftHeight {leftAns.height};
-    int rightHeight {rightAns.height};
-    int leftDiameter {leftAns.diameter};
-    int rightDiameter {rightAns.diameter};
+    int leftHeight{leftAns.height}, leftDiameter{leftAns.diameter};
+    int rightHeight{rightAns.height},rightDiameter{rightAns.diameter};
 
     int height {1 + max(leftHeight, rightHeight)};
     int diameter {max(leftHeight + rightHeight, max(leftDiameter, rightDiameter))};
-    
+
     Pair ans;
     ans.height = height;
     ans.diameter = diameter;

@@ -1,5 +1,5 @@
-#include<bits/stdc++.h>
-using namespace std;
+#include<iostream>
+using std::cout;
 #include"../BinaryTree.h"
 
 void inorder(BinaryTreeNode<int>* root) {

@@ -1,5 +1,5 @@
 #include<iostream>
-using namespace std;
+using std::cout;
 #include"../BinaryTree.h"
 
 void preorder(BinaryTreeNode<int>* root) {

@@ -1,6 +1,4 @@
-#include<vector>
-#include<queue>
-
+#pragma once
 template<typename T>
 class BinaryTreeNode {
     public:

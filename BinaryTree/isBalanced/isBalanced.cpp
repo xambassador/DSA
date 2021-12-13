@@ -1,5 +1,9 @@
+#include<algorithm>
 #include<iostream>
-using namespace std;
+using std::cout;
+using std::endl;
+using std::max;
+using std::boolalpha;
 #include"../BinaryTree.h"
 
 class Pair {
@@ -29,12 +33,12 @@ Pair help(BinaryTreeNode<int>* root) {
     if(leftAns.balanced == false || rightAns.balanced == false) {
         ans.height = 1 + max(leftAns.height, rightAns.height);
         ans.balanced = false;
-    }else {
+    } else {
         int diff {abs(leftAns.height - rightAns.height)};
         if(diff < 2) {
             ans.height = 1 + max(leftAns.height, rightAns.height);
             ans.balanced = true;
-        }else {
+        } else {
             ans.height = 1 + max(leftAns.height, rightAns.height);
             ans.balanced = false;
         }
@@ -45,7 +49,6 @@ Pair help(BinaryTreeNode<int>* root) {
 bool isBalanced(BinaryTreeNode<int>* root) {
     return help(root).balanced;
 }
-
 
 int main() {
     BinaryTreeNode<int>* root {TakeInputLevelWise()};

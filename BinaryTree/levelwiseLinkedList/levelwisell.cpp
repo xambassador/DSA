@@ -1,5 +1,8 @@
 #include<iostream>
-using namespace std;
+#include<vector>
+using std::cout;
+using std::endl;
+using std::vector;
 #include"../BinaryTree.h"
 
 class Node {
@@ -22,8 +25,7 @@ vector<Node* > levelWiseLL(BinaryTreeNode<int>* root) {
     queue<BinaryTreeNode<int>* > pendingNodes;
     pendingNodes.push(root);
     pendingNodes.push(NULL);
-    Node* head {NULL};
-    Node* tail {NULL};
+    Node* head {NULL}, *tail {NULL};
     while(!pendingNodes.empty()) {
         BinaryTreeNode<int>* front {pendingNodes.front()};
         pendingNodes.pop();
@@ -39,7 +41,7 @@ vector<Node* > levelWiseLL(BinaryTreeNode<int>* root) {
         if(head == NULL) {
             head = node;
             tail = node;
-        }else{
+        } else {
             tail->next = node;
             tail = node;
         }
@@ -47,12 +49,12 @@ vector<Node* > levelWiseLL(BinaryTreeNode<int>* root) {
         if(front->right != NULL) pendingNodes.push(front->right);
     }
     return ans;
-} 
+}
 
 int main() {
     BinaryTreeNode<int>* root {TakeInputLevelWise()};
     vector<Node* > ans {levelWiseLL(root)};
-    for(int i{}; i<ans.size(); i++) {
+    for(int i{}; i < ans.size(); i++) {
         Node* tmp {ans[i]};
         while(tmp != NULL) {
             cout << tmp->data << " ";

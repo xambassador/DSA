@@ -1,5 +1,6 @@
 #include<iostream>
-using namespace std;
+using std::cout;
+using std::endl;
 #include "../BinaryTree.h"
 
 void mirror(BinaryTreeNode<int>* root) {
@@ -40,7 +41,7 @@ void Print(BinaryTreeNode<int>* root) {
         }
         cout << front->data << " ";
         if(front->left != NULL) pendingNodes.push(front->left);
-        if(front->right != NULL) pendingNodes.push(front->right); 
+        if(front->right != NULL) pendingNodes.push(front->right);
     }
 }
 

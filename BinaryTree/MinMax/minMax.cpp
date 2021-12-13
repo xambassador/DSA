@@ -1,5 +1,7 @@
 #include<iostream>
-using namespace std;
+#include<climits>
+using std::cout;
+using std::endl;
 #include"../BinaryTree.h"
 
 class Pair {
@@ -19,8 +21,7 @@ Pair minMax(BinaryTreeNode<int>* root) {
     Pair leftAns {minMax(root->left)};
     Pair rightAns {minMax(root->right)};
 
-    int max {0};
-    int min {INT_MAX};
+    int max {0}, min{INT_MAX};
     if(leftAns.max > rightAns.max) max = leftAns.max;
     else max = rightAns.max;
 
@@ -33,11 +34,11 @@ Pair minMax(BinaryTreeNode<int>* root) {
     Pair ans;
     ans.max = max;
     ans.min = min;
-    return ans; 
+    return ans;
 }
 
 int main() {
     BinaryTreeNode<int>* root {TakeInputLevelWise()};
     Pair ans {minMax(root)};
-    cout << ans.max << " " << ans.min << endl; 
-}   
+    cout << ans.max << " " << ans.min << endl;
+}

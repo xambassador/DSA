@@ -1,6 +1,12 @@
-#include<queue>
-#include"BinaryTreeNode.h"
 
+#pragma once
+#include<iostream>
+#include<queue>
+using std::cin;
+using std::cout;
+using std::endl;
+using std::queue;
+#include"BinaryTreeNode.h"
 
 BinaryTreeNode<int>* TakeInput() {
     int data;
@@ -33,7 +39,7 @@ BinaryTreeNode<int>* TakeInputLevelWise() {
         else front->left = NULL;
         cout << "Enter right child " << endl;
         cin >> tdata;
-        if(tdata != -1) { 
+        if(tdata != -1) {
             front->right = new BinaryTreeNode<int>(tdata);
             pendingNodes.push(front->right);
         }

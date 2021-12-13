@@ -1,7 +1,7 @@
 #include<iostream>
-using namespace std;
+using std::cout;
+using std::endl;
 #include"../BinaryTree.h"
-
 
 void LevelOrder(BinaryTreeNode<int>* root) {
     if(root == NULL) return;
@@ -22,7 +22,6 @@ void LevelOrder(BinaryTreeNode<int>* root) {
         if(front->right != NULL) pendingNodes.push(front->right);
     }
 }
-
 
 int main() {
     BinaryTreeNode<int>* root {TakeInputLevelWise()};
