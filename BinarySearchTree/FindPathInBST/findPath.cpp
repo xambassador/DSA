@@ -1,7 +1,10 @@
 #include<iostream>
-using namespace std;
+#include<vector>
+using std::cin;
+using std::cout;
+using std::endl;
+using std::vector;
 #include"../BST.h"
-
 
 vector<int>* RootToNodePath(BinarySearchTreeNode<int>* root, int x) {
     if(root == NULL) return NULL;
@@ -10,7 +13,7 @@ vector<int>* RootToNodePath(BinarySearchTreeNode<int>* root, int x) {
         vector<int>* v {new vector<int>};
         v->push_back(x);
         return v;
-    } 
+    }
 
     vector<int>* ans {RootToNodePath(root->left,x)};
     if(ans != NULL) {
@@ -31,7 +34,5 @@ int main() {
     int x;
     cin >> x;
     vector<int>* v {RootToNodePath(root,x)};
-    for(int i{}; i<v->size(); i++) {
-        cout << v->at(i) << " ";
-    }
+    for(int i{}; i < v->size(); i++) cout << v->at(i) << " ";
 }
