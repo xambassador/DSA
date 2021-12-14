@@ -1,6 +1,8 @@
 #include<iostream>
-using namespace std;
-
+using std::cin;
+using std::cout;
+using std::endl;
+using std::string;
 
 int gcd(int a, int b) {
     if (b == 0) return a;
@@ -20,10 +22,10 @@ int main() {
             cout << b << endl;
             continue;
         }
-        
+
         int number {};
-        for (int i{}; i<b.size(); i++) {
-            int currentDigit {b[i] - '0'};
+        for (int i{}; i < b.size(); i++) {
+            int currentDigit{b[i] - '0'};
             number = ((number * 10) % a + (currentDigit % a)) % a;
         }
         cout << gcd(a,number) << endl;

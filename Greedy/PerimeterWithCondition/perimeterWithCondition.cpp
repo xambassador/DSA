@@ -1,24 +1,25 @@
 #include<iostream>
 #include<algorithm>
+using std::cin;
+using std::cout;
+using std::endl;
+using std::sort;
 
-
-int main(){
+int main() {
     int n;
-    std::cin >> n;
-    int* arr {new int[n]};
-    for(int i{}; i<n; i++) std::cin >> arr[i];
-    std::sort(arr,arr+n);
-    int start {n-3};
-    int mid {n-2};
-    int end {n-1};
-    while(start+mid <= end) {
+    cin >> n;
+    int* arr{new int[n]};
+    for(int i{}; i < n; i++) cin >> arr[i];
+    sort(arr, arr + n);
+    int start{n - 3}, mid{n - 2}, end{n - 1};
+    while(start + mid <= end) {
         start--;
         mid--;
         end--;
         if(start < 0) {
-            std::cout << "-1" << std::endl;
+            cout << "-1" << endl;
             return 0;
         }
     }
-    std::cout << arr[start] << " " << arr[mid] << " " << arr[end] << std::endl;
+    cout << arr[start] << " " << arr[mid] << " " << arr[end] << endl;
 }

@@ -1,14 +1,20 @@
 #include<iostream>
 #include<vector>
 #include<algorithm>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::vector;
+using std::greater;
+using std::sort;
+
 #define MAX_SIZE 2000001
 
 int main() {
     int* sieve {new int[MAX_SIZE]};
-    for (int i{}; i<=MAX_SIZE; i++) sieve[i] = i;
-    for (int i{2}; i*i<=MAX_SIZE; i++) {
-        for (int j{i * i}; j<=MAX_SIZE; j+=i) {
+    for (int i{}; i <= MAX_SIZE; i++) sieve[i] = i;
+    for (int i{2}; i * i <= MAX_SIZE; i++) {
+        for (int j{i * i}; j <= MAX_SIZE; j += i) {
             if (sieve[j] > i) sieve[j] = i;
         }
     }
@@ -43,6 +49,6 @@ int main() {
         }
     }
     finalans[n - 1] = 1;
-    for (int i = 0; i < n; i++) cout << finalans[i] << " ";
+    for (int i{}; i < n; i++) cout << finalans[i] << " ";
     cout << endl;
 }

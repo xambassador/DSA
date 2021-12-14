@@ -1,5 +1,7 @@
 #include<iostream>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 
 void multiply(int A[2][2], int M[2][2]) {
     int fValue {A[0][0] * M[0][0] + A[0][1] * M[1][0]};
@@ -13,11 +15,8 @@ void multiply(int A[2][2], int M[2][2]) {
     A[1][1] = lValue;
 }
 
-
 void power(int A[2][2], int n) {
-    if (n == 0 || n == 1) {
-        return;
-    }
+    if (n == 0 || n == 1) return;
 
     power(A, n/2);
 
@@ -29,11 +28,10 @@ void power(int A[2][2], int n) {
     }
 }
 
-
 int fib(int n) {
     int A[2][2] {{1,1}, {1,0}};
     if (n == 0) return 0;
-    power(A,n-1);
+    power(A, n - 1);
     return A[0][0];
 }
 

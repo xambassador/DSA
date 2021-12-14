@@ -1,10 +1,13 @@
 #include<iostream>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::string;
 
 int power(long long int a, string b, int m) {
-    int len {(int) b.length()};
-    long long int ans {1};
-    for (int i{len-1}; i>=0; i--) {
+    int len{(int) b.length()};
+    long long int ans{1};
+    for (int i{len - 1}; i >= 0; i--) {
         if (b[i] == '0') {
             a = a % m;
             a = (((a * a) % m) * a) % m;

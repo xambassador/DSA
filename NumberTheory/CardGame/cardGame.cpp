@@ -2,8 +2,12 @@
 #include<utility>
 #include<vector>
 typedef long long int ll;
-using namespace std;
-
+using std::cin;
+using std::cout;
+using std::endl;
+using std::vector;
+using std::pair;
+using std::make_pair;
 
 int main() {
     int n;
@@ -14,7 +18,7 @@ int main() {
     for (int i{}; i < n; i++) cin >> a[i];
     // store prime factors of k with respective powers
     vector<pair<int,int> > v;
-    for (int i{2}; i*i <= temp_for_k; i++) {
+    for (int i{2}; i * i <= temp_for_k; i++) {
         if (temp_for_k % i == 0) {
             int count {};
             while (temp_for_k % i == 0) {
@@ -30,8 +34,7 @@ int main() {
     vector<pair<int,int> > vq = v;
     for (int i{}; i < vq.size(); i++) vq[i].second = 0;
     int j {};
-    for (int i {}; i < n; i++)
-    {
+    for (int i {}; i < n; i++) {
         for (int z{}; z < v.size(); z++) {
             if (a[i] % v[z].first == 0) {
                 temp_for_k = a[i];

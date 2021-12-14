@@ -1,6 +1,8 @@
 #include<iostream>
 #define MOD 1000000007
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 
 void multiply(long long A[2][2], long long B[2][2]) {
     long long fValue {(((A[0][0]) % MOD * (B[0][0]) % MOD) % MOD + ((A[0][1]) % MOD * (B[1][0]) % MOD) % MOD) % MOD};
@@ -26,7 +28,7 @@ void power(long long matrice[2][2], long long n) {
 long long fibonacci(long long n) {
     long long matrice[2][2] {{1,1},{1,0}};
     if (n == 0) return 0;
-    power(matrice, n-1);
+    power(matrice, n - 1);
     return matrice[0][0] % MOD;
 }
 

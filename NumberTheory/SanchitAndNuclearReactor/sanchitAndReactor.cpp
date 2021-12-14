@@ -1,12 +1,13 @@
 #include<iostream>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 
 long long fact(long long int a, int m) {
     long long int res {1};
     for (long long int i{2}; i<=a; i++) res = (res % m * i % m) % m;
     return res;
 }
-
 
 int main() {
     int n;
@@ -15,7 +16,7 @@ int main() {
         long long int t;
         int m;
         cin >> t >> m;
-        
+
         if (t<m) {
             if (m - t == 1) {
                 cout << 1 << endl;

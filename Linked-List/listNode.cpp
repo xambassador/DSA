@@ -3,15 +3,14 @@ using namespace std;
 #include "LinkedListClass.h"
 using namespace classNode;
 
-
 int main(){
-    // Create list
+    // Create listSearching(Linear)
     // Member functions
     /*
      * Constructor
      * Operator=
      * assign
-    */ 
+    */
 
     // Using Deafult constructor
     LinkedList<int> list1;

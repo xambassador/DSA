@@ -1,5 +1,7 @@
 #include<iostream>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 #define ll long long
 #define MOD 1000000007
 
@@ -13,32 +15,32 @@ ll fibonaci(ll n) {
     ll m {MOD - 1};
     while (n) {
         if (n & 1) {
-            for (int i{}; i<2; i++) {
-                for (int j{}; j<2; j++) {
+            for (int i{}; i < 2; i++) {
+                for (int j{}; j < 2; j++) {
                     temp[i][j] = 0;
-                    for (int k{}; k<2; k++) {
+                    for (int k{}; k < 2; k++) {
                         temp[i][j] += arr[i][k] * ans[k][j];
                         temp[i][j] %= m;
                     }
                 }
             }
-            for (int i{}; i<2; i++) {
-                for (int j{}; j<2; j++) ans[i][j] = temp[i][j];
+            for (int i{}; i < 2; i++) {
+                for (int j{}; j < 2; j++) ans[i][j] = temp[i][j];
             }
         }
 
-        for (int i{}; i<2; i++) {
-            for (int j{}; j<2; j++) {
+        for (int i{}; i < 2; i++) {
+            for (int j{}; j < 2; j++) {
                 temp[i][j] = 0;
-                for (int k{}; k<2; k++) {
+                for (int k{}; k < 2; k++) {
                     temp[i][j] += arr[i][k] * arr[k][j];
                     temp[i][j] %= m;
                 }
             }
         }
 
-        for (int i{}; i<2; i++) {
-            for (int j{}; j<2; j++) arr[i][j] = temp[i][j];
+        for (int i{}; i < 2; i++) {
+            for (int j{}; j < 2; j++) arr[i][j] = temp[i][j];
         }
 
         n >>= 1;

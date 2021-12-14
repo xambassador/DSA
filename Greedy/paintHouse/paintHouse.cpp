@@ -1,13 +1,14 @@
 #include<iostream>
 #include<algorithm>
-
+using std::cin;
+using std::cout;
+using std::endl;
 
 struct Workers {
     int time;
     int cost;
     int speed;
 };
-
 
 bool compare(Workers a, Workers b) {
     // If two workers available at same time
@@ -18,7 +19,7 @@ bool compare(Workers a, Workers b) {
             return a.cost < b.cost;
         }
         return a.speed > b.speed;
-    } 
+    }
     return a.time < b.time;
 }
 
@@ -27,32 +28,29 @@ long long int minCost(Workers* arr, int n, long long d) {
     long long areaCoverd {};
     int currentWorker {};
 
-    for(int i{1}; i<n && areaCoverd < d; i++) {
+    for(int i{1}; i < n && areaCoverd < d; i++) {
         areaCoverd = areaCoverd + (arr[i].time - arr[i-1].time) * arr[currentWorker].speed;
-        
+
         if(areaCoverd >= d) return currentCost;
 
         if (arr[currentWorker].speed < arr[i].speed) {
             currentWorker = i;
             currentCost += arr[currentWorker].cost;
         }
-
     }
     return currentCost;
 }
 
-int main(){
+int main() {
     int n;
-    std::cin >> n;
+    cin >> n;
 
     long long d;
-    std::cin >> d;
+    cin >> d;
 
-    Workers* arr {new Workers[n]};
-    for(int i{}; i<n; i++) {
-        std::cin >> arr[i].time >> arr[i].cost >> arr[i].speed;
-    }
+    Workers* arr{new Workers[n]};
+    for(int i{}; i < n; i++) cin >> arr[i].time >> arr[i].cost >> arr[i].speed;
 
-    long long ans {minCost(arr,n,d)};
-    std::cout << ans << std::endl;
+    long long ans{minCost(arr, n, d)};
+    cout << ans << endl;
 }

@@ -1,16 +1,19 @@
 #include<iostream>
 #include<vector>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::vector;
 
 int main() {
     int n;
     cin >> n;
 
-    vector<bool> is_prime(n+1, true);
+    vector<bool> is_prime(n + 1, true);
     is_prime[0] = is_prime[1] = false;
-    for (int i{2}; i*i<=n; i++) {
+    for (int i{2}; i * i <= n; i++) {
         if (is_prime[i] && (long long) i*i <= n) {
-            for (int j{i*i}; j<=n; j+=i) is_prime[j] = false;
+            for (int j{i * i}; j <= n; j += i) is_prime[j] = false;
         }
     }
 

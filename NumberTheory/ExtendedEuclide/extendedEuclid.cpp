@@ -1,5 +1,7 @@
 #include<iostream>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 
 class Triplet {
     public:
@@ -16,8 +18,8 @@ Triplet extendedEuclide(int a, int b) {
         ans.y = 0;
         return ans;
     }
-    
-    Triplet smallAns {extendedEuclide(b, a%b)};
+
+    Triplet smallAns{extendedEuclide(b, a % b)};
     Triplet ans;
     ans.gcd = smallAns.gcd;
     ans.x = smallAns.y;

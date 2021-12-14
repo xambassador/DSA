@@ -1,5 +1,9 @@
 #include<iostream>
 #include<algorithm>
+using std::cin;
+using std::cout;
+using std::endl;
+using std::sort;
 
 struct Item {
     int value;
@@ -13,11 +17,11 @@ bool compare(Item a, Item b) {
 }
 
 double fKnapsack(Item* arr, int n, int W) {
-    std::sort(arr,arr+n,compare);
+    sort(arr, arr + n, compare);
     int currentWeight {};
     double fValue {};
 
-    for(int i{}; i<n; i++) {
+    for(int i{}; i < n; i++) {
         if (currentWeight + arr[i].weight <= W) {
             currentWeight += arr[i].weight;
             fValue += arr[i].value;
@@ -27,20 +31,17 @@ double fKnapsack(Item* arr, int n, int W) {
             break;
         }
     }
-
     return fValue;
 }
 
 int main() {
     int n;
-    std::cin >> n;
+    cin >> n;
     Item arr[n];
-    for(int i{}; i<n; i++) {
-        std::cin >> arr[i].value >> arr[i].weight;
-    }
+    for(int i{}; i < n; i++) cin >> arr[i].value >> arr[i].weight;
 
     int W;
-    std::cin >> W;
-    double ans {fKnapsack(arr,n,W)};
-    std::cout << ans << std::endl;
+    cin >> W;
+    double ans {fKnapsack(arr, n, W)};
+    cout << ans << endl;
 }

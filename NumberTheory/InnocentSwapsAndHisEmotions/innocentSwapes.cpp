@@ -1,8 +1,9 @@
 #include<iostream>
 #define MAX 1000001
 #define MOD 1000000007
-using namespace std;
-
+using std::cin;
+using std::cout;
+using std::endl;
 
 long long int modExponetitation(long long int a, long long int b) {
     long long ans {1};
@@ -17,15 +18,15 @@ long long int modExponetitation(long long int a, long long int b) {
 int main() {
     long long factorial[MAX];
     factorial[0] = 1;
-    for (int i{1}; i<MAX; i++) {
+    for (int i{1}; i < MAX; i++) {
         factorial[i] = i * factorial[i-1];
-        if (factorial[i] >= MOD) factorial[i] %= MOD;    
+        if (factorial[i] >= MOD) factorial[i] %= MOD;
     }
 
     int t;
     cin >> t;
     while(t--) {
-        int n,k;
+        int n, k;
         cin >> n >> k;
         if (k > n) {
             cout << endl;
@@ -38,6 +39,5 @@ int main() {
         ans = (ans * modExponetitation(factorial[n - k], MOD-2)) % MOD;
         cout << ans << endl;
     }
-
     return 0;
 }

@@ -1,17 +1,21 @@
 #include<iostream>
-using namespace std;
-class List { 
+using std::cin;
+using std::cout;
+using std::endl;
+using std::initializer_list;
+
+class List {
     class Node {
         public:
         int data;
         Node* next;
         Node* prev;
-        Node(){
+        Node() {
             this->next = NULL;
             this->prev = NULL;
         }
 
-        Node(int data){
+        Node(int data) {
             this->data = data;
             this->next = NULL;
             this->prev = NULL;
@@ -22,25 +26,25 @@ class List {
     Node* tail;
 
     public:
-    
+
     //Default constructor
-    List(){
+    List() {
         this->SIZE = 0;
         this->head = NULL;
         this->tail = NULL;
     }
 
     //Parameterized constructor
-    List(std::initializer_list<int> l){
+    List(initializer_list<int> l) {
         this->head = NULL;
         this->tail = NULL;
         this->SIZE = 0;
-        for(auto it{l.begin()}; it != l.end(); it++){
+        for(auto it{l.begin()}; it != l.end(); it++) {
             Node* node{new Node(*it)};
-            if(this->head == NULL){
+            if(this->head == NULL) {
                 this->head = node;
                 this->tail = node;
-            }else{
+            } else {
                 this->tail->next = node;
                 node->prev = this->tail;
                 this->tail = node;
@@ -48,18 +52,18 @@ class List {
         }
         this->SIZE = l.size();
     }
-    
+
     // Parameterized constructor, take input from array
     List(int size, int* arr) {
         this->head = NULL;
         this->tail = NULL;
         this->SIZE = 0;
-        for(int i{}; i<size; i++){
+        for(int i{}; i < size; i++) {
             Node* node {new Node(arr[i])};
-            if(this->head == NULL){
+            if(this->head == NULL) {
                 this->head = node;
                 this->tail = node;
-            }else {
+            } else {
                 this->tail->next = node;
                 node->prev = this->tail;
                 this->tail = node;
@@ -75,12 +79,12 @@ class List {
         this->tail = NULL;
         Node* tmp{l.head};
         int i{};
-        while(i < l.SIZE){
+        while(i < l.SIZE) {
             Node* node{new Node(tmp->data)};
-            if(this->head == NULL){
+            if(this->head == NULL) {
                 this->head = node;
                 this->tail = node;
-            }else{
+            } else {
                 this->tail->next = node;
                 node->prev = this->tail;
                 this->tail = node;
@@ -90,7 +94,7 @@ class List {
         this->SIZE = l.SIZE;
     }
 
-    void print(){
+    void print() {
         if(this->head == NULL) return;
         Node* tmp {this->head};
         while(tmp != NULL) {
@@ -100,23 +104,23 @@ class List {
         cout << endl;
     }
 
-    int size(){
+    int size() {
         if(this->head == NULL) return 0;
         return this->SIZE;
     }
 
-    bool empty(){
+    bool empty() {
         return this->head == NULL ? true : false;
     }
 
-    void assign(initializer_list<int> l){
+    void assign(initializer_list<int> l) {
         auto it{l.begin()};
-        while(it != l.end()){
+        while(it != l.end()) {
             Node* node{new Node(*it)};
-            if(this->head == NULL){
+            if(this->head == NULL) {
                 this->head = node;
                 this->tail = node;
-            }else{
+            } else {
                 this->tail->next = node;
                 node->prev = this->tail;
                 this->tail = node;
@@ -130,10 +134,10 @@ class List {
         int i{};
         while(i < size) {
             Node* node{new Node(value)};
-            if(this->head == NULL){
+            if(this->head == NULL) {
                 this->head = node;
                 this->tail = node;
-            }else{
+            } else {
                 this->tail->next = node;
                 node->prev = this->tail;
                 this->tail = node;
@@ -143,22 +147,22 @@ class List {
         this->SIZE += size;
     }
 
-    int front(){
+    int front() {
         if(this->head == NULL) return -1;
         return this->head->data;
     }
 
-    int back(){
+    int back() {
         if(this->head == NULL) return -1;
         return this->tail->data;
     }
 
     void push_back(int data) {
         Node* node{new Node(data)};
-        if(this->head == NULL){
+        if(this->head == NULL) {
             this->head = node;
             this->tail = node;
-        }else{
+        } else {
             this->tail->next = node;
             node->prev = this->tail;
             this->tail = node;
@@ -166,12 +170,12 @@ class List {
         this->SIZE += 1;
     }
 
-    void push_front(int data){
+    void push_front(int data) {
         Node* node{new Node(data)};
         if(this->head == NULL) {
             this->head = node;
             this->tail = node;
-        }else{
+        } else {
             node->next = this->head;
             this->head->prev = node;
             this->head = node;
@@ -179,7 +183,7 @@ class List {
         this->SIZE += 1;
     }
 
-    void pop_back(){
+    void pop_back() {
         if(this->head == NULL) return;
         Node* tmp{this->tail};
         this->tail = this->tail->prev;
@@ -188,7 +192,7 @@ class List {
         this->SIZE -= 1;
     }
 
-    void pop_front(){
+    void pop_front() {
         if(this->head == NULL) return;
         Node* tmp{this->head};
         this->head = this->head->next;
@@ -197,12 +201,12 @@ class List {
         this->SIZE -= 1;
     }
 
-    void insert(int data){
+    void insert(int data) {
         Node* node{new Node(data)};
-        if(this->head == NULL){
+        if(this->head == NULL) {
             this->head = node;
             this->tail = node;
-        }else{
+        } else {
             this->tail->next = node;
             node->prev = this->tail;
             this->tail = node;
@@ -210,17 +214,15 @@ class List {
         this->SIZE += 1;
     }
 
-    void insert(int position, int data){
+    void insert(int position, int data) {
         Node* node{new Node(data)};
         int i{};
         Node* tmp{this->head};
-        while(i < position-1 && tmp != NULL){
+        while(i < position - 1 && tmp != NULL) {
             tmp = tmp->next;
             i++;
         }
-        if(tmp == NULL) {
-            return;
-        }
+        if(tmp == NULL) return;
         Node* prev{tmp->prev};
         prev->next = NULL;
         tmp->prev = NULL;
@@ -231,23 +233,23 @@ class List {
         this->SIZE += 1;
     }
 
-    void remove(int position){
+    void remove(int position) {
         if(this->head == NULL) return;
         Node* tmp{this->head};
         int i{};
-        while(tmp != NULL && i < position-1){
+        while(tmp != NULL && i < position - 1) {
             tmp = tmp->next;
             i++;
         }
         if(tmp == NULL) return;
         // If tmp reach to last node
-        if(tmp->next == NULL){
+        if(tmp->next == NULL) {
             Node* prev{tmp->prev};
             prev->next = NULL;
             tmp->prev = NULL;
             this->tail = prev;
             delete tmp;
-        }else{
+        } else {
             Node* prev{tmp->prev};
             Node* next{tmp->next};
             prev->next = next;
@@ -259,21 +261,19 @@ class List {
         this->SIZE -= 1;
     }
 
-    void removeElement(int data){
+    void removeElement(int data) {
         if(this->head == NULL) return;
         Node* tmp{this->head};
-        while(tmp != NULL && tmp->data != data){
-            tmp = tmp->next;
-        }
+        while(tmp != NULL && tmp->data != data) tmp = tmp->next;
         if(tmp == NULL) return;
         // If tmp reach to last node
-        if(tmp->next == NULL){
+        if(tmp->next == NULL) {
             Node* prev{tmp->prev};
             prev->next = NULL;
             tmp->prev = NULL;
             this->tail = prev;
             delete tmp;
-        }else{
+        } else {
             Node* prev{tmp->prev};
             Node* next{tmp->next};
             prev->next = next;
@@ -284,9 +284,9 @@ class List {
         }
         this->SIZE -= 1;
     }
-    
+
     private:
-    Node* reverse(Node* head){
+    Node* reverse(Node* head) {
         if(head == NULL || head->next == NULL) return head;
         Node* ans{reverse(head->next)};
         Node* tail{head->next};
@@ -297,14 +297,14 @@ class List {
     }
 
     public:
-    void reverse(){
+    void reverse() {
         this->tail = this->head;
         this->head = reverse(this->head);
     }
 
-    void clean(){
+    void clean() {
         if(this->head == NULL) return;
-        while(this->head != NULL){
+        while(this->head != NULL) {
             Node* tmp{this->head};
             this->head = this->head->next;
             this->SIZE -= 1;
@@ -312,7 +312,7 @@ class List {
         }
     }
 
-    void TakeInput(){
+    void TakeInput() {
         cout << "Enter data or -1 for exit" << endl;
         int data;
         cin >> data;
@@ -321,7 +321,7 @@ class List {
             if(this->head == NULL) {
                 this->head = node;
                 this->tail = node;
-            }else{
+            } else {
                 this->tail->next = node;
                 node->prev = this->tail;
                 this->tail = node;

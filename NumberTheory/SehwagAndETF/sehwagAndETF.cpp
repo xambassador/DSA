@@ -1,7 +1,12 @@
 #include<iostream>
 #include<math.h>
 #include<iomanip>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::fixed;
+using std::setprecision;
+
 #define MAX 1100001
 
 long long int phi[MAX];
@@ -12,22 +17,22 @@ bool primes[MAX];
 int main() {
     int t;
     cin >> t;
-    for (int i{3}; i<MAX; i++) primes[i] = 1;
+    for (int i{3}; i < MAX; i++) primes[i] = 1;
     primes[2] = 1;
-    for (int i{3}; i*i<MAX; i+=2) {
+    for (int i{3}; i * i < MAX; i += 2) {
         if (primes[i]) {
-            for (int j{i*i}; j<MAX; j+=2*i) primes[j] = 0;
+            for (int j{i * i}; j < MAX; j += 2 * i) primes[j] = 0;
         }
     }
 
     p[0] = 2;
     long long int c{1};
-    for (int i{3};i<MAX; i+=2) {
+    for (int i{3};i < MAX; i += 2) {
         if (primes[i]) p[c++] = i;
     }
 
     while(t--) {
-        int a,b,k;
+        int a, b, k;
         cin >> a >> b >> k;
 
         if (k == 1) {

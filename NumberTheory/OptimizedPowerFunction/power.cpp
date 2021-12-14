@@ -1,5 +1,7 @@
 #include<iostream>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 
 int power(int x, int n) {
     if (x == 0) return 0;
@@ -7,7 +9,7 @@ int power(int x, int n) {
     if (n == 0) return 1;
 
     if (n == 1) return x;
-    
+
     int ans;
 
     if (n % 2 == 0) {
@@ -21,9 +23,8 @@ int power(int x, int n) {
     return ans;
 }
 
-
 int main() {
-    int x,n;
+    int x, n;
     cin >> x >> n;
     int ans {power(x,n)};
     cout << ans << endl;
