@@ -2,66 +2,59 @@
 #include<stack>
 #include<vector>
 #include<cstring>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::stack;
+using std::vector;
 
-stack<int> st;  
+stack<int> st;
 vector<int> adjList[100010];
 bool visited[100010];
 
-
-void dfs2(int index){
+void dfs2(int index) {
 	visited[index] = true;
-	for(unsigned int j{};j<adjList[index].size();j++) {
-		if(!visited[adjList[index][j]]) {
-			dfs2(adjList[index][j]);
-		}
+	for(unsigned int j{}; j < adjList[index].size(); j++) {
+		if(!visited[adjList[index][j]]) dfs2(adjList[index][j]);
 	}
 }
 
-void dfs(int index){
+void dfs(int index) {
 	visited[index] = true;
-	for(unsigned int j{};j<adjList[index].size();j++) {
-		if(!visited[adjList[index][j]]) {
-			dfs(adjList[index][j]);
-		}
+	for(unsigned int j{}; j < adjList[index].size(); j++) {
+		if(!visited[adjList[index][j]]) dfs(adjList[index][j]);
 	}
 	st.push(index);
 }
-	
 
-int main(){
+int main() {
 	int t;
-	scanf("%d",&t);
+	scanf("%d", &t);
 	while (t--) {
 		memset(visited,false,sizeof(visited));
-		
-		int n,m;
-		scanf("%d %d",&n,&m);
-		for(int i{};i<m;i++) {
-			int a,b;
-			scanf("%d %d",&a,&b);
+		int n, m;
+		scanf("%d %d", &n, &m);
+		for(int i{}; i < m; i++) {
+			int a, b;
+			scanf("%d %d", &a, &b);
 			adjList[a].push_back(b);
 		}
-		
-		for(int i{1};i<=n;i++) {
-			if(!visited[i]) {
-				dfs(i);
-			}
+
+		for(int i{1}; i <= n; i++) {
+			if(!visited[i]) dfs(i);
 		}
-		memset(visited,false,sizeof(visited));
+		memset(visited, false, sizeof(visited));
 		int count{};
-		while(!st.empty()){
-			int index {st.top()};
+		while(!st.empty()) {
+			int index{st.top()};
 			st.pop();
 			if(!visited[index]) {
 				count++;
 				dfs2(index);
 			}
 		}
-		printf("%d\n",count);
-		for(int i{1};i<=n;i++) {
-			adjList[i].clear();
-		}
+		printf("%d\n", count);
+		for(int i{1}; i <= n; i++) adjList[i].clear();
 	}
 	return 0;
 }

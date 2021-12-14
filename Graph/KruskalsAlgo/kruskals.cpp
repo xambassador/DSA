@@ -1,6 +1,11 @@
 #include<iostream>
 #include<algorithm>
 #include<vector>
+using std::cin;
+using std::cout;
+using std::endl;
+using std::vector;
+using std::sort;
 
 class Edge {
     public:
@@ -9,11 +14,9 @@ class Edge {
     int weight;
 };
 
-
 bool compare(Edge e1, Edge e2) {
     return e1.weight < e2.weight;
 }
-
 
 int getParent(int v, int* parent) {
     if (v == parent[v]) return v;
@@ -21,11 +24,10 @@ int getParent(int v, int* parent) {
 }
 
 void kruskal(Edge* edges, int V, int E) {
-    std::vector<Edge> output;
+    vector<Edge> output;
     int parent[V];
-    for (int i{}; i<V; i++) parent[i] = i;
-    int i{};
-    int cnt{};
+    for (int i{}; i < V; i++) parent[i] = i;
+    int i{}, cnt{};
     while(cnt < (V-1)) {
         int p1 {getParent(edges[i].sv,parent)};
         int p2 {getParent(edges[i].ev,parent)};
@@ -39,21 +41,16 @@ void kruskal(Edge* edges, int V, int E) {
     }
 
     for (auto i : output) {
-        if (i.sv < i.ev) std::cout << i.sv << " " << i.ev << " " << i.weight << std::endl;
-        else std::cout << i.ev << " " << i.sv << " " << i.weight << std::endl;
+        if (i.sv < i.ev) cout << i.sv << " " << i.ev << " " << i.weight << endl;
+        else cout << i.ev << " " << i.sv << " " << i.weight << endl;
     }
 }
 
-
-int main(){
-    int V,E;
-    std::cin >> V >> E;
-
-    Edge* edges {new Edge[E]};
-    for (int i{}; i<E; i++) {
-        std::cin >> edges[i].sv >> edges[i].ev >> edges[i].weight;
-    }
-
-    std::sort(edges,edges + E, compare);
+int main() {
+    int V, E;
+    cin >> V >> E;
+    Edge* edges{new Edge[E]};
+    for (int i{}; i < E; i++) cin >> edges[i].sv >> edges[i].ev >> edges[i].weight;
+    sort(edges,edges + E, compare);
     kruskal(edges,V,E);
 }

@@ -2,12 +2,15 @@
 #include <vector>
 #include <queue>
 #include<unordered_set>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::vector;
+using std::queue;
 
 int BFS(vector<vector<int>> graph, int n) {
-    bool* visited {new bool[n]};
+    bool* visited{new bool[n]};
     for (int i{}; i < n; i++) visited[i] = false;
-
     int* level {new int[n + 1]};
     for (int i{}; i <= n; i++) level[i] = 0;
 
@@ -32,14 +35,12 @@ int BFS(vector<vector<int>> graph, int n) {
 }
 
 int main() {
-
     int t;
     cin >> t;
     while (t--) {
         int n, m;
         cin >> n >> m;
         vector<vector<int>> graph(n);
-
         for (int i{}; i < m; i++) {
             int x, y;
             cin >> x >> y;

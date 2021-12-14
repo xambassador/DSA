@@ -1,22 +1,25 @@
-#include <iostream>
-#include <vector>
+#include<iostream>
+#include<vector>
 #include<utility>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::vector;
+using std::pair;
+using std::make_pair;
 
-const int N = 1e5 + 5;
+const int N{1e5 + 5};
 bool error;
 int col[N];
 vector<pair<int, int>> adj[N];
 
 void dfs(int start) {
     for (auto edge : adj[start]) {
-        int next = edge.first;
+        int next{edge.first};
         if (col[next] == -1) {
             col[next] = col[start] ^ edge.second;
             dfs(next);
-        } else if (col[next] != col[start] ^ edge.second) {
-            error = true;
-        }
+        } else if (col[next] != col[start] ^ edge.second) error = true;
     }
 }
 

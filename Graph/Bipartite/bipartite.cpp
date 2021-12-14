@@ -2,7 +2,12 @@
 #include<vector>
 #include<queue>
 #include<unordered_set>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::vector;
+using std::queue;
+using std::unordered_set;
 
 
 bool bipartite(vector<int>* graph) {
@@ -19,7 +24,7 @@ bool bipartite(vector<int>* graph) {
         int currentSet {(sets[0].count(currentVertex) > 0 ? 0 : 1)};
 
         // Explore neighbours and check if any neighbour is exists in same set where current vertex is.
-        for (int i{}; i<graph[currentVertex].size(); i++) {
+        for (int i{}; i < graph[currentVertex].size(); i++) {
             int currentNeighbour {graph[currentVertex][i]};
 
             // If current neighbour is not in any set
@@ -31,12 +36,9 @@ bool bipartite(vector<int>* graph) {
             // If current neighbour found in set where current vertex is
             else if (sets[currentSet].count(currentNeighbour) > 0) return false;
         }
-
     }
-
     return true;
 }
-
 
 int main() {
     while (true) {
@@ -44,27 +46,23 @@ int main() {
         cin >> numberOfvertices;
 
         if (numberOfvertices == 0) return 0;
-        
+
         int numberOfEdges;
         cin >> numberOfEdges;
 
 
         vector<int>* graph {new vector<int>[numberOfEdges]};
-        for (int i{}; i<numberOfEdges; i++) {
+        for (int i{}; i < numberOfEdges; i++) {
             int startVertex, endVertex;
             cin >> startVertex >> endVertex;
             graph[startVertex].push_back(endVertex);
             graph[endVertex].push_back(startVertex);
         }
 
-        bool isBipartriteGraph {bipartite(graph)};
+        bool isBipartriteGraph{bipartite(graph)};
 
-        if (isBipartriteGraph) {
-            cout << "Graph is Colorable" << endl;
-        } else {
-            cout << "NOT BIPARTRITE" << endl;
-        }
-
+        if (isBipartriteGraph) cout << "Graph is Colorable" << endl;
+        else cout << "NOT BIPARTRITE" << endl;
         delete [] graph;
     }
 }

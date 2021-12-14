@@ -15,9 +15,8 @@ void reverseString(char* arr, int i, int j) {
     }
 }
 
-
 void reverseWordWise(char* arr){
-    int i{},j{int(strlen(arr)) - 1};
+    int i{}, j{int(strlen(arr)) - 1};
     while(i < j) {
         char a{arr[i]};
         arr[i] = arr[j];

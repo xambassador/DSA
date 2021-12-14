@@ -1,17 +1,19 @@
 #include<iostream>
 #include<vector>
 #include<climits>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::vector;
+
 typedef long long int ll;
 
 ll dfs(vector<ll>* edges, ll* arr, ll n, bool* visited, ll start) {
-    ll sum = arr[start];
+    ll sum{arr[start]};
     visited[start] = true;
     for (ll i{}; i < edges[start].size(); i++) {
-        ll adjacent {edges[start][i]};
-        if (!visited[adjacent]) {
-            sum += dfs(edges, arr, n, visited, adjacent);
-        }
+        ll adjacent{edges[start][i]};
+        if (!visited[adjacent]) sum += dfs(edges, arr, n, visited, adjacent);
     }
     return sum;
 }
@@ -22,7 +24,7 @@ int main() {
     while (t--) {
         ll n, m;
         cin >> n >> m;
-        vector<ll>* edges {new vector<ll>[n]};
+        vector<ll>* edges{new vector<ll>[n]};
         for (ll i{}; i < m; i++) {
             ll x, y;
             cin >> x >> y;
@@ -30,19 +32,17 @@ int main() {
             edges[y - 1].push_back(x - 1);
         }
 
-        ll* arr {new ll[n]};
+        ll* arr{new ll[n]};
         for (ll i{}; i < n; i++) cin >> arr[i];
 
         bool* visited {new bool[n]};
         for (ll i{}; i < n; i++) visited[i] = false;
-        ll maximum = INT_MIN;
+        ll maximum{INT_MIN};
 
         for (ll i{}; i < n; i++) {
             if (!visited[i]) {
                 ll current_component_total_bananas {dfs(edges, arr, n, visited, i)};
-                if (current_component_total_bananas > maximum) {
-                    maximum = current_component_total_bananas;
-                }
+                if (current_component_total_bananas > maximum) maximum = current_component_total_bananas;
             }
         }
         cout << maximum << endl;
