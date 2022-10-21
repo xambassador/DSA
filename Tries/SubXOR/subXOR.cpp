@@ -1,6 +1,6 @@
-#include<iostream>
-#include<climits>
-#include<vector>
+#include <iostream>
+#include <climits>
+#include <vector>
 using namespace std;
 
 // Trie Node
@@ -20,7 +20,7 @@ class TrieNode {
 
 void insert(TrieNode* root, int element) {
     TrieNode* tmp {root};
-    for (int i{31}; i>=0; i--) {
+    for (int i{31}; i >= 0; i--) {
         bool currentBit {(element >> i) & 1};
         if (currentBit == 0) {
             tmp->leftLeafNodes += 1;
@@ -39,7 +39,7 @@ int query(TrieNode* root, int element, int k) {
     if (root == NULL) return 0;
     int count {};
     TrieNode* tmp {root};
-    for (int i{31}; i>=0; i--) {
+    for (int i{31}; i >= 0; i--) {
         bool currentBitOfK {(k >> i) & 1};
         bool currentBitOfElement {(element >> i) & 1};
         if (currentBitOfK == 1) {
@@ -61,7 +61,7 @@ int query(TrieNode* root, int element, int k) {
                 tmp = tmp->left;
             }
         }
-    } 
+    }
     return count;
 }
 
@@ -72,13 +72,13 @@ int main() {
         int n,k;
         cin >> n >> k;
         int* arr {new int[n]};
-        for (int i{}; i<n; i++) cin >> arr[i];
+        for (int i{}; i < n; i++) cin >> arr[i];
         TrieNode* root {new TrieNode()};
         insert(root, 0);
         int pXor {};
         long long count {};
-        for (int i{}; i<n; i++) {
-            int Xor = pXor ^ arr[i];
+        for (int i{}; i < n; i++) {
+            int Xor {pXor ^ arr[i]};
             count += query(root, Xor, k);
             insert(root, Xor);
             pXor = Xor;

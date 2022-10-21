@@ -1,6 +1,5 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-
 
 class TrieNode {
     public:
@@ -9,7 +8,7 @@ class TrieNode {
     TrieNode() {
         weight = 0;
         children = new TrieNode*[26];
-        for (int i{}; i<26; i++) children[i] = NULL;
+        for (int i{}; i < 26; i++) children[i] = NULL;
     }
 };
 

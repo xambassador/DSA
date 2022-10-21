@@ -1,5 +1,5 @@
-#include<iostream>
-#include<queue>
+#include <iostream>
+#include <queue>
 using namespace std;
 
 class TrieNode {
@@ -12,7 +12,7 @@ class TrieNode {
         this->data = data;
         this->isTerminal = false;
         this->children = new TrieNode*[26];
-        for (int i{}; i<26; i++) this->children[i] = NULL;
+        for (int i{}; i < 26; i++) this->children[i] = NULL;
     }
 };
 
@@ -49,20 +49,20 @@ bool query(TrieNode* root, string s, string word = "") {
 
             // Now, a search string that enter by user is finish. Now, we need to show all possible strings
             // That starts with or that have prefix enter by user.
-            for (int i{}; i<26; i++) {
+            for (int i{}; i < 26; i++) {
                 if (root->children[i]) {
                     word = word + root->children[i]->data;
-                    query(root->children[i],s, word);
+                    query(root->children[i], s, word);
                     word = tmp;
                 }
             }
             return true;
         } else {
             string tmp {word};
-            for (int i{}; i<26; i++) {
+            for (int i{}; i < 26; i++) {
                 if (root->children[i]) {
                     word = word + root->children[i]->data;
-                    query(root->children[i],s, word);
+                    query(root->children[i], s, word);
                     word = tmp;
                 }
             }
@@ -89,21 +89,21 @@ void print(TrieNode* root) {
         TrieNode* tmp {nodes.front()};
         nodes.pop();
         cout << tmp->data << " : ";
-        for (int i{}; i<26; i++) {
+        for (int i{}; i < 26; i++) {
             if (tmp->children[i]) {
                 nodes.push(tmp->children[i]);
                 cout << tmp->children[i]->data << ", ";
             }
         }
         cout << endl;
-    } 
+    }
 }
 
 int main() {
     int n;
     cin >> n;
     TrieNode* root {new TrieNode('\0')};
-    for (int i{}; i<n; i++) {
+    for (int i{}; i < n; i++) {
         string s;
         cin >> s;
         insert(root, s);
