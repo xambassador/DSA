@@ -1,31 +1,27 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
- 
 int main() {
     int n;
-    cin >> n;
     int arr[n];
-    for(int i=0; i<n ; i++) {
-        cin >> arr[i];
-    }
 
-    int cnt = 0;
-    for(int i = n-1; i>=2; i--) {
-        if(arr[i] == i+1) continue;
+    cin >> n;
+    for (int i{}; i < n ; i++) cin >> arr[i];
 
+    int cnt{};
+
+    for (int i{n - 1}; i >= 2; i--) {
+        if (arr[i] == i + 1) continue;
         else {
-            if(arr[i-1] == i+1) {
-                swap(arr[i], arr[i-1]);
+            if (arr[i - 1] == i + 1) {
+                swap(arr[i], arr[i - 1]);
                 cnt++;
             }
-
-            else if(arr[i-2] == i+1) {
-                swap(arr[i-2],arr[i-1]);
-                swap(arr[i-1], arr[i]);
+            else if(arr[i - 2] == i + 1) {
+                swap(arr[i - 2],arr[i - 1]);
+                swap(arr[i - 1], arr[i]);
                 cnt += 2;
             }
-
             else {
                 cout << "NO" << endl;
                 return 0;
@@ -43,7 +39,7 @@ int main() {
         cnt++;
         cout << "YES" << endl;
         cout << cnt << endl;
-    }else {
+    } else {
         cout << "NO" << endl;
     }
 }
