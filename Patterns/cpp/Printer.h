@@ -7,7 +7,7 @@ void genericPrinter(int start, int end, int value, int increment = 0, bool isCha
     if (start > end) return;
     // Check is isCharacter flag is set to true
     // if it is, then it indicate that value is character.
-    // Now, First I do my job. My job is just chaeck value and according the type of value
+    // Now, First I do my job. My job is just check value and according the type of value
     // print it and then delegate rest of the work to recursion.
     if (isCharacter) {
         char c{(char)value};
