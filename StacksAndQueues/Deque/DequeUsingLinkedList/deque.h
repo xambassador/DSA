@@ -11,20 +11,20 @@ class Deque{
             // Default constructor
             Node(V data) : data(data), next(NULL) {}
         };
-    
+
     int size;
     Node<T>* _front;
     Node<T>* _rear;
 
     public:
-    
+
     // Default constructor
     Deque(){
         size = 0;
         _front = NULL;
         _rear = NULL;
     }
-    
+
     // Parameterized constructor
     Deque(std::initializer_list<T> l){
         size = l.size();
@@ -62,7 +62,7 @@ class Deque{
             tmp = tmp->next;
         }
     }
-    
+
     // Copy assignment operator
 
     void operator=(Deque<T> const &dq){
@@ -182,7 +182,7 @@ class Deque{
 
     void push_back(T data){
         Node<T>* node{new Node<T>(data)};
-        
+
         // If queue is initially empty
         if(_front == NULL) _front = _rear = node;
 
@@ -196,7 +196,7 @@ class Deque{
 
     void pop_front(){
         // If queue is empty
-        
+
         if(_front == NULL) return;
 
         // If there is only one element
