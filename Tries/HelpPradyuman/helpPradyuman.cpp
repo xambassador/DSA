@@ -1,6 +1,11 @@
 #include <iostream>
 #include <queue>
-using namespace std;
+using std::queue;
+using std::string;
+using std::cin;
+using std::cout;
+using std::endl;
+// -----------------------------------------------------------------------------
 
 class TrieNode {
     public:
@@ -16,6 +21,7 @@ class TrieNode {
     }
 };
 
+// -----------------------------------------------------------------------------
 void insert(TrieNode* root, string s) {
     if (s.empty()) {
         root->isTerminal = true;
@@ -35,10 +41,10 @@ void insert(TrieNode* root, string s) {
     return;
 }
 
+// -----------------------------------------------------------------------------
 bool query(TrieNode* root, string s, string word = "") {
     // Search string is empty
     if (s.empty()) {
-
         // Check if root is terminal or not. if yes then there is one word that ends with root->data.
         if (root->isTerminal) {
             // print that word
@@ -82,10 +88,11 @@ bool query(TrieNode* root, string s, string word = "") {
     return ans;
 }
 
+// -----------------------------------------------------------------------------
 void print(TrieNode* root) {
     queue<TrieNode*> nodes;
     nodes.push(root);
-    while(!nodes.empty()) {
+    while (!nodes.empty()) {
         TrieNode* tmp {nodes.front()};
         nodes.pop();
         cout << tmp->data << " : ";
@@ -99,6 +106,7 @@ void print(TrieNode* root) {
     }
 }
 
+// -----------------------------------------------------------------------------
 int main() {
     int n;
     cin >> n;
@@ -115,8 +123,6 @@ int main() {
         string s;
         cin >> s;
         bool ans {query(root, s)};
-        if (!ans) {
-            insert(root, s);
-        }
+        if (!ans) insert(root, s);
     }
 }

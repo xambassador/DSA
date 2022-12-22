@@ -1,6 +1,10 @@
 #include <iostream>
 #include <climits>
-using namespace std;
+using std::max;
+using std::cin;
+using std::cout;
+using std::endl;
+// -----------------------------------------------------------------------------
 
 // Trie Node
 class TrieNode {
@@ -14,31 +18,33 @@ class TrieNode {
     }
 };
 
+// -----------------------------------------------------------------------------
 void insert(TrieNode* root, int pXor) {
     TrieNode* tmp {root};
     for (int i{31}; i >= 0; i--) {
-        bool currentBit {(1 << i) & pXor};
+        bool currentBit {(bool)((1 << i) & pXor)};
         if (!tmp->arr[currentBit]) tmp->arr[currentBit] = new TrieNode();
         tmp = tmp->arr[currentBit];
     }
     tmp->value = pXor;
 }
 
+// -----------------------------------------------------------------------------
 int query(TrieNode* root, int pXor) {
     TrieNode* tmp {root};
     for (int i{31}; i >= 0; i--) {
-        bool currentBit {(1 << i) & pXor};
+        bool currentBit {(bool)((1 << i) & pXor)};
         if (tmp->arr[1-currentBit]) tmp = tmp->arr[1-currentBit];
         else if (tmp->arr[currentBit]) tmp = tmp->arr[currentBit];
     }
     return pXor ^ (tmp->value);
 }
 
+// -----------------------------------------------------------------------------
 int maxSubArrayXor(int* arr, int n) {
     TrieNode* root {new TrieNode()};
     insert(root, 0);
-    int result {INT_MIN};
-    int pXor {};
+    int result {INT_MIN}, pXor {};
     for (int i{}; i < n; i++) {
         pXor = pXor ^ arr[i];
         insert(root, pXor);
@@ -48,6 +54,7 @@ int maxSubArrayXor(int* arr, int n) {
     return result;
 }
 
+// -----------------------------------------------------------------------------
 int main() {
     int n;
     cin >> n;
