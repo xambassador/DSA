@@ -2,5 +2,4 @@
 using namespace std;
 #include"deque.h"
 
-int main(){
-}
+int main() {}

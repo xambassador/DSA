@@ -8,7 +8,7 @@ using std::cout;
 using std::endl;
 // -----------------------------------------------------------------------------
 
-bool isBalanced(string s){
+bool isBalanced(string s) {
     int i{};
     stack<char> _s;
     while (i < s.length() && s[i] != '\0') {
