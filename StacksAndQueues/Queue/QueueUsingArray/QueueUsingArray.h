@@ -1,8 +1,9 @@
 /* Implement Queue using array */
 /* Circular array based method */
+// -----------------------------------------------------------------------------
 
 template<typename T>
-class Queue{
+class Queue {
     T data; // Data that store in queue
     int size; // how many elements are inserted
     int capacity; // Indicate how many element that queue can store
@@ -12,70 +13,81 @@ class Queue{
     T* arr; // Container for store data
 
     public:
-    
+
+    // ---------
     // Default constructor
     Queue() : size(0), capacity(10), frontIndex(-1), rearIndex(-1), nextIndex(0), arr(new T[capacity]) {}
-    
+
+    // ---------
     // Parameterized constructor
     Queue(int size) : size(0), capacity(size), frontIndex(-1), rearIndex(-1), nextIndex(0), arr(new T[capacity]) {}
-    
+
+    // ---------
     // Destructor
-    ~Queue(){
+    ~Queue() {
         delete arr;
     }
 
-    int getSize(){
+    // ---------
+    int getSize() {
         return size;
     }
 
-    int max_size(){
+    // ---------
+    int max_size() {
         return capacity;
     }
 
-    bool empty(){
+    // ---------
+    bool empty() {
         return size == 0;
     }
 
-    T front(){
-        if(frontIndex == -1) return -1;
+    // ---------
+    T front() {
+        if (frontIndex == -1) return -1;
         return arr[frontIndex];
     }
 
-    T rear(){
-        if(rearIndex == -1) return -1;
+    // ---------
+    T rear() {
+        if (rearIndex == -1) return -1;
         return arr[rearIndex];
     }
 
-    void push(T data){
-        if(size == capacity){
+    // ---------
+    void push(T data) {
+        if (size == capacity) {
             cout << "Queue is full !!" << endl;
             return;
         }
         arr[nextIndex] = data;
         nextIndex = (nextIndex + 1) % capacity;
         rearIndex = (rearIndex + 1) % capacity;
-        if(frontIndex == -1){
+        if (frontIndex == -1) {
             frontIndex = 0;
             rearIndex = 0;
         }
         size += 1;
     }
 
-    void pop(){
-        if(size == 0){
+    // ---------
+    void pop() {
+        if (size == 0) {
             cout << "Queue is empty !!" << endl;
             return;
         }
         frontIndex = (frontIndex + 1) % capacity;
         size -= 1;
-        if(size == 0){
+        if (size == 0) {
             nextIndex = 0;
             frontIndex = -1;
             rearIndex = -1;
         }
     }
 
-    ~Queue(){
+    // ---------
+    ~Queue() {
         delete arr;
     }
 };

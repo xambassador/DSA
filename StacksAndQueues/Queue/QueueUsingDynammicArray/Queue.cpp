@@ -1,13 +1,12 @@
-#include<iostream>
-using namespace std;
 #include"Queue.h"
+// -----------------------------------------------------------------------------
 
-int main(){
+int main() {
     // Create queue
     /* Member function
      * Constructor
     */
-    
+
     // Access
     /* front()
      * rear()

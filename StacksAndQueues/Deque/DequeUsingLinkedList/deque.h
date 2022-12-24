@@ -1,10 +1,11 @@
 #include<initializer_list>
+// -----------------------------------------------------------------------------
 
 template<typename T>
-class Deque{
+class Deque {
     // Singly linked list node
     template<typename V>
-        class Node{
+        class Node {
             public:
             V data;
             Node<V>* next;
@@ -12,31 +13,34 @@ class Deque{
             Node(V data) : data(data), next(NULL) {}
         };
 
+    // ---------
     int size;
     Node<T>* _front;
     Node<T>* _rear;
 
     public:
 
+    // ---------
     // Default constructor
-    Deque(){
+    Deque() {
         size = 0;
         _front = NULL;
         _rear = NULL;
     }
 
+    // ---------
     // Parameterized constructor
-    Deque(std::initializer_list<T> l){
+    Deque(std::initializer_list<T> l) {
         size = l.size();
         _front = NULL;
         _rear = NULL;
         auto it{l.begin()};
-        while(it != l.end()){
+        while (it != l.end()) {
             Node<T>* node{new Node<T>(*it)};
-            if(_front == NULL){
+            if (_front == NULL) {
                 _front = node;
                 _rear = node;
-            }else{
+            } else {
                 _rear->next = node;
                 _rear = node;
             }
@@ -44,18 +48,18 @@ class Deque{
         }
     }
 
+    // ---------
     // Copy constructor
-
-    Deque(Deque<T> const &dq){
+    Deque(Deque<T> const &dq) {
         size = dq.size;
         _front = NULL;
         _rear  = NULL;
         Node<T>* tmp{dq._front};
-        while(tmp != NULL){
+        while (tmp != NULL) {
             Node<T>* node{new Node<T>(tmp->data)};
-            if(_front == NULL){
+            if (_front == NULL) {
                 _front = _rear = node;
-            }else{
+            } else {
                 _rear->next = node;
                 _rear = node;
             }
@@ -63,11 +67,11 @@ class Deque{
         }
     }
 
+    // ---------
     // Copy assignment operator
-
-    void operator=(Deque<T> const &dq){
+    void operator=(Deque<T> const &dq) {
         // Clean old content
-        while(_front != NULL){
+        while (_front != NULL) {
             Node<T>* tmp{_front};
             _front = _front -> next;
             delete tmp;
@@ -78,11 +82,11 @@ class Deque{
         _rear = NULL;
 
         Node<T>* tmp{dq._front};
-        while(tmp != NULL){
+        while (tmp != NULL) {
             Node<T>* node{new Node<T>(tmp->data)};
-            if(_front == NULL){
+            if (_front == NULL) {
                 _front = _rear = node;
-            }else{
+            } else {
                 _rear->next = node;
                 _rear = node;
             }
@@ -92,10 +96,11 @@ class Deque{
         size = dq.size;
     }
 
+    // ---------
     // Assign : replace everything
-    void assign(int count, T data){
+    void assign(int count, T data) {
         // Clean old content
-        while(_front != NULL){
+        while (_front != NULL) {
             Node<T>* tmp{_front};
             _front = _front -> next;
             delete tmp;
@@ -106,11 +111,11 @@ class Deque{
         _rear = NULL;
 
         int i{};
-        while(i < count){
+        while (i < count) {
             Node<T>* node{new Node<T>(data)};
-            if(_front == NULL){
+            if (_front == NULL) {
                 _front = _rear = node;
-            }else{
+            } else {
                 _rear->next = node;
                 _rear = node;
             }
@@ -119,9 +124,10 @@ class Deque{
         size = count;
     }
 
-    void assign(std::initializer_list<T> l){
+    // ---------
+    void assign(std::initializer_list<T> l) {
         // Clean old content
-        while(_front != NULL){
+        while (_front != NULL) {
             Node<T>* tmp{_front};
             _front = _front -> next;
             delete tmp;
@@ -132,11 +138,11 @@ class Deque{
         _rear = NULL;
 
         auto it{l.begin()};
-        while(it != l.end()){
+        while (it != l.end()) {
             Node<T>* node{new Node<T>(*it)};
-            if(_front == NULL){
+            if (_front == NULL) {
                 _front = _rear = node;
-            }else{
+            } else {
                 _rear->next = node;
                 _rear = node;
             }
@@ -146,33 +152,36 @@ class Deque{
         size = l.size();
     }
 
+    // ---------
     int getSize() const {
         return size;
     }
 
+    // ---------
     bool empty() const {
         return size == 0;
     }
 
+    // ---------
     T front() const {
-        if(_front == NULL) return -1;
+        if (_front == NULL) return -1;
         return _front->data;
     }
 
+    // ---------
     T rear() const {
-        if(_rear == NULL) return -1;
+        if (_rear == NULL) return -1;
         return _rear->data;
     }
 
-    void push_front(T data){
+    // ---------
+    void push_front(T data) {
         Node<T>* node{new Node<T>(data)};
 
         // If queue is initially empty
-        if(_front == NULL){
+        if (_front == NULL) {
             _front = _rear = node;
-        }
-
-        else{
+        } else {
             node->next = _front;
             _front = node;
         }
@@ -180,13 +189,13 @@ class Deque{
         size += 1;
     }
 
-    void push_back(T data){
+    // ---------
+    void push_back(T data) {
         Node<T>* node{new Node<T>(data)};
 
         // If queue is initially empty
-        if(_front == NULL) _front = _rear = node;
-
-        else{
+        if (_front == NULL) _front = _rear = node;
+        else {
             _rear->next = node;
             _rear = node;
         }
@@ -194,20 +203,19 @@ class Deque{
         size += 1;
     }
 
-    void pop_front(){
+    // ---------
+    void pop_front() {
         // If queue is empty
 
-        if(_front == NULL) return;
+        if (_front == NULL) return;
 
         // If there is only one element
-        if(_front == _rear) {
+        if (_front == _rear) {
             delete _front;
             _front = NULL;
             _rear = NULL;
             size -= 1;
-        }
-
-        else{
+        } else {
             Node<T>* tmp{_front};
             _front = _front->next;
             tmp->next = NULL;
@@ -216,24 +224,23 @@ class Deque{
         }
     }
 
+    // ---------
     // This function take O(n) time becuase here it need to traverse for figure out last node. Because here we use singly linked list.
-    void pop_back(){
+    void pop_back() {
         // If queue is empty
 
-        if(_front == NULL) return;
+        if (_front == NULL) return;
 
         // If there is only one element
-        if(_front == _rear) {
+        if (_front == _rear) {
             delete _front;
             _front = NULL;
             _rear = NULL;
             size -= 1;
-        }
-
-        else{
+        } else {
             Node<T>* tmp{_front};
-            while(tmp->next != NULL){
-                if(tmp->next->next == NULL){
+            while (tmp->next != NULL) {
+                if (tmp->next->next == NULL) {
                     // That means we reach second last node
                     _rear = tmp;
                 }
@@ -245,8 +252,9 @@ class Deque{
         }
     }
 
-    void clean(){
-        while(_front != NULL){
+    // ---------
+    void clean() {
+        while (_front != NULL) {
             Node<T>* tmp{_front};
             _front = _front->next;
             tmp->next = NULL;
@@ -256,8 +264,9 @@ class Deque{
         _rear = NULL;
     }
 
-    ~Deque(){
-        while(_front != NULL){
+    // ---------
+    ~Deque() {
+        while (_front != NULL) {
             Node<T>* tmp{_front};
             _front = _front->next;
             delete tmp;

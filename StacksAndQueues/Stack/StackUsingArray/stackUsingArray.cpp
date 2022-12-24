@@ -1,8 +1,8 @@
 #include<iostream>
-using namespace std;
 #include "stackUsingArray.h"
+// -----------------------------------------------------------------------------
 
-int main(){
+int main() {
     // Creating stack
     Stack<int> s1;
     Stack<char> s2(20); // Create 20 size stack
@@ -30,5 +30,4 @@ int main(){
      *  pop() : Delete data. O(1)
      *  clean() : Clear whole stack. O(n)
     */
-
 }

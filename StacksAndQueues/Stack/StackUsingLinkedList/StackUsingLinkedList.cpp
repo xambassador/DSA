@@ -1,15 +1,13 @@
-#include<iostream>
-using namespace std;
 #include"StackUsingLinkedList.h"
+// -----------------------------------------------------------------------------
 
-int main(){
-    
+int main() {
     // Create stack
     /* Constructor
      * Copy Constructor
      * operator=
     */
-    
+
     /* Access */
     /* top() : Return top element. O(1)*/
 

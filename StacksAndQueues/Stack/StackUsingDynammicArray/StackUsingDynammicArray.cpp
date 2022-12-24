@@ -1,9 +1,7 @@
-#include<iostream>
-using namespace std;
 #include"StackUsingDynammicArray.h"
+// -----------------------------------------------------------------------------
 
-
-int main(){
+int main() {
     // Create stack
     /* Member functions
      * Constructor
@@ -16,7 +14,7 @@ int main(){
 
     /* Modification */
     /* push() : Insert data. O(1)
-     * pop()  : Remove data. O(1) 
+     * pop()  : Remove data. O(1)
     */
 
     /* Size */

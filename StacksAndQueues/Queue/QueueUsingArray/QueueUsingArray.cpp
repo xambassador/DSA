@@ -1,8 +1,7 @@
-#include<iostream>
-using namespace std;
 #include "QueueUsingArray.h"
+// -----------------------------------------------------------------------------
 
-int main(){
+int main() {
     // Creating queue
     /* Member fuctions
      * Constructor
@@ -10,7 +9,7 @@ int main(){
      * operator=
     */
 
-    /* Size 
+    /* Size
      * getSize() : return number of elements that are inserted in queue
      * max_size() : return size that current queue can hold */
 
@@ -21,6 +20,6 @@ int main(){
 
     /* Modifiers*/
     /* push() : Insert new element at rear*
-     * pop() : Delete element from front 
+     * pop() : Delete element from front
     */
 }
