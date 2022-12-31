@@ -69,7 +69,7 @@ int findMaxXorPair (TrieNode* root, int* arr, int n) {
 }
 
 // -----------------------------------------------------------------------------
-int main(){
+int main() {
     int n;
     cin >> n;
     int* arr {new int[n]};

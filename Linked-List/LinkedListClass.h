@@ -1,5 +1,5 @@
-#include<initializer_list> 
-namespace classNode { 
+#include<initializer_list>
+namespace classNode {
     template<typename V>
     class LinkedList {
         template<typename T>
@@ -85,7 +85,7 @@ namespace classNode {
                 tmp = tmp->next;
             }
         }
-        
+
         // Copy assignment operator
         void operator=(LinkedList<V> const &l2){
             //Deep copy
@@ -115,7 +115,7 @@ namespace classNode {
 
             this->_size = l2._size;
         }
-        
+
         // assign function
         // assign(initializer_list)
         void assign(initializer_list<V> l) {
@@ -221,12 +221,12 @@ namespace classNode {
             this->_size += 1;
         }
 
-        
+
         //Return size
         int size() const{
             return this->_size;
         }
-        
+
         //Check if list is empty or not
         bool empty() const{
             return _size == 0;
@@ -461,7 +461,7 @@ namespace classNode {
 
         public:
         bool find(V data){
-            return find(head->next, data);  
+            return find(head->next, data);
         }
 
         private:
@@ -518,7 +518,7 @@ namespace classNode {
         }
 
         public:
-        
+
         //Reverse list method 1
         void preverse(){
             preverse(this->head);
@@ -553,7 +553,7 @@ namespace classNode {
             this->tail = head;
             while(tmp->next != NULL){
                 tmp = tmp->next;
-            } 
+            }
             tmp->next = head;
             head->next = NULL;
             return ans;
@@ -609,7 +609,7 @@ namespace classNode {
             this->head = reverse_i(this->head);
             return;
         }
-        
+
         // Reverse list method 3
         void reverse_rec1(){
             this->head = reverse_rec1(this->head);
@@ -630,7 +630,7 @@ namespace classNode {
         }
 
         private:
-        
+
         // Find mid node of list
         Node<V>* midpoint(Node<V>* head){
             if(head == NULL) return head;
@@ -672,7 +672,7 @@ namespace classNode {
             delete arr;
             return ans;
         }
-        
+
         private:
         // Merge to sorted lists
         Node<V>* merge(Node<V>* head1, Node<V>* head2){
@@ -786,7 +786,7 @@ namespace classNode {
 
         // Reverse k nodes
         Node<V>* kreverse(Node<V>* head, int k){
-            if(head == NULL || head->next == NULL){ 
+            if(head == NULL || head->next == NULL){
                 return head;
             }
             int i{};
@@ -823,7 +823,7 @@ namespace classNode {
                         delete tmp;
                         this->_size -= 1;
                     }
-                    curr->next = t; 
+                    curr->next = t;
                     curr = curr->next;
                 }
                 return curr;
@@ -851,7 +851,7 @@ namespace classNode {
 
         public:
         void merge(LinkedList<V>& l2){
-            LinkedList<V> l{l2};    
+            LinkedList<V> l{l2};
             this->head = merge(this->head,l.head);
             this->_size += l._size;
             return;
@@ -955,7 +955,7 @@ namespace classNode {
             this->head = NULL;
             this->tail = NULL;
         }
-        
+
 
         // For debug
         void print(){
