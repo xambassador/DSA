@@ -4,6 +4,7 @@ using std::vector;
 using std::cin;
 using std::cout;
 using std::endl;
+// -----------------------------------------------------------------------------
 
 class Node {
     public:
@@ -22,6 +23,7 @@ class Node {
     }
 };
 
+// -----------------------------------------------------------------------------
 void preorderTraversal(Node* root, vector<int>& preorderArray) {
     if (root == NULL) return;
     preorderArray.push_back(root -> val);
@@ -31,12 +33,14 @@ void preorderTraversal(Node* root, vector<int>& preorderArray) {
     return;
 }
 
+// -----------------------------------------------------------------------------
 vector<int> preorder(Node* root) {
     vector<int> ans;
     preorderTraversal(root, ans);
     return ans;
 }
 
+// -----------------------------------------------------------------------------
 int main () {
     Node* root {new Node(1)};
     Node* node1 {new Node(3)};
