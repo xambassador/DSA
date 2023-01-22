@@ -4,10 +4,9 @@ using std::cout;
 using std::endl;
 // -----------------------------------------------------------------------------
 
-int search(int* arr, int n, int x){
+int search(int* arr, int n, int x) {
     int start {};
     int end {n - 1};
-
     while (start <= end && start >= 0) {
         int mid {(start + end) / 2};
         if (arr[mid] == x) return mid;
