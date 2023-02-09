@@ -1,12 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func distinctNames(ideas []string) int64 {
 	groups := make([]map[string]bool, 26)
 
 	for _, idea := range ideas {
-		fmt.Println(idea)
 		if len(groups[idea[0]-'a']) > 0 {
 			groups[idea[0]-'a'][idea[1:]] = true
 		} else {
