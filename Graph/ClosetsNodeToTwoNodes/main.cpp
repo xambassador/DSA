@@ -48,7 +48,7 @@ int main () {
     int n;
     cin >> n;
     vector<int> edges(n);
-    for (int i = 0; i < n; i++) cin >> edges[i];
+    for (int i{}; i < n; i++) cin >> edges[i];
     int node1, node2;
     cin >> node1 >> node2;
     cout << closestMeetingNode(edges, node1, node2) << endl;
