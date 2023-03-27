@@ -1,4 +1,6 @@
 #include <vector>
+#include <algorithm>
+using std::min;
 using std::vector;
 
 int minPathSum(vector<vector<int>>& grid) {
