@@ -1,7 +1,9 @@
 #include <iostream>
 #include <climits>
 #include <algorithm>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 
 int calCost(int* arr, int n, int k, int l, int pivot) {
     int increment{};
