@@ -30,13 +30,12 @@ Sample Output 2 :
 */
 
 func main() {
-	var x,n int
-	fmt.Scan(&x)
-	fmt.Scan(&n)
+	var x, n int
+	fmt.Scanf("%d %d", &x, &n)
 
 	power := 1
 
-	for i := 1; i<=n; i++ {
+	for i := 1; i <= n; i++ {
 		power *= x
 	}
 

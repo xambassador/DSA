@@ -24,23 +24,23 @@ Sample Output :
 */
 
 func main() {
-	var N int
-	fmt.Scan(&N)
+	var n int
+	fmt.Scanf("%d", &n)
 
 	var (
 		sumEven int
-		sumOdd int
+		sumOdd  int
 	)
 
-	for N != 0 {
-		currentDigit := N % 10
-		if currentDigit % 2 == 0 {
+	for n != 0 {
+		currentDigit := n % 10
+		if currentDigit%2 == 0 {
 			sumEven += currentDigit
 		} else {
 			sumOdd += currentDigit
 		}
 
-		N /= 10
+		n /= 10
 	}
 
 	fmt.Println(sumEven, sumOdd)

@@ -15,7 +15,7 @@
 - [x] Binary Trees
 - [x] Binary Search Trees
 - [x] Greedy
-- [x] Dynammic Programming
+- [x] Dynamic Programming
 - [x] Segment Trees
 - [x] Graphs
 - [x] Tries and Huffman Coding

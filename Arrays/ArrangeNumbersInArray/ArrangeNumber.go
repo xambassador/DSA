@@ -6,7 +6,7 @@ func arrangeArray(arr []int, n int) {
 	var start, end, number int = 0, n - 1, 1
 
 	for start <= end {
-		if (start == end) {
+		if start == end {
 			arr[start] = number
 			start++
 			end--

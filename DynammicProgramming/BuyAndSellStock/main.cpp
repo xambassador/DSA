@@ -29,7 +29,7 @@ int maxProfiltDP(vector<int>& prices) {
     int minimumPriceOfStock {prices[0]};
     for (int i{}; i < prices.size(); i++) {
         // Check minimumPriceOfStock is less then current stock price.
-        // If it is, then we can achive maximum profit till now.
+        // If it is, then we can achieve maximum profit till now.
         maxProfitTillNow = max(prices[i] - minimumPriceOfStock, maxProfitTillNow);
         minimumPriceOfStock = min(prices[i], minimumPriceOfStock);
     }

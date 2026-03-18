@@ -6,31 +6,30 @@ import (
 )
 
 func main() {
-	var basic int
-	var grade string
-	fmt.Scan(&basic)
-	fmt.Scan(&grade)
+	var (
+		basic int
+		grade rune
+	)
+	fmt.Scanf("%d %c", &basic, &grade)
 
 	var (
-		hra float32 = float32(basic) * 0.2
-		da float32 = float32(basic) * 0.5
-		pf float32 = float32(basic) * 0.11
+		hra   = float64(basic) * 0.2
+		da    = float64(basic) * 0.5
+		pf    = float64(basic) * 0.11
 		allow int
 	)
 
-	if grade == "A" {
+	if grade == 'A' {
 		allow = 1700
-	} else if grade == "B" {
+	} else if grade == 'B' {
 		allow = 1500
 	} else {
 		allow = 1300
 	}
 
-	totalSalary := math.Round(float64(float32(basic) + hra + da + float32(allow) - pf))
-	fmt.Printf("%d", int(totalSalary))
+	totalSalary := int(math.Round(float64(basic) + hra + da + float64(allow) - pf))
+	fmt.Printf("%d", totalSalary)
 }
-
-
 
 /*
 Total Salary
@@ -44,7 +43,7 @@ hra   = 20% of basic
 da    = 50% of basic
 allow = 1700 if grade = A
 allow = 1500 if grade = B
-allow = 1300 if grade = C' or any other character
+allow = 1300 if grade = C or any other character
 pf    = 11% of basic.
 
 Round off the total salary and then print the integral part only.

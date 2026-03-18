@@ -33,13 +33,13 @@ package main
 
 import "fmt"
 
-func main(){
+func main() {
 	var n, c int
 	fmt.Scanln(&n)
 	fmt.Scanln(&c)
 
 	var (
-		sum int = 0
+		sum     int = 0
 		product int = 1
 	)
 
